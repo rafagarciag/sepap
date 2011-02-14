@@ -1,0 +1,71 @@
+
+
+.link1 body, td {
+	color: #FFCC00;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: none;
+}
+
+.link1 a:link{
+	color: #FFCC00;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: underline:
+}
+
+.link1 a:hover{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: underline;
+}
+
+.link1 a:visited{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: underline;
+}
+
+.link1 a:active{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: underline;
+}
+
+.link2 body, td {
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: none;
+}
+
+.link2 a:link{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: none:
+}
+
+.link2 a:hover{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: none;
+}
+
+.link2 a:visited{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: none;
+}
+
+.link2 a:active{
+	color: #000066;
+	font-family: Arial;
+	font-size: x-small;
+text-decoration: none;
+}

@@ -1,4 +1,6 @@
 Juez::Application.routes.draw do
+  devise_for :users
+
   get "upload/transfer"
   root :to => "upload#transfer"
 
