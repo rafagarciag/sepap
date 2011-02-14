@@ -1,4 +1,7 @@
 Juez::Application.routes.draw do
+  get "upload/transfer"
+  root :to => "upload#transfer"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
