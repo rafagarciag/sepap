@@ -77,11 +77,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-=======
   cancan
   devise
->>>>>>> 1c3502a402fa4e432000f43fa763c2a944f1bfc6
   nifty-generators
   rails (= 3.0.4)
   sqlite3
