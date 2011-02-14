@@ -1,4 +1,6 @@
 Juez::Application.routes.draw do
+  resources :attempts
+
   devise_for :users
 
   get "upload/transfer"
