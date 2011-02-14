@@ -1,10 +1,12 @@
 Juez::Application.routes.draw do
+  get "home/index"
+
   resources :attempts
 
   devise_for :users
 
   get "upload/transfer"
-  root :to => "upload#transfer"
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
