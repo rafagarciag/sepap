@@ -5,6 +5,9 @@ gem 'rails', '3.0.4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+#instalacion de Jquery =O
+gem "jquery-rails"
+
 #Manejo de Usuarios
 gem 'cancan'
 gem 'devise'
