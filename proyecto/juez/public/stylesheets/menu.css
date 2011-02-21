@@ -1,0 +1,26 @@
+ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+li {
+	float:left;
+	width:150px;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+li a {
+	display:block;
+	padding:5px 10px;
+	height:100%;
+	color:#000;
+	text-decoration:none;
+	border-right:1px solid #FFF;
+}
+li a {
+	background:url(../images/bg.jpg) repeat 0 0;
+}
+li a:hover {
+	background-position:150px 0;
+}

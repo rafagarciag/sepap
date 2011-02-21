@@ -9,71 +9,39 @@
 
 <body>
 
-<div align="center">
-  <center>
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="900">
-    <tr>
-      <td height="100" bgcolor="#412aa8">
-      <%= image_tag "logo.jpg", {:border=>0, :width=>300, :height => 100} %>
-      </td>
-    </tr>
-    <tr>
-      <td height="25" bgcolor="#7da8a2">&nbsp;</td>
-    </tr>
-  </table>
-  </center>
+<div class="header">
+<%=image_tag "logo.jpg"%>
 </div>
-<div align="center">
-  <center>
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="900">
-    <tr>
-      <td width="135" height="35" background="nav.jpg" align="center">
-      <%=image_tag "home.jpg"%>
-      <td rowspan="7">
-      <div valign="top" align="center" style="width: 756; height: 228">
-        <center>
-        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="700">
-          <tr >
-            <td >
 
-		<%=yield%>
-
-	    </td>
-          </tr>
-          </table>
-        </center>
-      </div>
-      </td>
-    </tr>
-    <tr>
-      <td width="135" height="35" align="center">
-      <%=image_tag "signIn.jpg"%>
-    </tr>
-    <tr>
-      <td width="135" height="35" align="center">
-      <%=image_tag "signIn.jpg"%>
-    </tr>
-    <tr>
-      <td width="135" height="35" align="center">
-      <%=image_tag "signIn.jpg"%>
-    </tr>
-    <tr>
-      <td width="135" height="35" align="center">
-      <%=image_tag "signIn.jpg"%>
-    </tr>
-    <tr>
-      <td width="135" height="58" bgcolor="#547da8" valign="top">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="135" bgcolor="#547da8">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="2" bgcolor="#7da8a2" height="25">
-      	<p align="center">Instituto Tecnologico y de Estudios Superiores de Monterrey</p>
-      </td>
-    </tr>
-  </table>
-  </center>
+<div class="etc" >
+bienvenido rafael
 </div>
+
+<div class="centro" >
+	<table class="division">
+		<tr>
+			<td class="menu">
+				<ul id="b">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</td>
+
+			<td class="aplicacion">
+				<%=yield%>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</div>
+
+
+<div class="footer">
+esmegma espesita
+</div>
+
+
 </body>
 </html>
