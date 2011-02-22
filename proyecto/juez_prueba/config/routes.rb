@@ -1,15 +1,4 @@
-Juez::Application.routes.draw do
-  get "problem/index"
-
-  get "home/index"
-
-  resources :attempts
-
-  devise_for :users
-
-  get "upload/transfer"
-  root :to => "home#index"
-
+JuezPrueba::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214063647) do
+ActiveRecord::Schema.define(:version => 20110221173334) do
 
   create_table "attempts", :force => true do |t|
     t.datetime "created_at"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20110214063647) do
     t.integer  "code_file_size"
     t.datetime "code_updated_at"
     t.integer  "problemNo"
+  end
+
+  create_table "problems", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
