@@ -1,7 +1,18 @@
+html{
+	width:100%;
+	height:100%;
+}	
+
+
+body{
+	width:100%;
+	height:100%;
+	background-image:url(../images/fondoMain.jpg);
+}
+
 div.header{
 	margin-left:auto;
 	margin-right:auto;
-	width:80%;
 	min-width:900px;
 	max-width:900px;
 	min-height:100px;
@@ -12,49 +23,37 @@ div.header{
 div.etc{
 	margin-left:auto;
 	margin-right:auto;
-	width:80%;
 	min-width:900px;
 	max-width:900px;
 	min-height:20px;
 	max-height:20px;
-	background-color:#7ea8a2;
+	background-color:#547da8;
 
 }
 
 div.centro{
 	margin-left:auto;
 	margin-right:auto;
-	width:80%;
 	min-width:900px;
 	max-width:900px;
-	width:500px;
+	background-color:#FFF;
 }
 
 
 div.footer{
 	margin-left:auto;
 	margin-right:auto;
-	width:80%;
 	min-width:900px;
 	max-width:900px;
 	min-height:50px;
 	max-height:50px;
-	background-color:#7ea8a2;
+	background-color:#547da8;
 }
 
 table.division{
 	border:0px;
 	padding:0px;
 }
-
-
-td.menu{
-	min-width:150px;
-	max-width:150px;
-
-}
-
-
 
 
 td.aplicacion{
