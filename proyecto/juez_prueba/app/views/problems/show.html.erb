@@ -15,6 +15,11 @@
   <%= @problem.description %>
 </p>
 
+<p>
+  <b>User:</b>
+  <%= @problem.user %>
+</p>
+
 
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Back', problems_path %>

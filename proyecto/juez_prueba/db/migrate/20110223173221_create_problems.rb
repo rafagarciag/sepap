@@ -4,6 +4,7 @@ class CreateProblems < ActiveRecord::Migration
       t.integer :number
       t.string :title
       t.text :description
+      t.references :user
 
       t.timestamps
     end
