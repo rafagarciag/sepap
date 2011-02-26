@@ -16,7 +16,7 @@
     <td><%= problem.number %></td>
     <td><%= problem.title %></td>
     <td><%= problem.description %></td>
-    <td><%= problem.user %></td>
+    <td><%= problem.user.name %></td>
     <td><%= link_to 'Show', problem %></td>
     <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
     <td><%= link_to 'Destroy', problem, :confirm => 'Are you sure?', :method => :delete %></td>
