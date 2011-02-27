@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sistema de Evaluaci&oacute;n Para el Aprendizaje de la Programaci&oacute;n</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+</head>
+
+<body>
+
+<div class="header">
+<%=image_tag "logo.jpg"%>
+</div>
+
+<div class="etc" align="right">
+	Bienvenido 
+	<% if user_signed_in? %>
+		<%= current_user.name %>
+		<%= link_to "Salir", destroy_user_session_path %>
+	<% else %>
+		<%= link_to "Entrar", new_user_session_path %>
+	<% end %>
+</div>
+
+<div class="centro" >
+	<table class="division">
+		<tr>
+			<td class="menu">
+				<table>
+					<tr>
+						<td id="but" class="boton" onClick="document.location.href='http://www.google.com'">Home</td>
+					</tr>
+					<tr>
+						<td class="boton">Lol</td>
+					</tr>
+					<tr>
+						<td class="boton">y asi</td>
+					</tr>
+					
+
+				</table>
+			</td>
+
+			<td class="aplicacion">
+				<p>
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				</p>
+
+				<%=yield%>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</div>
+
+
+<div class="footer">
+FOOTER
+FOOTER
+</div>
+
+
+</body>
+</html>
