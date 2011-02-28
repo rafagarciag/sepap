@@ -15,4 +15,6 @@ class Problem < ActiveRecord::Base
 	mount_uploader :solution, SolutionUploader
 	mount_uploader :input, InputUploader
 	mount_uploader :output, OutputUploader
+	
+	has_many :attempts
 end
