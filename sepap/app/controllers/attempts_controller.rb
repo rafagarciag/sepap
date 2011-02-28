@@ -42,9 +42,8 @@ class AttemptsController < ApplicationController
   def create
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
-    problema = Problem.where(:numero => @attempt.numero_problema)
+    problema = Problem.where(:numero => 1001)
     @attempt.problem_id = problema.id
-
     respond_to do |format|
       if @attempt.save
         format.html { redirect_to(@attempt, :notice => 'Attempt was successfully created.') }

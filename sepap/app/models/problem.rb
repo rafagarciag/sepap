@@ -1,8 +1,6 @@
 class Problem < ActiveRecord::Base
 
-	belongs_to :user
-
-	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :output
+	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :output, :id
 
 	validates_presence_of :numero, :message => "Falta especificar el número de problema"
 	validates_presence_of :titulo, :message => "Falta especificar el título del problema"
@@ -17,4 +15,5 @@ class Problem < ActiveRecord::Base
 	mount_uploader :output, OutputUploader
 	
 	has_many :attempts
+	belongs_to :user
 end
