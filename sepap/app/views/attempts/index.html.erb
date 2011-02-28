@@ -15,8 +15,8 @@
   <tr>
     <td><%= attempt.numero_problema %></td>
     <td><%= attempt.resultado %></td>
-    <td><%= attempt.user %></td>
-    <td><%= attempt.problem %></td>
+    <td><%= attempt.user.nombre %></td>
+    <td><% attempt.problem %></td>
     <td><%= link_to 'Show', attempt %></td>
     <td><%= link_to 'Edit', edit_attempt_path(attempt) %></td>
     <td><%= link_to 'Destroy', attempt, :confirm => 'Are you sure?', :method => :delete %></td>
