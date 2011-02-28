@@ -41,6 +41,9 @@ class AttemptsController < ApplicationController
   # POST /attempts.xml
   def create
     @attempt = Attempt.new(params[:attempt])
+    @attempt.user_id = current_user.id
+    problema = Problem.where(:numero => @attempt.numero_problema)
+    @attempt.problem_id = problema.id
 
     respond_to do |format|
       if @attempt.save
