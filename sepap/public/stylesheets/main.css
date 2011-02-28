@@ -41,6 +41,7 @@ div.centro{
 
 
 div.footer{
+	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
 	min-width:900px;
@@ -57,7 +58,7 @@ table.division{
 
 
 td.aplicacion{
-	
+	vertical-align:top;
 
 }
 
