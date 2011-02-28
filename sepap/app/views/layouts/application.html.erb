@@ -15,12 +15,7 @@
 
 <div class="etc" align="right">
 	Bienvenido 
-	<% if user_signed_in? %>
-		<%= current_user.name %>
-		<%= link_to "Salir", destroy_user_session_path %>
-	<% else %>
-		<%= link_to "Entrar", new_user_session_path %>
-	<% end %>
+	
 </div>
 
 <div class="centro" >
@@ -28,7 +23,7 @@
 		<tr>
 			<td class="menu">
 				<ul class="menu">
-					<li class="menu"><%=link_to "Problema" , new_problem_path%></li>
+					<li class="menu">Home</li>
 					<li class="menu"><a class="menu" href="#">About</a></li>
 					<li class="menu"><a class="menu" href="#">Contact</a></li>
 				</ul>
