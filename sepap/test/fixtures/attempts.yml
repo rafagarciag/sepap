@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  numero_problema: 1
+  resultado: MyString
+  user: 
+  problem: 
+
+two:
+  numero_problema: 1
+  resultado: MyString
+  user: 
+  problem: 

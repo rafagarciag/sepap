@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @group.clave %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @group.nombre %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @group.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

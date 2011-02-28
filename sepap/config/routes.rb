@@ -1,4 +1,12 @@
 Sepap::Application.routes.draw do
+  resources :attempts
+
+  resources :problems
+
+  resources :groups
+
+  devise_for :users
+
   get "home/index"
 
 	root :to => "home#index"
