@@ -41,6 +41,7 @@ class ProblemsController < ApplicationController
   # POST /problems.xml
   def create
     @problem = Problem.new(params[:problem])
+    @problem.user_id = current_user.id
 
     respond_to do |format|
       if @problem.save
