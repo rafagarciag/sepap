@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228004022) do
+ActiveRecord::Schema.define(:version => 20110228011520) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "numero_problema"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110228004022) do
     t.integer  "problem_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "code"
   end
 
   create_table "groups", :force => true do |t|
@@ -36,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20110228004022) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "solution"
+    t.string   "input"
+    t.string   "output"
   end
 
   create_table "users", :force => true do |t|
