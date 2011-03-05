@@ -7,7 +7,7 @@
 
 <p>
   <b>Resultado:</b>
-  <%= @attempt.resultado %>
+  <% @attempt.resultado %>
 </p>
 
 <p>
@@ -17,8 +17,14 @@
 
 <p>
   <b>Problem:</b>
-  <%= @attempt.problem %>
+  <%= @attempt.numero_problema %>
 </p>
+
+<div id="experimental" >
+	Aqui imprimirá el resultado
+	<br />
+	<%= @attempt.resultado %>
+</div>
 
 
 <%= link_to 'Edit', edit_attempt_path(@attempt) %> |

@@ -42,11 +42,20 @@ class AttemptsController < ApplicationController
   def create
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
+	#Falta agregar un contador para numero_de_intentos
     problema = Problem.where(:numero => @attempt.numero_problema)
 
     problema.each do |n|
     	@attempt.problem_id = n.id
     end
+    
+    #==Aqui compila el codigo fuente y produce un resultado====
+    
+    comando = " public/alumno/#{@attempt.user.id}/#{@attempt.numero_problema}/#{@attempt.code}"
+    #comando = "cat public/alumno/1/1001/hello.java"
+    @attempt.resultado = `echo #{comando}`
+    
+    #=========================================================
 
     respond_to do |format|
       if @attempt.save

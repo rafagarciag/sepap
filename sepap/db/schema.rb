@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228011520) do
+ActiveRecord::Schema.define(:version => 20110305222055) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "numero_problema"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110228011520) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "code"
+    t.integer  "numero_de_intentos"
   end
 
   create_table "groups", :force => true do |t|

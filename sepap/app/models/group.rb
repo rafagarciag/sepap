@@ -1,3 +1,5 @@
 class Group < ActiveRecord::Base
-  belongs_to :user
+
+	#Relaciones con otras clases  
+	belongs_to :user
 end

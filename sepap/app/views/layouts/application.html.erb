@@ -15,6 +15,12 @@
 
 <div class="etc" align="right">
 	Bienvenido
+	<% if user_signed_in? %>
+		<%= current_user.nombre %>
+		<%= link_to "Salir", destroy_user_session_path %>
+	<% else %>
+		<%= link_to "Entrar", new_user_session_path %>
+	<% end %>
 </div>
 
 <div class="centro" >

@@ -4,5 +4,7 @@ Consideraciones de la junta del pasado 28 de febrero:
 Tener la opción de crear tema, donde cada tema tendrá un rango de numeros de problema (cada 1000 por ejemplo)
 Agregar alumnos con archivo (baja prioridad por lo pronto)
 Para crear Grupo, considerar los sig datos: Campus, semestre, Año, mes (inicio), clave de grupo
+Agregar la posibilidad de darle estilo al texto al momento de crear un problema (profesor) 
+Cambiar que el alumno ingrese con la matricula "A01234567"
 
 V1.0
