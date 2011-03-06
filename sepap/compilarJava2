@@ -1,0 +1,22 @@
+#!/bin/bash
+#Se compila el archivo y se ejecuta para luego comparar la salida con al salida esperada
+archivo=$1
+entrada=$2
+salida=$3
+salida_esperada=$4
+error=$5
+
+javac $archivo &> $error
+if [ $? -eq 0 ]; then			#checa que la compilacion haya jalado
+	echo se ha compilado exitosamente
+	ejecutable=${archivo%.*}	#toma el nombre del archivo sin el .java
+	java $ejecutable < $entrada &> $salida
+	cmp -s $salida $salida_esperada
+	if [ $? -eq 0 ]; then		#archivos iguales = 0
+		echo ACEPTADO
+	else
+		echo RECHAZADO
+	fi
+else
+	echo "Error de compilación"
+fi

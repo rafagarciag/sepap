@@ -48,12 +48,18 @@ class AttemptsController < ApplicationController
     problema.each do |n|
     	@attempt.problem_id = n.id
     end
+    # =======================================================
+    # Aqui compila el codigo fuente y produce un resultado
+    #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje 
+    archivo = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+    entrada = "public/maestro/#{@attempt.numero_problema}/entrada"
+    salida = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+    salida_esperada = "public/maestro/#{@attempt.numero_problema}/salida_esperada"
+    error = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
     
-    #==Aqui compila el codigo fuente y produce un resultado====
-    
-    comando = " public/alumno/#{@attempt.user.id}/#{@attempt.numero_problema}/#{@attempt.code}"
-    #comando = "cat public/alumno/1/1001/hello.java"
-    @attempt.resultado = `echo #{comando}`
+    #se llama al compilador
+    #el formato del script es: compilarJava [archivo con el codigo del alumno] [entrada brindada por el profesor] [archivo donde se guarda la salida de ejecutar el archivo del alumno con las entradas del profesor] [salida esperada brindada por el profesor] [archivo donde se guardara la info de error en caso de no compilar]
+    @attempt.resultado = `./compilarJava2 #{archivo} #{entrada} #{salida} #{salida_esperada} #{error}`
     
     #=========================================================
 

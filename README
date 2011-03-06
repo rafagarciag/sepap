@@ -5,6 +5,11 @@ Tener la opción de crear tema, donde cada tema tendrá un rango de numeros de p
 Agregar alumnos con archivo (baja prioridad por lo pronto)
 Para crear Grupo, considerar los sig datos: Campus, semestre, Año, mes (inicio), clave de grupo
 Agregar la posibilidad de darle estilo al texto al momento de crear un problema (profesor) 
-Cambiar que el alumno ingrese con la matricula "A01234567"
+Cambiar que el alumno ingrese con la matricula "A01234567", agregar una expresion regular para validar la matricula (config/initializers/devise.rb)
+Quitar descripcion en el listado de problemas y hacer que se vea con formato
+
+
+Hacer una forma diferente para que un profesor pueda agregar profesores... considerar que el correo de un profesor es dif. a la matricula
+Hacer un modelo de "lenguaje" [futuro]
 
 V1.0
