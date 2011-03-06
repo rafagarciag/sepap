@@ -1,4 +1,17 @@
 class User < ActiveRecord::Base
+
+  #Control para que el acceso sea Case Insensitive
+  before_save do
+    self.email.downcase! if self.email
+    self.matricula.downcase! if self.matricula
+  end
+
+  def self.find_for_authentication(conditions) 
+    conditions[:matricula].downcase! 
+    super(conditions) 
+  end 
+
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable, :recoverable
 	devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
