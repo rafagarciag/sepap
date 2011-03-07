@@ -25,6 +25,7 @@ class ProblemsController < ApplicationController
   # GET /problems/new.xml
   def new
     @problem = Problem.new
+    unauthorized! if cannot? :create, @problem
 
     respond_to do |format|
       format.html # new.html.erb
