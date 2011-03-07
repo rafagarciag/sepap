@@ -11,6 +11,8 @@ YA QUEDO ESTE PEDO--->Para crear Grupo, considerar los sig datos: Campus, semest
 Agregar la posibilidad de darle estilo al texto al momento de crear un problema (profesor) 
 Cambiar que el alumno ingrese con la matricula "A01234567", agregar una expresion regular para validar la matricula (config/initializers/devise.rb)
 Quitar descripcion en el listado de problemas y hacer que se vea con formato
+Implementar reCaptcha al momento de crear un usuario (hay forma de integrarlo a devise)
+Implementar AJAX en la creacion de un attempt, para que no salga una pantalla en blanco
 
 
 Hacer un modelo de "lenguaje" [futuro]
