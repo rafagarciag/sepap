@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :nombre, :message => "El nombre no puede estar en blanco"
 	validates_presence_of :apellido, :message => "El apellido no puede estar en blanco"
 	validates_presence_of :matricula, :message => "La matrícula no puede estar en blanco"
-
+	validates_format_of :matricula, :with => /[Aa][0-9]{8}/i, :message => "Favor de escribir la matrícula en el formato A00123456"
+	validates_uniqueness_of :matricula, :message => "Ya existe un usuario con la misma matrícula"
 
 end

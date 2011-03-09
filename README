@@ -13,6 +13,7 @@ Cambiar que el alumno ingrese con la matricula "A01234567", agregar una expresio
 Quitar descripcion en el listado de problemas y hacer que se vea con formato
 Implementar reCaptcha al momento de crear un usuario (hay forma de integrarlo a devise)
 Implementar AJAX en la creacion de un attempt, para que no salga una pantalla en blanco
+Ya jala la exp regular al momento de registrarte con la matricula.. solo que si escribes A00123456 verifica por otra matricula igual en la base y despues le cambia la 'A' a minuscula, entonces permite duplicados de matricula... si escribes a00123456 y ya existia una igual si te lo dice 
 
 
 Hacer un modelo de "lenguaje" [futuro]

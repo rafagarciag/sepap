@@ -75,7 +75,7 @@ Devise.setup do |config|
   # config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   
   # Valida que la matricula este correcta con una exp regular
-  # config.matricula_regexp = /(A|L)([0-9]{8})/i
+  #config.matricula_regexp = /(A|L)([0-9]{8})/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
