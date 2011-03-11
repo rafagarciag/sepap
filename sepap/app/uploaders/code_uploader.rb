@@ -13,7 +13,7 @@ class CodeUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "alumno/#{model.user.matricula}/#{model.numero_problema}"
+    "../archivos/alumno/#{model.user.matricula}/#{model.numero_problema}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
