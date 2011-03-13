@@ -51,12 +51,12 @@ class AttemptsController < ApplicationController
     # =======================================================
     # Aqui compila el codigo fuente y produce un resultado
     #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje 
-    archivo = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
-    ejecutable = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
-    entrada = "public/maestro/#{@attempt.numero_problema}/entrada"
-    salida = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
-    salida_esperada = "public/maestro/#{@attempt.numero_problema}/salida_esperada"
-    error = "public/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
+    archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+    ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
+    entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada"
+    salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+    salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada"
+    error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
     
     #se llama al compilador
     #el formato del script es: compilarJava [archivo con el codigo del alumno] [entrada brindada por el profesor] [archivo donde se guarda la salida de ejecutar el archivo del alumno con las entradas del profesor] [salida esperada brindada por el profesor] [archivo donde se guardara la info de error en caso de no compilar]
