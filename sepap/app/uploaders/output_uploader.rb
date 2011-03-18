@@ -40,8 +40,8 @@ class OutputUploader < CarrierWave::Uploader::Base
   # end
 
   # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+   def filename
+     "salida_esperada" if original_filename
+   end
 
 end

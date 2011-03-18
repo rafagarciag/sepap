@@ -40,8 +40,8 @@ class InputUploader < CarrierWave::Uploader::Base
   # end
 
   # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+     "entrada" if original_filename
+  end
 
 end

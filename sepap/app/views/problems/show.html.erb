@@ -12,7 +12,7 @@
 
 <p>
   <b>Descripcion:</b>
-  <%= @problem.descripcion.html_safe %>
+  <%= simple_format(@problem.descripcion.html_safe) %>
 </p>
 
 <p>
