@@ -12,7 +12,7 @@ if [ $? -eq 0 ]; then			#checa que la compilacion haya jalado
 	echo se ha compilado exitosamente
 	#ejecutable=${archivo%.*}	#toma el nombre del archivo sin el .java
 	
-	java -classpath $ejecutable < $entrada &> $salida
+	(java -classpath $ejecutable < $entrada &> $salida) & sleep 5 ; kill $!  & echo tiempo excedido > $salida
 	cmp -s $salida $salida_esperada
 	if [ $? -eq 0 ]; then		#archivos iguales = 0
 		echo ACEPTADO
