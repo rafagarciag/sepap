@@ -61,7 +61,6 @@ class AttemptsController < ApplicationController
     #se llama al compilador
     #el formato del script es: compilarJava [archivo con el codigo del alumno] [entrada brindada por el profesor] [archivo donde se guarda la salida de ejecutar el archivo del alumno con las entradas del profesor] [salida esperada brindada por el profesor] [archivo donde se guardara la info de error en caso de no compilar]
     @attempt.resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error}`
-    #@attempt.resultado = `./compilarJava2 public/alumno/a01088197/1001/Problema1001.java public/maestro/1001/entrada public/alumno/a01088197/1001/salida public/maestro/1001/salida_esperada public/alumno/a01088197/1001/error` 
     
     #=========================================================
 

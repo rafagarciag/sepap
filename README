@@ -19,7 +19,8 @@ Corregir bug de seguridad que permite bajar cualquier archivo de la carpeta 'pub
 
 [13/03/11]
 Se corrigió bug de seguridad
-Falta corregir problema con la matricula
+Se corrigió problema con la matrícula
+En user.rb, que hace el self.find_for_authentication(conditions) ??
 
 
 Hacer un modelo de "lenguaje" [futuro]

@@ -14,11 +14,11 @@
 </div>
 
 <div class="etc" align="right">
-	Bienvenido
 	<% if user_signed_in? %>
-		<%= current_user.nombre %>
+		¡Bienvenido <%= current_user.nombre %>!
 		<%= link_to "Salir", destroy_user_session_path %>
 	<% else %>
+		¡Bienvenido!
 		<%= link_to "Entrar", new_user_session_path %>
 	<% end %>
 </div>
@@ -62,7 +62,7 @@
 
 
 <div class="footer">
-Instituto Tecnologico y de Estudios Superiores de Monterrey
+Instituto Tecnológico y de Estudios Superiores de Monterrey
 </div>
 
 
