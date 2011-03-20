@@ -1,15 +1,16 @@
 Sepap::Application.routes.draw do
-  resources :attempts
+	resources :attempts
 
-  resources :problems
+	resources :problems
+		match "problemas" => "Problems#index"
 
-  resources :groups
+	resources :groups
 
-  devise_for :users
+	devise_for :users
 
-  get "home/index"
+	get "home/index"
 
-  root :to => "home#index"
+	root :to => "home#index"
 
 
   # The priority is based upon order of creation:

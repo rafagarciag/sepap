@@ -1,27 +1,26 @@
-<h1>Listing problems</h1>
+<h1>Listado de problemas</h1>
 
 <table>
   <tr>
-    <th>Numero</th>
-    <th>Titulo</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Número</th>
+    <th>Título</th>
+    <th>Usuario</th>
+    <th> </th>
+    <th> </th>
+
   </tr>
 
 <% @problems.each do |problem| %>
   <tr>
-    <td><%= problem.numero %></td>
-    <td><%= problem.titulo %></td>
-    <td><%= problem.user.nombre %></td>
-    <td><%= link_to 'Show', problem %></td>
-    <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-    <td><%= link_to 'Destroy', problem, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to problem.numero, problem %></td>
+    <td width=150><%= problem.titulo %></td>
+    <td width=110><%= problem.user.nombre %></td>
+    <td><%= link_to 'Editar', edit_problem_path(problem) %></td>
+    <td><%= link_to 'Eliminar', problem, :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Problem', new_problem_path %>
+<%= link_to 'Crear problema nuevo', new_problem_path %>
