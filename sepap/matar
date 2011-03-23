@@ -1,0 +1,11 @@
+#!/bin/bash
+#================================================
+#	Este script matará a compilarJava2 en caso de
+#	que la ejecución del programa (Java) se cicle  
+#	o tarde demasiado tiempo en ejecutarse
+#===============================================
+
+bashid=$1
+sleep 6			#Modificar este valor para alargar o disminuir el tiempo que tardará en matarlo
+echo 'Se ha excedido el tiempo'		#Esto se despliega en la página web
+kill -9 $bashid						# ¡Matar a compilarJava2! ¡FUCK YEAH!
