@@ -6,6 +6,7 @@
 #===============================================
 
 bashid=$1
-sleep 6			#Modificar este valor para alargar o disminuir el tiempo que tardará en matarlo
-echo 'Se ha excedido el tiempo'		#Esto se despliega en la página web
-kill -9 $bashid						# ¡Matar a compilarJava2! ¡FUCK YEAH!
+sleep 10	#Modificar este valor para alargar o disminuir el tiempo que tardará en matarlo
+
+kill -9 $1					# ¡Matar a compilarJava2! ¡FUCK YEAH!
+
