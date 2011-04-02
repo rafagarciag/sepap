@@ -50,7 +50,8 @@ class AttemptsController < ApplicationController
     end
     # =======================================================
     # Aqui compila el codigo fuente y produce un resultado
-    #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje 
+    #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje
+    @attempt.save 
     archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
     ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
     entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada"

@@ -7,6 +7,7 @@ salida=$4
 salida_esperada=$5
 error=$6
 
+echo "" > $error
 echo "" > $salida
 
 javac $archivo &> $error
