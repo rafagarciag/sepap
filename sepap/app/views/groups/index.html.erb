@@ -1,10 +1,10 @@
-<h1>Listing groups</h1>
+<h1>Listado de Grupos</h1>
 
 <table>
   <tr>
     <th>Clave</th>
     <th>Nombre</th>
-    <th>User</th>
+    <th>Usuario</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,13 +15,13 @@
     <td><%= group.clave %></td>
     <td><%= group.nombre %></td>
     <td><%= group.user %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', group %></td>
+    <td><%= link_to 'Editar', edit_group_path(group) %></td>
+    <td><%= link_to 'Borrar', group, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to 'Crear Grupo', new_group_path %>

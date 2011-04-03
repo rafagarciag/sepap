@@ -1,9 +1,9 @@
-<h2>Editar <%= resource_name.to_s.humanize %></h2>
+<h2>Editar Usuario</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :email %><br />
+  <p><%= f.label :email, 'Correo Electronico' %><br />
   <%= f.text_field :email %></p>
 
   <p><%= f.label :nombre, 'Nombre(s)' %><br />
@@ -12,20 +12,20 @@
   <p><%= f.label :apellido, 'Apellidos' %><br />
   <%= f.text_field :apellido %></p>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <p><%= f.label :password, 'Contraseña' %> <i>(dejar en blanco para no guardar cambios)</i><br />
   <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %><br />
+  <p><%= f.label :password_confirmation, 'Confirmar Contraseña' %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <p><%= f.label :current_password, 'Contraseña Actual'%> <i>(requerimos tu contraseña actual para registrar los cambios)</i><br />
   <%= f.password_field :current_password %></p>
 
-  <p><%= f.submit "Update" %></p>
+  <p><%= f.submit "Actualizar" %></p>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Cancelar Mi Cuenta</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+<p>Disgustado? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Regresar", :back %>
