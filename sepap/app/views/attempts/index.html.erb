@@ -1,11 +1,11 @@
-<h1>Listing attempts</h1>
+<h1>Lista de intentos</h1>
 
 <table>
   <tr>
     <th>Numero problema</th>
     <th>Resultado</th>
-    <th>User</th>
-    <th>Problem</th>
+    <th>Usuario</th>
+    <th>Problema</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,13 +17,13 @@
     <td><%= attempt.resultado %></td>
     <td><%= attempt.user.nombre %></td>
     <td><% attempt.problem %></td>
-    <td><%= link_to 'Show', attempt %></td>
-    <td><%= link_to 'Edit', edit_attempt_path(attempt) %></td>
-    <td><%= link_to 'Destroy', attempt, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', attempt %></td>
+    <td><%= link_to 'Editar', edit_attempt_path(attempt) %></td>
+    <td><%= link_to 'Borrar', attempt, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Attempt', new_attempt_path %>
+<%= link_to 'Nuevo Intento', new_attempt_path %>
