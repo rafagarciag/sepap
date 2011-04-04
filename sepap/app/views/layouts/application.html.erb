@@ -36,13 +36,13 @@
 					<%end%>
 					<%if can? :create, @attempt%>
 					    <li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
-					    <li class="menu"><%=link_to "Subir Solucion", new_attempt_path%></li>
+					    <li class="menu"><%=link_to "Subir Solución", new_attempt_path%></li>
 					    <li class="menu"><%=link_to "Editar Perfil", edit_user_registration_path%></li>
 					    <li class="menu"><%=link_to "Historial", root_path%></li>
 					<%end%>
 					<%if can? :create, @group%>
 					    <li class="menu"><%=link_to "Crear Problema", new_problem_path%></li>
-					    <li class="menu"><%=link_to "Administracion de Grupos", groups_path%></li>
+					    <li class="menu"><%=link_to "Administración de Grupos", groups_path%></li>
 					    <li class="menu"><%=link_to "Editar Alumnos", root_path%></li>
 					    <li class="menu"><%=link_to "Editar Usuarios", root_path%></li>
 					    <li class="menu"><%=link_to "Salir", destroy_user_session_path%></li>
