@@ -41,7 +41,9 @@ class SolutionUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
    def filename
-     original_filename.capitalize
+     if original_filename
+        original_filename.capitalize
+     end
    end
 
 end

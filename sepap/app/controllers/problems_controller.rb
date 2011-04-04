@@ -59,7 +59,6 @@ class ProblemsController < ApplicationController
   # PUT /problems/1.xml
   def update
     @problem = Problem.find(params[:id])
-
     respond_to do |format|
       if @problem.update_attributes(params[:problem])
         format.html { redirect_to(@problem, :notice => 'Problem was successfully updated.') }
