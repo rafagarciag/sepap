@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110307003247) do
+ActiveRecord::Schema.define(:version => 20110413224623) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "numero_problema"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110307003247) do
     t.integer  "semestre"
     t.integer  "ano"
     t.string   "mes"
+    t.string   "miembros"
   end
 
   create_table "problems", :force => true do |t|

@@ -21,8 +21,10 @@
   </div>
   <div class="field">
     <%= f.label :descripcion, 'Descripción' %><br />
-    <%= f.text_area :descripcion %>
+    <%= f.text_area :descripcion, :cols => 80, :rows => 40 %>
   </div>
+  
+  
   <div class="field">
     <%= f.label :solution, 'Solución' %><br />
     <%= f.file_field :solution %>

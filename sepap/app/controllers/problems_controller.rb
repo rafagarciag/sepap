@@ -46,7 +46,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to(@problem, :notice => 'Problem was successfully created.') }
+        format.html { redirect_to(@problem, :notice => 'El problema fue creado exitosamente.') }
         format.xml  { render :xml => @problem, :status => :created, :location => @problem }
       else
         format.html { render :action => "new" }
@@ -59,10 +59,9 @@ class ProblemsController < ApplicationController
   # PUT /problems/1.xml
   def update
     @problem = Problem.find(params[:id])
-
     respond_to do |format|
       if @problem.update_attributes(params[:problem])
-        format.html { redirect_to(@problem, :notice => 'Problem was successfully updated.') }
+        format.html { redirect_to(@problem, :notice => 'El problema fue actualizado exitosamente.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

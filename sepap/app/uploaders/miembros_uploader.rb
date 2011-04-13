@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class SolutionUploader < CarrierWave::Uploader::Base
+class MiembrosUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
@@ -13,7 +13,7 @@ class SolutionUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "../archivos/maestro/#{model.numero}"
+    "../archivos/grupos/#{model.clave}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -40,10 +40,8 @@ class SolutionUploader < CarrierWave::Uploader::Base
   # end
 
   # Override the filename of the uploaded files:
-   def filename
-     if original_filename
-        original_filename.capitalize
-     end
-   end
+  def filename
+    "miembros" if original_filename
+  end
 
 end
