@@ -67,7 +67,7 @@ class AttemptsController < ApplicationController
 
     respond_to do |format|
       if @attempt.save
-        format.html { redirect_to(@attempt, :notice => 'Attempt was successfully created.') }
+        format.html { redirect_to(@attempt, :notice => 'El Intento fue creado exitosamente.') }
         format.xml  { render :xml => @attempt, :status => :created, :location => @attempt }
       else
         format.html { render :action => "new" }
@@ -83,7 +83,7 @@ class AttemptsController < ApplicationController
 
     respond_to do |format|
       if @attempt.update_attributes(params[:attempt])
-        format.html { redirect_to(@attempt, :notice => 'Attempt was successfully updated.') }
+        format.html { redirect_to(@attempt, :notice => 'El Intento fue actualizado exitosamente.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
