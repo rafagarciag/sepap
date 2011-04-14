@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 
 	#Relaciones con otras clases  
 	belongs_to :user
+	has_many :users
 	
 	#Usado por la gema CarrierWave para subir el archivo con los miembros del grupo
 	mount_uploader :miembros, MiembrosUploader
