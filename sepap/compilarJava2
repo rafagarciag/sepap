@@ -17,11 +17,14 @@ if [ $? -eq 0 ]; then			#checa que la compilacion haya jalado
 	
 	#nohup ./matar $BASHPID > /dev/null 2>&1 &
 	#./matar $BASHPID & #se llama a otro script que matará a este en caso de que se cicle
-	java -classpath $ejecutable < $entrada &> $salida
-	#pidJava= $!
-	#bashpid=$BASHPID
-	#./matar $pidJava $bashpid &
-	#waitpid $pidJava
+	
+	java -classpath $ejecutable < $entrada &> $salida &
+	#javaPID=$!
+	#./matar $javaPID $BASHPID &
+	#matarPID=$!
+	
+	wait $javaPID
+	#kill -9 $matarPID
 	cmp -s $salida $salida_esperada
 	if [ $? -eq 0 ]; then		#archivos iguales = 0
 		echo ACEPTADO
