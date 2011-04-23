@@ -1,20 +1,57 @@
 <p id="notice"><%= notice %></p>
+<table style="background-color: #7ea8a2;">
+	<tr>
+		<td width=100><b>Clave:</b></td>
+		<td><%= @group.clave %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Nombre:</b></td>
+		<td><%= @group.nombre %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Campus:</b></td>
+		<td><%= @group.campus %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Semestre:</b></td>
+		<td><%= @group.semestre %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Mes:</b></td>
+		<td><%= @group.mes %></td>
+	</tr>
+	<tr>
+		<td width=100><b>A&ntilde;o:</b></td>
+		<td><%= @group.ano %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Profesor:</b></td>
+		<td><%= @group.user.nombre %></td>
+	</tr>
+</table>
 
-<p>
-  <b>Clave:</b>
-  <%= @group.clave %>
-</p>
+<br />
 
-<p>
-  <b>Nombre:</b>
-  <%= @group.nombre %>
-</p>
+<b>Revisar por n&uacute;mero de problema</b>
+<br />
+<%= form_tag (show_resumen_path(:group_id => @group.id), :method => :post) do %>
+	<%= text_field_tag 'num' %>
+	<%= submit_tag "Buscar" %>
+<% end %>
+<% link_to 'Editar grupo', edit_group_path(@group) %>
+<% link_to 'Regresar', groups_path %>
+<hr />
 
-<p>
-  <b>User:</b>
-  <%= @group.user %>
-</p>
+<table>
+	<tr>
+		<th width=100 align="left"> Matr&iacute;cula </th>
+		<th align="left"> Nombre </td>
+	</tr>
+	<% @miembros.each do |m| %>
+	<tr>
+		<td><%= link_to m.matricula, show_consulta_path(:group_id => @group.id, :user_id => m.id) %></td>
+		<td><%= m.nombre %>&nbsp;<%= m.apellido %></td>
+	</tr>
+	<% end %>
+</table>
 
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

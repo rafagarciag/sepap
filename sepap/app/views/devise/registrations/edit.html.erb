@@ -3,7 +3,7 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :email, 'Correo Electronico' %><br />
+  <p><%= f.label :email, 'Correo Electrónico' %><br />
   <%= f.text_field :email %></p>
 
   <p><%= f.label :nombre, 'Nombre(s)' %><br />
@@ -12,20 +12,16 @@
   <p><%= f.label :apellido, 'Apellidos' %><br />
   <%= f.text_field :apellido %></p>
 
-  <p><%= f.label :password, 'Contraseña' %> <i>(dejar en blanco para no guardar cambios)</i><br />
+  <p><%= f.label :password, 'Nueva contraseña' %> <i>(dejar en blanco si no se desea cambiar contraseña)</i><br />
   <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation, 'Confirmar Contraseña' %><br />
+  <p><%= f.label :password_confirmation, 'Confirmar nueva contraseña' %><br />
   <%= f.password_field :password_confirmation %></p>
 
   <p><%= f.label :current_password, 'Contraseña Actual'%> <i>(requerimos tu contraseña actual para registrar los cambios)</i><br />
   <%= f.password_field :current_password %></p>
 
-  <p><%= f.submit "Actualizar" %></p>
+  <p><%= f.submit "Actualizar información" %></p>
 <% end %>
-
-<h3>Cancelar Mi Cuenta</h3>
-
-<p>Disgustado? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 
 <%= link_to "Regresar", :back %>

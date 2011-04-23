@@ -1,0 +1,13 @@
+<h1> C&oacute;digo </h1>
+<br />
+<%= @usuario.nombre %>&nbsp;<%= @usuario.apellido %>
+<br />
+<%= @usuario.matricula %>
+<br />
+Problema <%= @problema.numero %>
+<br />
+
+<hr />
+<br />
+
+<%= text_area_tag 'codigo', @codigo, :disabled => true, :size => "90x40" %>

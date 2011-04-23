@@ -2,9 +2,16 @@ Sepap::Application.routes.draw do
 	resources :attempts
 
 	resources :problems
-		match "problemas" => "Problems#index"
+		match 'problemas' => 'Problems#index'
+		match 'problemas/:id' => 'Problems#show'
+		
 
 	resources :groups
+		match "grupos" => "Groups#index"
+		match 'grupos/:group_id' => 'Groups#show_resumen', :as => :show_resumen, :via => :post
+		match 'grupos/:id' => 'Groups#show'
+		match 'grupos/:group_id/:user_id' => 'Groups#show_consulta', :as => :show_consulta
+		match 'grupos/:group_id/:user_id/:problem_id' => 'Groups#show_codigo', :as => :show_codigo, :via => :get
 
 	devise_for :users
 

@@ -1,0 +1,24 @@
+
+<b>Alumno: </b>
+<%= @usuario.nombre %>&nbsp;<%= @usuario.apellido %>
+<br />
+
+<b>Matr&iacute;cula:</b>
+<%= @usuario.matricula %>
+<br />
+<br />
+
+<hr />
+
+<table>
+	<tr>
+		<th width=100 align="left"> N&uacute;mero de problema </th>
+		<th align="left"> Resultado </td>
+	</tr>
+	<% @intentos.each do |i| %>
+	<tr>
+		<td><%= i.numero_problema %></td>
+		<td><%= i.resultado %>
+	</tr>
+	<% end %>
+</table>

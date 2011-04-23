@@ -1,0 +1,33 @@
+<h1> B&uacute;squeda </h1>
+Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre %> - <%= @group.clave %>"
+<br />
+<%= form_tag (show_resumen_path(:group_id => @group.id), :method => :post) do %>
+	<%= text_field_tag 'num' %>
+	<%= submit_tag "Buscar" %>
+<% end %>
+<hr />
+
+<table>
+	<tr>
+		<th width=100 align="left"> N&uacute;mero de problema </th>
+		<th width=100 align="left"> Alumno </th>
+		<th align="left"> Resultado </th>
+		<th align="left">N&uacute;mero de intentos </th>
+	</tr>
+	<% @intentos.each do |i| %>
+	<tr>
+		<td><%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %></td>
+		<td><%= i.user.matricula %></td>
+		<td><%= i.resultado %></td>
+		<td align="right"><%= i.conteo %></td>
+	</tr>
+	<% end %>
+	<% @sin_intentar.each do |i| %>
+	<tr>
+		<td><%= params[:num] %></td>
+		<td><%= i.matricula %></td>
+		<td> </td>
+		<td align="right"> 0 </td>
+	</tr>
+	<% end %>
+</table>

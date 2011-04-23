@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110413224623) do
+ActiveRecord::Schema.define(:version => 20110423064826) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "numero_problema"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20110413224623) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "code"
-    t.integer  "numero_de_intentos"
+    t.string   "lenguaje"
   end
 
   create_table "groups", :force => true do |t|
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110413224623) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "campus"
-    t.integer  "semestre"
+    t.string   "semestre"
     t.integer  "ano"
     t.string   "mes"
     t.string   "miembros"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20110413224623) do
     t.boolean  "admin"
     t.boolean  "profesor"
     t.boolean  "estudiante"
+    t.integer  "group_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
