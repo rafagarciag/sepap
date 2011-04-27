@@ -35,7 +35,12 @@
 					    <li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
 					<%end%>
 					<%if can? :create, @attempt%>
-					    <li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
+					    <li class="menu"><%=link_to "Lista de Problemas", problems_path%>
+					    <% form_tag :controller => 'problems', :action => 'index' do %>
+							<%= text_field_tag :numero, params[:numero], :size => 5 %>
+							<%= submit_tag "Buscar" %>
+						<% end %>
+					    </li>
 					    <li class="menu"><%=link_to "Subir Solución", new_attempt_path%></li>
 					    <li class="menu"><%=link_to "Editar Perfil", edit_user_registration_path%></li>
 					    <li class="menu"><%=link_to "Historial", root_path%></li>

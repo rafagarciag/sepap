@@ -2,8 +2,10 @@ Sepap::Application.routes.draw do
 	resources :attempts
 
 	resources :problems
-		match 'problemas' => 'Problems#index'
-		match 'problemas/:id' => 'Problems#show'
+		match 'problemas' => 'problems#index'
+		match 'problemas/:numero' => 'problems#show_busqueda', :as => :show_busqueda
+		match 'problemas/:id' => 'problems#show'
+		match 'problems/:numero' => 'problems#show_busqueda'
 		
 
 	resources :groups
