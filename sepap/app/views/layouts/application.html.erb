@@ -31,13 +31,23 @@
 				    <li class="menu"><%=link_to "Inicio", root_path%></li>
 				    <% if user_signed_in? %>
 						<%if current_user.estudiante?%>
-							<li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
+							<li class="menu"><%=link_to "Lista de Problemas", problems_path%>
+								<% form_tag :controller => 'problems', :action => 'index' do %>
+									<%= text_field_tag :numero, params[:numero], :size => 5 %>
+									<%= submit_tag "Buscar" %>
+								<% end %>
+							</li>
 							<li class="menu"><%=link_to "Subir Solucion", new_attempt_path%></li>
 							<li class="menu"><%=link_to "Editar Perfil", edit_user_registration_path%></li>
 							<li class="menu"><%=link_to "Historial", root_path%></li>
 						<%end%>
 						<%if current_user.profesor?%>
-							<li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
+							<li class="menu"><%=link_to "Lista de Problemas", problems_path%>
+								<% form_tag :controller => 'problems', :action => 'index' do %>
+									<%= text_field_tag :numero, params[:numero], :size => 5 %>
+									<%= submit_tag "Buscar" %>
+								<% end %>
+							</li>
 							<li class="menu"><%=link_to "Subir Solucion", new_attempt_path%></li>
 							<li class="menu"><%=link_to "Editar Perfil", edit_user_registration_path%></li>
 							<li class="menu"><%=link_to "Historial", root_path%></li>
@@ -48,7 +58,12 @@
 							<li class="menu"><%=link_to "Salir", destroy_user_session_path%></li>
 						<%end%>
 						<%if current_user.admin?%>
-							<li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
+							<li class="menu"><%=link_to "Lista de Problemas", problems_path%>
+								<% form_tag :controller => 'problems', :action => 'index' do %>
+									<%= text_field_tag :numero, params[:numero], :size => 5 %>
+									<%= submit_tag "Buscar" %>
+								<% end %>
+							</li>
 							<li class="menu"><%=link_to "Subir Solucion", new_attempt_path%></li>
 							<li class="menu"><%=link_to "Editar Perfil", edit_user_registration_path%></li>
 							<li class="menu"><%=link_to "Historial", root_path%></li>
@@ -61,7 +76,6 @@
 					<% else %>
 						<li class="menu"><%=link_to "Registro", new_user_registration_path%></li>
 					    <li class="menu"><%=link_to "Ingresar", new_user_session_path%></li>
-					    <li class="menu"><%=link_to "Lista de Problemas", problems_path%></li>
 					    <li class="menu"><%=link_to "Lista de Problemas", problems_path%>
 					    <% form_tag :controller => 'problems', :action => 'index' do %>
 							<%= text_field_tag :numero, params[:numero], :size => 5 %>
