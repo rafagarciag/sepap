@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class OutputUploader < CarrierWave::Uploader::Base
+class Output3Uploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
@@ -40,8 +40,8 @@ class OutputUploader < CarrierWave::Uploader::Base
   # end
 
   # Override the filename of the uploaded files:
-   def filename
-     "salida_esperada1" if original_filename
-   end
+    def filename
+      "salida_esperada3" if original_filename
+    end
 
 end

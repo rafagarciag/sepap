@@ -1,6 +1,6 @@
 class Problem < ActiveRecord::Base
 
-	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :output, :id
+	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id
 	
 	#Relaciones con otras clases
 	has_many :attempts
@@ -21,6 +21,10 @@ class Problem < ActiveRecord::Base
 	mount_uploader :solution, SolutionUploader
 	mount_uploader :input, InputUploader
 	mount_uploader :output, OutputUploader
+	mount_uploader :input2, Input2Uploader
+	mount_uploader :output2, Output2Uploader
+	mount_uploader :input3, Input3Uploader
+	mount_uploader :output3, Output3Uploader
 	
 
 end

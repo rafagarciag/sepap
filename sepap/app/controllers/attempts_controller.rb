@@ -58,15 +58,17 @@ class AttemptsController < ApplicationController
 	#Falta agregar un contador para numero_de_intentos
 	@attempt.problem = Problem.where(:numero => @attempt.numero_problema).first
 	@attempt.lenguaje = params[:lenguaje]
+    #Aqui genera un numero aleatorio para definir que entrada y salida usara
+    num = num = 1 + rand(3)
     # =======================================================
     # Aqui compila el codigo fuente y produce un resultado
     #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje
     @attempt.save 
     archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
     ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
-    entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada"
+    entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
     salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
-    salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada"
+    salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
     error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
     
     #se llama al compilador
