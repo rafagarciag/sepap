@@ -3,7 +3,14 @@ class Group < ActiveRecord::Base
 
 	#Relaciones con otras clases  
 	belongs_to :user
+	has_many :users
 	
+	#Validaciones para la forma
+	validates_presence_of :clave, :message => "Falta especificar la clave del grupo"
+	#validates_presence_of :miembros, :message => "Falta especificar el archivo con los miembros del grupo"
+	
+	validates_uniqueness_of :clave, :case_sensitive => false, :message => "Ya existe un grupo con la misma clave"
+	validates_numericality_of :ano, :message => "El año debe contener solamente números"
 	#Usado por la gema CarrierWave para subir el archivo con los miembros del grupo
 	mount_uploader :miembros, MiembrosUploader
 end

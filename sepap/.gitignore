@@ -4,3 +4,4 @@ log/*.log
 tmp/
 archivos/alumno/*
 archivos/maestro/*
+archivos/grupos/*

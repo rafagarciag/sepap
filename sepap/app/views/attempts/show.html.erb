@@ -26,6 +26,10 @@
 	<%= @attempt.resultado %>
 </div>
 
+<% if @attempt.resultado.include? 'Error de compilación' %>
+	<%= text_area_tag 'error', @error , :disabled => true, :size => "90x40" %>
+<% end %>
+
 
 <%= link_to 'Editar', edit_attempt_path(@attempt) %> |
 <%= link_to 'Regresar', attempts_path %>

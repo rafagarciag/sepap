@@ -1,5 +1,5 @@
 class Attempt < ActiveRecord::Base
-	attr_accessible :code, :numero_problema, :resultado, :numero_de_intentos
+	attr_accessible :code, :numero_problema, :resultado, :lenguaje
 	
 	#Relaciones con otras clases
 	belongs_to :user

@@ -14,7 +14,20 @@ class AttemptsController < ApplicationController
   # GET /attempts/1.xml
   def show
     @attempt = Attempt.find(params[:id])
+    
+	#Desplegar el error de compilación en caso de existir
+    if @attempt.resultado.include? 'Error de compilación'
+    	archivo = File.new("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error", "r")
 
+    	@error = ""
+  		archivo.each {|line|
+  			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
+  			linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
+  			@error << linea
+		}
+    end
+    archivo.close
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @attempt }
@@ -43,11 +56,8 @@ class AttemptsController < ApplicationController
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
 	#Falta agregar un contador para numero_de_intentos
-    problema = Problem.where(:numero => @attempt.numero_problema)
-
-    problema.each do |n|
-    	@attempt.problem_id = n.id
-    end
+	@attempt.problem = Problem.where(:numero => @attempt.numero_problema).first
+	@attempt.lenguaje = params[:lenguaje]
     # =======================================================
     # Aqui compila el codigo fuente y produce un resultado
     #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje
@@ -62,6 +72,7 @@ class AttemptsController < ApplicationController
     #se llama al compilador
     #el formato del script es: compilarJava [archivo con el codigo del alumno] [entrada brindada por el profesor] [archivo donde se guarda la salida de ejecutar el archivo del alumno con las entradas del profesor] [salida esperada brindada por el profesor] [archivo donde se guardara la info de error en caso de no compilar]
     @attempt.resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error}`
+    
     
     #=========================================================
 

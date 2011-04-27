@@ -12,15 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :número_problema %><br />
-    <%= f.text_field :numero_problema %>
+    <%= f.label :numero_problema, 'Número de problema' %><br />
+    <%= f.text_field :numero_problema, :size => 6 %>
   </div>
   <div class="field">
-    <%= f.label :code, 'Código' %><br />
+    <%= f.label :code, 'Código fuente' %><br />
     <%= f.file_field :code %>
+  </div>
+  <div class="field">
+  	Lenguaje
+  	<br />
+    <select id="lenguaje" name="lenguaje"><option>Java</option><option>C/C++</option></select> 
   </div>
 
   <div class="actions">
-    <%= f.submit "Crear Intento"%>
+    <%= f.submit "Subir solución"%>
   </div>
 <% end %>

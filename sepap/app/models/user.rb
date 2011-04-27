@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   
 	#Relaciones con otras clases
 	has_many :problems
+	belongs_to :group
 
 	#Validaciones para la forma
 	validates_presence_of :nombre, :message => "El nombre no puede estar en blanco"
