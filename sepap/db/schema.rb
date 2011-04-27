@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423064826) do
+ActiveRecord::Schema.define(:version => 20110427161233) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "numero_problema"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(:version => 20110423064826) do
     t.string   "solution"
     t.string   "input"
     t.string   "output"
+    t.string   "input2"
+    t.string   "input3"
+    t.string   "output2"
+    t.string   "output3"
   end
 
   create_table "users", :force => true do |t|
