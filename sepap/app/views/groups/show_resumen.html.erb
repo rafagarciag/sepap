@@ -22,12 +22,5 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 		<td align="right"><%= i.conteo %></td>
 	</tr>
 	<% end %>
-	<% @sin_intentar.each do |i| %>
-	<tr>
-		<td><%= params[:num] %></td>
-		<td><%= i.matricula %></td>
-		<td> </td>
-		<td align="right"> 0 </td>
-	</tr>
-	<% end %>
+
 </table>

@@ -34,9 +34,14 @@ class GroupsController < ApplicationController
   #POST /grupos/1
   def show_resumen		#cuando se utiliza el buscador
   	@group = Group.find(params[:group_id])
-  	@intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id) 	#Alumnos que ya tienen almenos un intento del problema especificado
-  	@sin_intentar = User.where(:group_id => @group.id)	#alumnos que aun no tienen intentos, se desplegaran al final de la lista
-
+  	if Problem.where(:numero => params[:num])	#checa si existe el numero de problema
+  		@intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id) 	#Alumnos que ya tienen almenos un intento del problema especificado
+  	else
+  		@intentos = nil
+  		@sin_intentar = nil
+  		#@sin_intentar = User.where(:group_id => @group.id)	#alumnos que aun no tienen intentos, se desplegaran al final de la lista
+	end
+	
   	respond_to do |format|
       format.html
     end
