@@ -82,6 +82,7 @@ class ProblemsController < ApplicationController
   # DELETE /problems/1
   # DELETE /problems/1.xml
   def destroy
+  	authorize! if can? :destroy, @problem
     @problem = Problem.find(params[:id])
     @problem.destroy
 
