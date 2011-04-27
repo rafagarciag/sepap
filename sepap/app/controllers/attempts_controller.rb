@@ -25,8 +25,8 @@ class AttemptsController < ApplicationController
   			linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
   			@error << linea
 		}
+		archivo.close
     end
-    archivo.close
     
     respond_to do |format|
       format.html # show.html.erb
