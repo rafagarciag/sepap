@@ -2,7 +2,6 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.xml
   def index
-    unauthorized! if cannot? :manage, @groups
     
     @groups = Group.where(:user_id => current_user.id)	#Solamente los grupos del maestro logeado
     
@@ -15,7 +14,6 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.xml
   def show
-    unauthorized! if cannot? :manage, @groups
     @group = Group.find(params[:id])
     @miembros = User.where(:group_id => @group.id).order(:matricula)	#regresa los miembros del grupo, ordenados por matricula
     
@@ -64,7 +62,6 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.xml
   def new
-    unauthorized! if cannot? :manage, @groups
     @group = Group.new
 
     respond_to do |format|
@@ -75,14 +72,12 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    unauthorized! if cannot? :manage, @groups
     @group = Group.find(params[:id])
   end
 
   # POST /groups
   # POST /groups.xml
   def create
-    unauthorized! if cannot? :manage, @groups
     @group = Group.new(params[:group])
 	@group.user_id = current_user.id
 	
@@ -133,7 +128,6 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.xml
   def update
-    unauthorized! if cannot? :manage, @groups
     @group = Group.find(params[:id])
 
     respond_to do |format|
@@ -150,7 +144,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.xml
   def destroy
-    unauthorized! if cannot? :manage, @groups
     @group = Group.find(params[:id])
     @group.destroy
 
