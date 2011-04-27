@@ -41,7 +41,7 @@ class InputUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   def filename
-     "entrada" if original_filename
+     "entrada1" if original_filename
   end
 
 end
