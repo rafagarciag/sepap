@@ -14,7 +14,8 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 		<th align="left"> Resultado </th>
 		<th align="left">N&uacute;mero de intentos </th>
 	</tr>
-	<% @intentos.each do |i| %>
+	
+	<% @con_intento.each do |i| %>
 	<tr>
 		<td><%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %></td>
 		<td><%= i.user.matricula %></td>
