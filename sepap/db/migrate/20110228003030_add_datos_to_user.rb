@@ -1,11 +1,11 @@
-class AddDatosToUser < ActiveRecord::Migration
+    class AddDatosToUser < ActiveRecord::Migration
   def self.up
     add_column :users, :nombre, :string
     add_column :users, :apellido, :string
     add_column :users, :matricula, :string
-    add_column :users, :admin, :boolean
-    add_column :users, :profesor, :boolean
-    add_column :users, :estudiante, :boolean
+    add_column :users, :admin, :boolean, :default => 0
+    add_column :users, :profesor, :boolean, :default => 0
+    add_column :users, :estudiante, :boolean, :default => 1
   end
 
   def self.down

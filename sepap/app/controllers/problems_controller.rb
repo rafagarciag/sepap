@@ -1,4 +1,5 @@
 class ProblemsController < ApplicationController
+	load_and_authorize_resource
   # GET /problems
   # GET /problems.xml
   def index
@@ -34,7 +35,6 @@ class ProblemsController < ApplicationController
   # GET /problems/new.xml
   def new
     @problem = Problem.new
-    unauthorized! if cannot? :create, @problem
 
     respond_to do |format|
       format.html # new.html.erb
@@ -82,7 +82,6 @@ class ProblemsController < ApplicationController
   # DELETE /problems/1
   # DELETE /problems/1.xml
   def destroy
-  	authorize! if can? :destroy, @problem
     @problem = Problem.find(params[:id])
     @problem.destroy
 
