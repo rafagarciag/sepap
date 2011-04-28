@@ -35,12 +35,16 @@ class GroupsController < ApplicationController
   def show_resumen		#cuando se utiliza el buscador
   	@group = Group.find(params[:group_id])
   	if Problem.where(:numero => params[:num])	#checa si existe el numero de problema
-  		@intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id)
-  		
-  		@intentos.each do |intento|
-
+  		intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id)
+  		@con_intento = []
+  		intentos.each do |i|
+  			if i_grupo = i.user.group	#checar priemro si el usuario pertenece a un grupo
+  				if i_grupo.id == @group.id	#luego checa si es el grupo que buscamos
+  					@con_intento << i
+  				end
+  			end
   		end
-  		#@sin_intentar = User.where(:group_id => @group.id)	#alumnos que aun no tienen intentos, se desplegaran al final de la lista
+  		
 	end
 	
   	respond_to do |format|
