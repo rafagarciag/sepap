@@ -1,4 +1,5 @@
 class AttemptsController < ApplicationController
+	load_and_authorize_resource
   # GET /attempts
   # GET /attempts.xml
   def index
