@@ -1,2 +1,15 @@
+<!--MENSAJE DE ERROR-->
+
+<%- flash.each do |key, msg| -%>
+	<div id="<%= key %>">
+	<p style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></p>
+	<p><%= msg %></p>
+	<div class="clear"></div>
+	</div>
+<%- end -%>
+
+<!--FIN DE MENSAJE DE ERROR-->
+
+
 <h1>Bienvenido al SEPAP</h1>
 <p>Find me in app/views/home/index.html.erb</p>
