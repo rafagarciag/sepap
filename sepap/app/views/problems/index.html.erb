@@ -25,4 +25,8 @@
 
 <br />
 
-<%= link_to 'Crear problema nuevo', new_problem_path %>
+<%if current_user.admin? || current_user.profesor?%>
+	<%= link_to 'Crear problema nuevo', new_problem_path %>
+<%end%>	
+
+

@@ -29,5 +29,7 @@
 <% end %>
 
 
-<%= link_to 'Editar', edit_attempt_path(@attempt) %> |
+<%if current_user.admin? || current_user.profesor?%>
+	<%= link_to 'Editar', edit_attempt_path(@attempt) %> |
+<%end%>	
 <%= link_to 'Regresar', attempts_path %>
