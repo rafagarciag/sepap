@@ -63,6 +63,11 @@ td.aplicacion{
 }
 
 
+#loading {
+	visibility:hidden;
+}
+
+
 #notice { background-color: #A4E7A0; border: 1px solid #26722D; }
 #error { background-color: #F0A8A8; border: 1px solid #900; }
 #notice, #error { width: 90%; margin: 0 auto 10px auto; padding: 5px; }
