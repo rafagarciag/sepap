@@ -23,7 +23,7 @@
 </div>
 
 <% if @attempt.resultado.include? 'Error de compilación' %>
-	<%= text_area_tag 'error', @error , :disabled => true, :size => "90x40" %>
+	<%= text_area_tag 'errorP', @error , :disabled => true, :size => "90x40" %>
 <% end %>
 
 
