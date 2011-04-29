@@ -117,6 +117,8 @@ class GroupsController < ApplicationController
 				miembro.apellido = "#{apellidos}"
 				miembro.email = "#{matricula}@itesm.mx"
 				miembro.estudiante = true
+				miembro.profesor = false
+				miembro.admin = false
 				miembro.password = "#{matricula}"
 				miembro.password_confirmation = "#{matricula}"
 				miembro.group_id = @group.id
