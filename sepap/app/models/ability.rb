@@ -13,8 +13,8 @@ class Ability
         	can :manage, Attempt
         elsif user.estudiante?
         	can :create, Attempt
+        	can :show, Attempt
         	can :read, Problem
-        	cannot :destroy, Problem
         else
         	can :read, Problem
         end

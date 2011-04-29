@@ -26,6 +26,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Subir solución"%>
+    <%= f.submit( "Subir solución", :onclick =>"clickBoton()")%>
+    <%=image_tag("loading.gif", :size => "50x50", :id=>"loading")%>
   </div>
 <% end %>

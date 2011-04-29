@@ -13,6 +13,8 @@
   <%= @problem.user.nombre %>
 </p>
 
-
-<%= link_to 'Editar', edit_problem_path(@problem) %> |
+<%if current_user.admin? || current_user.profesor?%>
+	<%= link_to 'Editar', edit_problem_path(@problem) %>
+<%end%>	
 <%= link_to 'Lista de problemas', problems_path %>
+

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Número problema:</b>
   <%= @attempt.numero_problema %>
@@ -21,8 +19,6 @@
 </p>
 
 <div id="experimental" >
-	Aqui imprimirá el resultado
-	<br />
 	<%= @attempt.resultado %>
 </div>
 
@@ -31,5 +27,7 @@
 <% end %>
 
 
-<%= link_to 'Editar', edit_attempt_path(@attempt) %> |
+<%if current_user.admin? || current_user.profesor?%>
+	<%= link_to 'Editar', edit_attempt_path(@attempt) %> |
+<%end%>	
 <%= link_to 'Regresar', attempts_path %>
