@@ -15,9 +15,11 @@
     <td><%= link_to problem.numero, problem %></td>
     <td width=150><%= problem.titulo %></td>
     <td width=110><%= problem.user.nombre %></td>
-    <td><%= link_to 'Editar', edit_problem_path(problem) %></td>
-    <td><%= link_to 'Eliminar', problem, :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
-  </tr>
+    <%if current_user.admin? || current_user.profesor?%>
+    	<td><%= link_to 'Editar', edit_problem_path(problem) %></td>
+    	<td><%= link_to 'Eliminar', problem, :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
+	<%end%>	
+    </tr>
 <% end %>
 </table>
 
