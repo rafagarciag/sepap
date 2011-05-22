@@ -10,6 +10,19 @@
 	<body>
 		<div class="menu">
 			<%=image_tag "logo.jpg", :class=>"logo"%>
+			<div class="usuario">
+				<% if user_signed_in? %>
+					<marquee>
+					¡Bienvenido <%= current_user.nombre %>!
+					<%= link_to "Salir", destroy_user_session_path, :class=>"mar" %>
+					</marquee>
+				<% else %>
+					<marquee>
+					¡Bienvenido!
+					<%= link_to "Entrar", new_user_session_path, :class=>"mar" %>
+					</marquee>
+				<% end %>
+			</div>
 				<ul class="botones">
 				    <li><%=link_to "Inicio", root_path, :class=>"botones"%></li>
 				    <% if user_signed_in? %>

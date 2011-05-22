@@ -62,8 +62,26 @@ div.contenido{
 }
 
 div.usuario{
-	position:absolute;
-	right:10px;
+	color:#FFFFFF;
+	/*position:absolute;
+	right:10px;*/
+}
+
+a.mar{
+	color:#FFFFFF;
+}
+
+a.mar:visited {
+	text-decoration:underline;
+}
+
+a.mar:hover {
+	color:#412aa8;
+	text-decoration:underline;
+}
+
+a.mar:active {
+	text-decoration:underline;
 }
 
 h1{
