@@ -8,6 +8,7 @@ Problema <%= @problema.numero %>
 <br />
 
 <hr />
-<br />
-
-<%= text_area_tag 'codigo', @codigo, :disabled => true, :size => "90x40" %>
+<br /> 
+<% if defined? @codigo %>
+	<%= text_area_tag 'codigo', @codigo, :disabled => true, :size => "90x40" %>
+<% end %>

@@ -9,10 +9,12 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 
 <table>
 	<tr>
-		<th width=100 align="left"> N&uacute;mero de problema </th>
-		<th width=100 align="left"> Alumno </th>
-		<th align="left"> Resultado </th>
-		<th align="left">N&uacute;mero de intentos </th>
+		<th width=90 align="left"> N&uacute;mero de problema </th>
+		<th width=90 align="left"> Alumno </th>
+		<th width=110 align="left"> Resultado </th>
+		<th align="left"> Lenguaje </th>
+		<th align="left"> Intentos </th>
+		<th align="left"> Fecha </th>
 	</tr>
 	
 	<% @con_intento.each do |i| %>
@@ -20,7 +22,9 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 		<td><%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %></td>
 		<td><%= i.user.matricula %></td>
 		<td><%= i.resultado %></td>
-		<td align="right"><%= i.conteo %></td>
+		<td><%= i.lenguaje %> </td>
+		<td><%= i.conteo %></td>
+		<td><%= i.created_at.strftime("%d / %m / %Y") %> </td>
 	</tr>
 	<% end %>
 
