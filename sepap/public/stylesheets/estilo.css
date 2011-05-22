@@ -67,20 +67,23 @@ div.usuario{
 	right:10px;*/
 }
 
-a.mar{
+a.usuario{
 	color:#FFFFFF;
 }
 
-a.mar:visited {
+a.usuario:link{
 	text-decoration:underline;
 }
 
-a.mar:hover {
-	color:#412aa8;
+a.usuario:visited {
 	text-decoration:underline;
 }
 
-a.mar:active {
+a.usuario:hover {
+	text-decoration:underline;
+}
+
+a.ususario:active {
 	text-decoration:underline;
 }
 

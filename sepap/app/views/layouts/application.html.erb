@@ -12,15 +12,11 @@
 			<%=image_tag "logo.jpg", :class=>"logo"%>
 			<div class="usuario">
 				<% if user_signed_in? %>
-					<marquee>
 					¡Bienvenido <%= current_user.nombre %>!
-					<%= link_to "Salir", destroy_user_session_path, :class=>"mar" %>
-					</marquee>
+					<%= link_to "Salir", destroy_user_session_path, :class=>"usuario" %>
 				<% else %>
-					<marquee>
 					¡Bienvenido!
-					<%= link_to "Entrar", new_user_session_path, :class=>"mar" %>
-					</marquee>
+					<%= link_to "Entrar", new_user_session_path, :class=>"usuario" %>
 				<% end %>
 			</div>
 				<ul class="botones">
@@ -63,15 +59,6 @@
 				</ul>
 		</div>
 		<div class="contenido">
-			<div class="usuario">
-				<% if user_signed_in? %>
-					¡Bienvenido <%= current_user.nombre %>!
-					<%= link_to "Salir", destroy_user_session_path %>
-				<% else %>
-					¡Bienvenido!
-					<%= link_to "Entrar", new_user_session_path %>
-				<% end %>
-			</div>
 			<br />
 			<div class="formas">
 				<%=yield%>
