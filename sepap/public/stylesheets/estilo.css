@@ -62,29 +62,8 @@ div.contenido{
 }
 
 div.usuario{
-	color:#FFFFFF;
-	/*position:absolute;
-	right:10px;*/
-}
-
-a.usuario{
-	color:#FFFFFF;
-}
-
-a.usuario:link{
-	text-decoration:underline;
-}
-
-a.usuario:visited {
-	text-decoration:underline;
-}
-
-a.usuario:hover {
-	text-decoration:underline;
-}
-
-a.ususario:active {
-	text-decoration:underline;
+	position:absolute;
+	right:10px;
 }
 
 h1{
