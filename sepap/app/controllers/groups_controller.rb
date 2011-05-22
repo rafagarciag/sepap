@@ -56,18 +56,24 @@ class GroupsController < ApplicationController
   def show_codigo
   	@usuario = User.find(params[:user_id])
   	@problema = Problem.find(params[:problem_id])
-  	
+  	nombre_archivo = "archivos/alumno/#{@usuario.matricula}/#{@problema.numero}/Problema#{@problema.numero}.java"
   	#Buscar el archivo (.java)
-  	archivo = File.new("archivos/alumno/#{@usuario.matricula}/#{@problema.numero}/Problema#{@problema.numero}.java", "r")
-  	@codigo = ""
-  	archivo.each {|line|
-  		@codigo << line
-	}
+  	#Checar si existe el .java en caso de que se haya borrado manualmente 
+  	#  o por un error
+  	
+  	if FileTest.exist?("#{nombre_archivo}")
+  		archivo = File.new("#{nombre_archivo}", "r")
+	  	@codigo = ""
+	  	archivo.each {|line|
+	  		@codigo << line
+		}
+		
+		archivo.close
+	end
+	
   	respond_to do |format|
       format.html
     end
-    
-    archivo.close
   end
 
   # GET /groups/new

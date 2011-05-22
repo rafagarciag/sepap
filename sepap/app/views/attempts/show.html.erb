@@ -1,11 +1,6 @@
 <p>
-  <b>Número problema:</b>
-  <%= @attempt.numero_problema %>
-</p>
-
-<p>
-  <b>Resultado:</b>
-  <% @attempt.resultado %>
+  <b>Problema </b>
+  <%= @attempt.numero_problema %> - <%= @attempt.problem.titulo %>
 </p>
 
 <p>
@@ -14,13 +9,14 @@
 </p>
 
 <p>
-  <b>Problema:</b>
-  <%= @attempt.numero_problema %>
+  <b>Matrícula:</b>
+  <%= @attempt.user.matricula %>
 </p>
 
-<div id="experimental" >
-	<%= @attempt.resultado %>
-</div>
+<p>
+  <b>Resultado:</b>
+  <%= @attempt.resultado %>
+</p>
 
 <% if @attempt.resultado.include? 'Error de compilación' %>
 	<%= text_area_tag 'errorP', @error , :disabled => true, :size => "90x40" %>

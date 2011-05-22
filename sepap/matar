@@ -5,23 +5,21 @@
 #	o tarde demasiado tiempo en ejecutarse
 #===============================================
 javaPID=$1
-#sleep 15	#Modificar este valor para alargar o disminuir el tiempo que tardará en matarlo
+tiempoLimite=15
+limite=$(expr $(expr $tiempoLimite \* 2) + 2)	#se hace un sleep de 0.5 segundos, por es es *2
 
-for i in {1..16}
+for (( i=1; i<=$limite; i++ ))
 do
 	kill -0 $1
 	if [ $? -eq 0 ]; then				#checa si esta corriendo el java
-		if [ $i -gt 15 ]; then		#si el tiempo transcurrido es mayor a 15 segundos, lo mata
+		if [ $i -gt 30 ]; then		#si el tiempo transcurrido es mayor a 15 segundos, lo mata
 			kill -9 $javaPID
 			echo "Tiempo excedido"
-			i=$(expr $i + 20)
-		else							#de lo contrario solo se espera un segundo mas
-			sleep 1
+			break
+		else						#de lo contrario solo se espera un medio segundo mas
+			sleep 0.5
 		fi
 	else
-		i=$(expr $i + 20)
+		break			#cuando el Java termine, se sale del ciclo y termina 'matar'
 	fi
 done
-
-#kill -9 $1				# ¡Matar al Java!
-#kill -9 $2
