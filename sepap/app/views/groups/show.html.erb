@@ -33,7 +33,7 @@
 
 <b>Revisar por n&uacute;mero de problema</b>
 <br />
-<%= form_tag (show_resumen_path(:group_id => @group.id), :method => :post) do %>
+<%= form_tag(show_resumen_path(:group_id => @group.id), :method => :post) do %>
 	<%= text_field_tag 'num' %>
 	<%= submit_tag "Buscar" %>
 <% end %>

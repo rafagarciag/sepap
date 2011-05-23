@@ -15,15 +15,21 @@
     <%= f.label :numero, 'Número de problema' %><br />
     <%= f.text_field :numero %>
   </div>
+  
   <div class="field">
     <%= f.label :titulo, 'Título' %><br />
     <%= f.text_field :titulo %>
   </div>
+
+  <div class="field">
+    <%= f.label :tiempo, 'Tiempo límite (en segundos)' %><br />
+    <%= f.text_field :tiempo, :size => 4, :value => 15 %>
+  </div>
+  
   <div class="field">
     <%= f.label :descripcion, 'Descripción' %><br />
     <%= f.text_area :descripcion, :cols => 80, :rows => 40 %>
   </div>
-  
   
   <div class="field">
     <%= f.label :solution, 'Solución' %><br />
@@ -63,6 +69,7 @@
         <%= f.file_field :output3 %>
       </div>
   </fieldset>
+  <br />
   <div class="actions">
     <%= f.submit "Registrar Cambios"%>
   </div>

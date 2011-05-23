@@ -6,6 +6,7 @@ entrada=$3
 salida=$4
 salida_esperada=$5
 error=$6
+tiempo=$7
 
 echo "" > $error
 echo "" > $salida
@@ -20,7 +21,7 @@ if [ $? -eq 0 ]; then			#checa que la compilacion haya jalado
 	
 	java -classpath $ejecutable < $entrada &> $salida &
 	javaPID=$!
-	./matar $javaPID &
+	./matar $javaPID $tiempo &	#se manda llamar otro script con el PID del JAVA y el tiempo limite
 	matarPID=$!
 	
 	wait $javaPID

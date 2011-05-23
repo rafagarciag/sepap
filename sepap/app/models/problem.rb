@@ -1,6 +1,6 @@
 class Problem < ActiveRecord::Base
 
-	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id
+	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id, :tiempo
 	
 	#Relaciones con otras clases
 	has_many :attempts
@@ -10,8 +10,10 @@ class Problem < ActiveRecord::Base
 	validates_presence_of :numero, :message => "Falta especificar el número de problema"
 	validates_presence_of :titulo, :message => "Falta especificar el título del problema"
 	validates_presence_of :descripcion, :message => "Falta redactar la especificación del problema"
+	validates_presence_of :tiempo, :message => "Falta especificar el tiempo límite"
 	validates_uniqueness_of :numero, :message => "El número está duplicado"
 	validates_numericality_of :numero, :message => "El número de problema debe contener solamente números"
+	validates_numericality_of :tiempo, :message => "El tiempo límite debe contener solamente números"
 
 	validates_presence_of :solution, :on=>:create, :message => "Falta archivo de solución"
 
