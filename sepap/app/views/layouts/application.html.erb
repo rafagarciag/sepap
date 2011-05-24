@@ -18,6 +18,7 @@
 							<li><%=link_to "Subir Solucion", new_attempt_path, :class=>"botones"%></li>
 							<li><%=link_to "Editar Perfil", edit_user_registration_path, :class=>"botones"%></li>
 							<li><%=link_to "Historial", root_path, :class=>"botones"%></li>
+							<li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
 						<%end%>
 						<%if current_user.profesor?%>
 							<li><%=link_to "Lista de Problemas", problems_path, :class=>"botones", :class=>"botones"%></li>
@@ -45,7 +46,6 @@
 						<li><%=link_to "Registro", new_user_registration_path, :class=>"botones"%></li>
 					    <li><%=link_to "Ingresar", new_user_session_path, :class=>"botones"%></li>
 					    <li><%=link_to "Lista de Problemas", problems_path, :class=>"botones"%></li>
-
 					<%end%>
 				</ul>
 		</div>
