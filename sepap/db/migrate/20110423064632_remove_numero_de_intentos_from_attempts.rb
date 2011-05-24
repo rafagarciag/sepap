@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveNumeroDeIntentosFromAttempts < ActiveRecord::Migration
   def self.up
     remove_column :attempts, :numero_de_intentos

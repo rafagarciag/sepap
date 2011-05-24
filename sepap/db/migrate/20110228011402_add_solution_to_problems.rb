@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddSolutionToProblems < ActiveRecord::Migration
   def self.up
     add_column :problems, :solution, :string

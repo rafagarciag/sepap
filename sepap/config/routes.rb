@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Sepap::Application.routes.draw do
 	resources :attempts
 

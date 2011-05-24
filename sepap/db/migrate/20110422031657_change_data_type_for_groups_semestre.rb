@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeDataTypeForGroupsSemestre < ActiveRecord::Migration
   def self.up
   	change_table :groups do |t|

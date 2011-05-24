@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAttempts < ActiveRecord::Migration
   def self.up
     create_table :attempts do |t|

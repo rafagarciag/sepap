@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Problem < ActiveRecord::Base
 
 	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id, :tiempo

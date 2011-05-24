@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Group < ActiveRecord::Base
     attr_accessible :miembros, :clave, :nombre, :campus, :semestre, :ano, :mes, :user_id, :id
 

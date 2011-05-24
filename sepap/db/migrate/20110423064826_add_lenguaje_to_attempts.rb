@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddLenguajeToAttempts < ActiveRecord::Migration
   def self.up
     add_column :attempts, :lenguaje, :string

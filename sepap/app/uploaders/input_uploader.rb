@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class InputUploader < CarrierWave::Uploader::Base
 

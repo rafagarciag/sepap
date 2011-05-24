@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Attempt < ActiveRecord::Base
 	attr_accessible :code, :numero_problema, :resultado, :lenguaje
 	
