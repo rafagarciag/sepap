@@ -14,7 +14,7 @@
     <li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
   <%end%>
   <%if current_user.admin?%>
-    <li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
+    <li><%=link_to "Administrar", , :class=>"botones"%></li>
   <%end%>
 <% else %>
 <li><%=link_to "Registro", new_user_registration_path, :class=>"botones"%></li>
