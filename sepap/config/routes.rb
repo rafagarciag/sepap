@@ -11,8 +11,9 @@ Sepap::Application.routes.draw do
 
 	resources :groups
 		match "grupos" => "Groups#index"
+		match 'grupos/:group_id/:miembro' => 'Groups#sacar', :as => :sacar, :via => :post
 		match 'grupos/:group_id' => 'Groups#show_resumen', :as => :show_resumen, :via => :post
-		match 'grupos/:id' => 'Groups#show'
+		match 'grupos/:id' => 'Groups#show', :as => :grupo, :via => :get
 		match 'grupos/:group_id/:user_id' => 'Groups#show_consulta', :as => :show_consulta
 		match 'grupos/:group_id/:user_id/:problem_id' => 'Groups#show_codigo', :as => :show_codigo, :via => :get
 

@@ -152,6 +152,20 @@ class GroupsController < ApplicationController
       end
     end
   end
+  
+  #Da de baja a un alumno de un grupo, NO elimina al alumno de la base de datos
+  def sacar
+	usuario = User.find(params[:miembro])
+	grupo = Group.find(params[:group_id])
+	
+	usuario.group_id = nil
+	usuario.save
+	
+    respond_to do |format|
+      format.html { redirect_to(grupo_path(:id => grupo.id))}
+      format.xml  { head :ok }
+    end
+  end
 
   # PUT /groups/1
   # PUT /groups/1.xml
