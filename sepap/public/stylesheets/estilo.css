@@ -44,7 +44,7 @@ a.botones:visited {
 
 a.botones:hover {
 	color:#412aa8;
-	text-decoration:underline;
+	text-decoration:none;
 }
 
 a.botones:active {
