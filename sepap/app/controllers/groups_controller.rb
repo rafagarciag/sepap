@@ -64,9 +64,9 @@ end
   
    if FileTest.exist?("#{nombre_archivo}")
    archivo = File.new("#{nombre_archivo}", "r")
-    @codigo = "" 
-    archivo.each {|line|
-    @codigo << line
+@codigo = ""
+archivo.each {|line|
+@codigo << line
 }
 
 archivo.close
@@ -113,38 +113,39 @@ end
       if @group.save
        archivo = File.new("archivos/grupos/#{@group.clave}/miembros", "r")
 
-      while (line = archivo.gets)
-        arr = line.split(',')
+while (line = archivo.gets)
+arr = line.split(',')
 
-        if arr.length == 3 #Verifica que sean tres elementos separados por coma "matricula, nombre, apellido(s)"
-          matricula = arr[0].squeeze(" ").strip.downcase #Se eliminan espacios en blanco extra, ya sea al inicio, en medio, o al final del string y se hace minuscula la 'A'
-          nombre = arr[1].squeeze(" ").strip
-          apellidos = arr[2].squeeze(" ").strip
+if arr.length == 3 #Verifica que sean tres elementos separados por coma "matricula, nombre, apellido(s)"
+matricula = arr[0].squeeze(" ").strip.downcase #Se eliminan espacios en blanco extra, ya sea al inicio, en medio, o al final del string y se hace minuscula la 'A'
+nombre = arr[1].squeeze(" ").strip
+apellidos = arr[2].squeeze(" ").strip
 
-          #Si ya existe el alumno, solo se le asigna el grupo
-          miembro = User.find_by_matricula("#{matricula}")
-          if miembro != nil
-            miembro.group_id = @group.id
-            miembro.save
-          else
-            miembro = User.new
-            miembro.matricula = "#{matricula}"
-            miembro.nombre = "#{nombre}"
-            miembro.apellido = "#{apellidos}"
-            miembro.email = "#{matricula}@itesm.mx"
-            miembro.estudiante = true
-            miembro.profesor = false
-            miembro.admin = false
-            miembro.password = "#{matricula}"
-            miembro.password_confirmation = "#{matricula}"
-            miembro.group_id = @group.id
-            miembro.save
-          end
-        end
-      end
-      archivo.close
-      format.html { redirect_to(@group, :notice => 'El Grupo fue creado exitosamente.') }
-      format.xml { render :xml => @group, :status => :created, :location => @group }
+#Si ya existe el alumno, solo se le asigna el grupo
+miembro = User.find_by_matricula("#{matricula}")
+if miembro != nil
+miembro.group_id = @group.id
+miembro.save
+else
+miembro = User.new
+miembro.matricula = "#{matricula}"
+miembro.nombre = "#{nombre}"
+miembro.apellido = "#{apellidos}"
+miembro.email = "#{matricula}@itesm.mx"
+miembro.estudiante = true
+miembro.profesor = false
+miembro.admin = false
+miembro.password = "#{matricula}"
+miembro.password_confirmation = "#{matricula}"
+miembro.group_id = @group.id
+miembro.save
+end
+end
+end
+archivo.close
+
+        format.html { redirect_to(@group, :notice => 'El Grupo fue creado exitosamente.') }
+        format.xml { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @group.errors, :status => :unprocessable_entity }

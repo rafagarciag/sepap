@@ -57,32 +57,44 @@ class AttemptsController < ApplicationController
   def create
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
-	#Falta agregar un contador para numero_de_intentos
+
 	@attempt.problem = Problem.where(:numero => @attempt.numero_problema).first
 	@attempt.lenguaje = params[:lenguaje]
     #Aqui genera un numero aleatorio para definir que entrada y salida usara
     num = num = 1 + rand(3)
+    
     # =======================================================
     # Aqui compila el codigo fuente y produce un resultado
     #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje
-    @attempt.save 
-    archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
-    ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
-    entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
-    salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
-    salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
-    error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
-    tiempo = @attempt.problem.tiempo 	#tiempo limite
     
-    #se llama al compilador
-    #el formato del script es: compilarJava [archivo con el codigo del alumno] [entrada brindada por el profesor] [archivo donde se guarda la salida de ejecutar el archivo del alumno con las entradas del profesor] [salida esperada brindada por el profesor] [archivo donde se guardara la info de error en caso de no compilar]
-    @attempt.resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+    #=====
+    #desde qui corta
+    #=====
+    #@attempt.save 
+    
     
     
     #=========================================================
 
     respond_to do |format|
       if @attempt.save
+      	tiempo = @attempt.problem.tiempo 	#tiempo limite
+      	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+		ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
+		entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
+		salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+		salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
+		error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
+		
+		
+		#se llama al compilador
+		#el formato del script es: compilarJava [archivo con el codigo del alumno] [entrada brindada por el profesor] [archivo donde se guarda la salida de ejecutar el archivo del alumno con las entradas del profesor] [salida esperada brindada por el profesor] [archivo donde se guardara la info de error en caso de no compilar]
+		resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+
+		#en caso de producirse un error y no tener un resultado
+		@attempt.update_attribute(:resultado, "#{resultado}")
+
+		
         format.html { redirect_to(@attempt, :notice => 'El Intento fue creado exitosamente.') }
         format.xml  { render :xml => @attempt, :status => :created, :location => @attempt }
       else
