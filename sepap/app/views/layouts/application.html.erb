@@ -7,13 +7,14 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <%=image_tag "logo.jpg"%>
-    <div class="menu">
-      <%= render "/general/menu"%>
+    <div id="header">
+      <%= render "/general/header"%>
     </div>
-
-    <div class="contenido">
-      <%=yield%>
-    </div>
+    <table>
+      <tr>
+        <td id="menu"><%= render "/general/menu"%></td>
+        <td id="contenido"><%=yield%></td>
+      <tr>
+    </table>
   </body>
 </html>
