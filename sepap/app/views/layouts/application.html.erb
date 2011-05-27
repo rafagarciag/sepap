@@ -1,69 +1,19 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-"http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<head>
-  <title>Sistema de Evaluaci&oacute;n Para el Aprendizaje de la Programaci&oacute;n</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :all %>
-  <%= csrf_meta_tag %>
-</head>
-	<body>
-		<div class="menu">
-			<%=image_tag "logo.jpg", :class=>"logo"%>
-				<ul class="botones">
-				    <li><%=link_to "Inicio", root_path, :class=>"botones"%></li>
-				    <% if user_signed_in? %>
-						<%if current_user.estudiante?%>
-							<li><%=link_to "Lista de Problemas", problems_path, :class=>"botones"%></li>
-							<li><%=link_to "Subir Solucion", new_attempt_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Perfil", edit_user_registration_path, :class=>"botones"%></li>
-							<li><%=link_to "Historial", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
-						<%end%>
-						<%if current_user.profesor?%>
-							<li><%=link_to "Lista de Problemas", problems_path, :class=>"botones", :class=>"botones"%></li>
-							<li><%=link_to "Subir Solucion", new_attempt_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Perfil", edit_user_registration_path, :class=>"botones"%></li>
-							<li><%=link_to "Historial", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Crear Problema", new_problem_path, :class=>"botones"%></li>
-							<li><%=link_to "Grupos", groups_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Alumnos", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Usuarios", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
-						<%end%>
-						<%if current_user.admin?%>
-							<li><%=link_to "Lista de Problemas", problems_path, :class=>"botones"%></li>
-							<li><%=link_to "Subir Solucion", new_attempt_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Perfil", edit_user_registration_path, :class=>"botones"%></li>
-							<li><%=link_to "Historial", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Crear Problema", new_problem_path, :class=>"botones"%></li>
-							<li><%=link_to "Grupos", groups_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Alumnos", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Editar Usuarios", root_path, :class=>"botones"%></li>
-							<li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
-						<%end%>
-					<% else %>
-						<li><%=link_to "Registro", new_user_registration_path, :class=>"botones"%></li>
-					    <li><%=link_to "Ingresar", new_user_session_path, :class=>"botones"%></li>
-					    <li><%=link_to "Lista de Problemas", problems_path, :class=>"botones"%></li>
-					<%end%>
-				</ul>
-		</div>
-		<div class="contenido">
-			<div class="usuario">
-				<% if user_signed_in? %>
-					¡Bienvenido <%= current_user.nombre %>!
-					<%= link_to "Salir", destroy_user_session_path, :class=>"usuario" %>
-				<% else %>
-					¡Bienvenido!
-					<%= link_to "Entrar", new_user_session_path, :class=>"usuario" %>
-				<% end %>
-			</div>
-			<br />
-			<div class="formas">
-				<%=yield%>
-			</div>
-		</div>
-	</body>
+  <head>
+    <title>Sistema de Evaluación Para el Aprendizaje de la Programación</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :all %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <%=image_tag "logo.jpg"%>
+    <div class="menu">
+      <%= render "/general/menu"%>
+    </div>
 
+    <div class="contenido">
+      <%=yield%>
+    </div>
+  </body>
 </html>
