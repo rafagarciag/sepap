@@ -4,8 +4,8 @@
       <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
 
       <ul>
-      <% @problem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @problem.errors.each do |attr_name, message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
