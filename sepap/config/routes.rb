@@ -3,6 +3,7 @@ Sepap::Application.routes.draw do
   get "admin/index"
 
 	resources :attempts
+	    match 'intentos/nuevo/:numero' => 'attempts#new', :as => :nuevo_intento
 
 	resources :problems
 		match 'problemas' => 'problems#index'

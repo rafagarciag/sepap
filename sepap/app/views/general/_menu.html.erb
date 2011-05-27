@@ -5,7 +5,6 @@
   <li><%=link_to "Subir Solucion", new_attempt_path, :class=>"botones"%></li>
   <li><%=link_to "Editar Perfil", edit_user_registration_path, :class=>"botones"%></li>
   <li><%=link_to "Historial", root_path, :class=>"botones"%></li>
-
   <%if current_user.profesor? or current_user.admin? %>
     <li><%=link_to "Crear Problema", new_problem_path, :class=>"botones"%></li>
     <li><%=link_to "Grupos", groups_path, :class=>"botones"%></li>
@@ -14,7 +13,7 @@
     <li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
   <%end%>
   <%if current_user.admin?%>
-    <li><%=link_to "Salir", destroy_user_session_path, :class=>"botones"%></li>
+    <li><%=link_to "Administrar", "", :class=>"botones"%></li>
   <%end%>
 <% else %>
 <li><%=link_to "Registro", new_user_registration_path, :class=>"botones"%></li>

@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-"http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
     <title>Sistema de Evaluación Para el Aprendizaje de la Programación</title>
@@ -7,27 +6,15 @@
     <%= javascript_include_tag :all %>
     <%= csrf_meta_tag %>
   </head>
-
-  <%=image_tag "logo.jpg"%>
   <body>
-  <div class="menu">
-    <%= render "/general/menu"%>
-  </div>
-
-<div class="contenido">
-  <div class="usuario">
-    <% if user_signed_in? %>
-      ¡Bienvenido <%= current_user.nombre %>!
-      <%= link_to "Salir", destroy_user_session_path, :class=>"usuario" %>
-    <% else %>
-      ¡Bienvenido!
-      <%= link_to "Entrar", new_user_session_path, :class=>"usuario" %>
-    <% end %>
-  </div><br />
-  <div class="formas">
-    <%=yield%>
-  </div>
-</div>
-</body>
-
+    <div id="header">
+      <%= render "/general/header"%>
+    </div>
+    <table>
+      <tr>
+        <td id="menu"><%= render "/general/menu"%></td>
+        <td id="contenido"><%=yield%></td>
+      <tr>
+    </table>
+  </body>
 </html>
