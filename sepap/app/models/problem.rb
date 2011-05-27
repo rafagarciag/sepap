@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Problem < ActiveRecord::Base
 
-	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id, :tiempo
+	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id, :tiempo, :modulo
 	
 	#Relaciones con otras clases
 	has_many :attempts
@@ -24,6 +24,7 @@ class Problem < ActiveRecord::Base
 	validates_presence_of :output, :on=>:create, :message => "Falta archivo 'Salidas 1'"
 	validates_presence_of :output2, :on=>:create, :message => "Falta archivo 'Salidas 2'"
 	validates_presence_of :output3, :on=>:create, :message => "Falta archivo 'Salidas 3'"
+	validates_inclusion_of :modulo, :message => "Falta especificar tipo de problema (completo o módulo)", :in => [true, false]
 
 	
 	#Esto utiliza la gema carrierwave
