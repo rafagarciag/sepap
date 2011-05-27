@@ -40,6 +40,8 @@ class AttemptsController < ApplicationController
   # GET /attempts/new.xml
   def new
     @attempt = Attempt.new
+   
+    @numero = params[:numero]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,7 +59,7 @@ class AttemptsController < ApplicationController
   def create
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
-
+    
 	@attempt.problem = Problem.where(:numero => @attempt.numero_problema).first
 	@attempt.lenguaje = params[:lenguaje]
     #Aqui genera un numero aleatorio para definir que entrada y salida usara

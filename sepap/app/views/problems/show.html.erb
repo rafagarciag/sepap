@@ -1,7 +1,7 @@
 
 <p>
   <h1><%= @problem.titulo %></h1>
-  <b>Problema <%= @problem.numero %></b>
+  <b>Problema <%= @problem.numero %></b><%= link_to "Enviar solucion", nuevo_intento_path( :numero => @problem.numero) %>
 </p>
 <br />
 <p>
