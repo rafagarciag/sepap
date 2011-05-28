@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class Problema1001{
+public class Metodo1001{
 
-	private static void calcula(int n){
+	public static void calcula(int n){
 		int k = 0;
 		for (int a=100; a<=n; a++){
 			int b1 = a/10;
@@ -22,19 +22,5 @@ public class Problema1001{
 			}
 		}
 		System.out.println("Total de Sumas = "+k);
-	}
-	
-	public static void main(String [] args){
-		
-		Scanner ent = new Scanner(System.in);
-		
-		int casos = ent.nextInt();
-		int n = 0;
-		for (int i=1; i<=casos; i++){
-			n = ent.nextInt();
-			System.out.println("Cason "+i+": "+n);
-			calcula(n); 
-			System.out.println();
-		}	
 	}
 }

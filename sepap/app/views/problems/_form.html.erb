@@ -41,10 +41,15 @@
     <%= f.text_area :descripcion, :cols => 80, :rows => 40 %>
   </div>
   
-  <div class="field">
-    <%= f.label :solution, 'Solución' %><br />
-    <%= f.file_field :solution %>
-  </div>
+  <fieldset>
+  	  <legend>Solución</legend>
+	  <div class="field">
+		<%= f.label :solution, 'Ejecutable con el main (archivo compilado)' %><br />
+		<%= f.file_field :solution %>
+	  </div>
+  </fieldset>
+  
+  <br />
   
   <fieldset>
       <legend>Entradas</legend>
@@ -61,6 +66,8 @@
         <%= f.file_field :input3 %>
       </div>
   </fieldset>
+  
+  <br />
 
   <fieldset>
       <legend>Salidas</legend>
