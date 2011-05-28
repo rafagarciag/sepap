@@ -1,0 +1,76 @@
+Realiza una aplicación que dado un entero positivo de 3 dígitos, genere todas 
+las posibles sumas de dos enteros que den como resultado ese mismo entero. 
+La aplicación debe cumplir con las siguientes reglas:
+<br />
+<ul>
+	<li>
+		El primer número de la suma (A), será de 3 dígitos.
+	</li>
+	<li>
+		El segundo número de la suma (B) será de 2 dígitos, y éstos se obtendrán
+		eliminando alguno de los tres dígitos del primer número (A).
+	</li>
+</ul>
+<br />
+<b> Entradas </b>
+<br />
+Como primer renglón se dará N que es el total de casos, posteriormente vendrán los N números enteros
+positivos de 3 dígitos.
+<br />
+<br />
+<b> Salida </b>
+<br />
+La aplicación debe mostrar para cada caso las sumas (A + B) y al final la cantidad de sumas que se
+obtuvieron. Para todos los desplegados debes cumplir con el formato que se muestra en el ejemplo.
+<br />
+<br />
+
+<b> Ejemplo de Entrada: </b>
+<br />
+3
+<br />
+302
+<br />
+104
+<br />
+312
+<br />
+<br />
+
+<b> Ejemplo de Salida: </b>
+<br />
+Caso 1: 302
+<br />
+251 + 51 = 302
+<br />
+275 + 27 = 302
+<br />
+276 + 26 = 302
+<br />
+281 + 21 = 302
+<br />
+301 + 01 = 302
+<br />
+Total de Sumas = 5
+<br />
+<br />
+Caso 2: 104
+<br />
+102 + 02 = 104
+<br />
+Total de Sumas = 1
+<br />
+<br />
+Caso 3: 312
+<br />
+256 + 56 = 312
+<br />
+284 + 28 = 312
+<br />
+286 + 26 = 312
+<br />
+291 + 21 = 312
+<br />
+306 + 06 = 312
+<br />
+Total de Sumas = 5
