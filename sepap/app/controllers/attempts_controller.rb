@@ -24,7 +24,9 @@ class AttemptsController < ApplicationController
     	@error = ""
   		archivo.each {|line|
   			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
-  			linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
+  			#linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
+  			#linea = line.gsub(/\/([a-z]|sepap|((a|l)[0-9]+)|[0-9]+)+/, "")
+  			linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
   			@error << linea
 		}
 		archivo.close
@@ -65,6 +67,8 @@ class AttemptsController < ApplicationController
     #Aqui genera un numero aleatorio para definir que entrada y salida usara
     num = 1 + rand(3)
     
+    
+    
     # =======================================================
     # Aqui compila el codigo fuente y produce un resultado
     #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje
@@ -80,11 +84,18 @@ class AttemptsController < ApplicationController
 
     respond_to do |format|
       if @attempt.save
+      	     
+      	#Checa si el problema a resolver es de modulos
+		if @attempt.problem.modulo?
+			link = `cd archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}; ln -s #{@attempt.problem.solution}`
+		end
+     
       	#tiempo limite
       	tiempo = @attempt.problem.tiempo
       	
 		#archivo con el codigo fuente del alumno
-		archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+		archivo = @attempt.code
+		#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		
 		#archivo que se ejecutará despues de compilar
 		ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
