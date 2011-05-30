@@ -11,10 +11,10 @@ end
 #maestro L12121200 dueño del grupo 0
 #maestro L12121201 dueño del grupo 1
 for i in 0..1
-	puts "User.create(:email => \"L#{12121200+i}@itesm.mx\", :password => \"L#{12121200+i}\", :nombre => \"Nom#{i}\", :apellido => \"Ap#{i}\", :matricula => \"L#{12121200+i}\", :admin => false, :profesor => true, :estudiante => false, :group_id => \"\")"
+	puts "User.create(:email => \"L#{12121200+i}@itesm.mx\", :password => \"L#{12121200+i}\", :nombre => \"Maestro#{i}\", :apellido => \"Ap#{i}\", :matricula => \"L#{12121200+i}\", :admin => false, :profesor => true, :estudiante => false, :group_id => \"\")"
 end
 #Crea Administrador
-puts "User.create(:email => \"L12121300@itesm.mx\", :password => \"L12121300\", :nombre => \"Nom0\", :apellido => \"Ap0\", :matricula => \"L12121300\", :admin => true, :profesor => false, :estudiante => false, :group_id => \"\")"
+puts "User.create(:email => \"L12121300@itesm.mx\", :password => \"L12121300\", :nombre => \"Admin0\", :apellido => \"Ap0\", :matricula => \"L12121300\", :admin => true, :profesor => false, :estudiante => false, :group_id => \"\")"
 #Crea Administrador/Profesor
-puts "User.create(:email => \"L12121301@itesm.mx\", :password => \"L12121301\", :nombre => \"Nom1\", :apellido => \"Ap1\", :matricula => \"L12121300\", :admin => true, :profesor => true, :estudiante => false, :group_id => \"\")"
+puts "User.create(:email => \"L12121301@itesm.mx\", :password => \"L12121301\", :nombre => \"AdminProf1\", :apellido => \"Ap1\", :matricula => \"L12121300\", :admin => true, :profesor => true, :estudiante => false, :group_id => \"\")"
 #Crea archivo para grupo 0

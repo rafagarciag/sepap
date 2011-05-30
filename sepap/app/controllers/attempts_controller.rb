@@ -42,7 +42,7 @@ class AttemptsController < ApplicationController
   # GET /attempts/new.xml
   def new
     @attempt = Attempt.new
-   
+    @tab = "newA"
     @numero = params[:numero]
 
     respond_to do |format|

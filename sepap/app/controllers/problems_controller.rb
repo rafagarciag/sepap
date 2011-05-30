@@ -5,7 +5,7 @@ class ProblemsController < ApplicationController
   # GET /problems.xml
   def index
     @problems = Problem.all
-
+    @tab="listaP" 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @problems }
@@ -36,7 +36,7 @@ class ProblemsController < ApplicationController
   # GET /problems/new.xml
   def new
     @problem = Problem.new
-
+    @tab = "newP"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @problem }

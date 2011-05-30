@@ -4,7 +4,7 @@ load_and_authorize_resource
   # GET /groups
   # GET /groups.xml
   def index
-    
+    @tab = "listaG" 
     @groups = Group.where(:user_id => current_user.id) #Solamente los grupos del maestro logeado
     
     respond_to do |format|

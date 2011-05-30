@@ -1,8 +1,25 @@
-# -*- encoding : utf-8 -*-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
+User.create(:email => "A12121200@itesm.mx", :password => "A12121200", :nombre => "Nom0", :apellido => "Ap0", :matricula => "A12121200", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121201@itesm.mx", :password => "A12121201", :nombre => "Nom1", :apellido => "Ap1", :matricula => "A12121201", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121202@itesm.mx", :password => "A12121202", :nombre => "Nom2", :apellido => "Ap2", :matricula => "A12121202", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121203@itesm.mx", :password => "A12121203", :nombre => "Nom3", :apellido => "Ap3", :matricula => "A12121203", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121204@itesm.mx", :password => "A12121204", :nombre => "Nom4", :apellido => "Ap4", :matricula => "A12121204", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121205@itesm.mx", :password => "A12121205", :nombre => "Nom5", :apellido => "Ap5", :matricula => "A12121205", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121206@itesm.mx", :password => "A12121206", :nombre => "Nom6", :apellido => "Ap6", :matricula => "A12121206", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121207@itesm.mx", :password => "A12121207", :nombre => "Nom7", :apellido => "Ap7", :matricula => "A12121207", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121208@itesm.mx", :password => "A12121208", :nombre => "Nom8", :apellido => "Ap8", :matricula => "A12121208", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121209@itesm.mx", :password => "A12121209", :nombre => "Nom9", :apellido => "Ap9", :matricula => "A12121209", :admin => false, :profesor => false, :estudiante => true, :group_id => 0)
+User.create(:email => "A12121210@itesm.mx", :password => "A12121210", :nombre => "Nom10", :apellido => "Ap10", :matricula => "A12121210", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121211@itesm.mx", :password => "A12121211", :nombre => "Nom11", :apellido => "Ap11", :matricula => "A12121211", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121212@itesm.mx", :password => "A12121212", :nombre => "Nom12", :apellido => "Ap12", :matricula => "A12121212", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121213@itesm.mx", :password => "A12121213", :nombre => "Nom13", :apellido => "Ap13", :matricula => "A12121213", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121214@itesm.mx", :password => "A12121214", :nombre => "Nom14", :apellido => "Ap14", :matricula => "A12121214", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121215@itesm.mx", :password => "A12121215", :nombre => "Nom15", :apellido => "Ap15", :matricula => "A12121215", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121216@itesm.mx", :password => "A12121216", :nombre => "Nom16", :apellido => "Ap16", :matricula => "A12121216", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121217@itesm.mx", :password => "A12121217", :nombre => "Nom17", :apellido => "Ap17", :matricula => "A12121217", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121218@itesm.mx", :password => "A12121218", :nombre => "Nom18", :apellido => "Ap18", :matricula => "A12121218", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121219@itesm.mx", :password => "A12121219", :nombre => "Nom19", :apellido => "Ap19", :matricula => "A12121219", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "A12121220@itesm.mx", :password => "A12121220", :nombre => "Nom20", :apellido => "Ap20", :matricula => "A12121220", :admin => false, :profesor => false, :estudiante => true, :group_id => 1)
+User.create(:email => "L12121200@itesm.mx", :password => "L12121200", :nombre => "Maestro0", :apellido => "Ap0", :matricula => "L12121200", :admin => false, :profesor => true, :estudiante => false, :group_id => "")
+User.create(:email => "L12121201@itesm.mx", :password => "L12121201", :nombre => "Maestro1", :apellido => "Ap1", :matricula => "L12121201", :admin => false, :profesor => true, :estudiante => false, :group_id => "")
+User.create(:email => "L12121300@itesm.mx", :password => "L12121300", :nombre => "Admin0", :apellido => "Ap0", :matricula => "L12121300", :admin => true, :profesor => false, :estudiante => false, :group_id => "")
+User.create(:email => "L12121301@itesm.mx", :password => "L12121301", :nombre => "AdminProf1", :apellido => "Ap1", :matricula => "L12121300", :admin => true, :profesor => true, :estudiante => false, :group_id => "")
