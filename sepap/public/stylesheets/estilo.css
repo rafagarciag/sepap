@@ -1,35 +1,78 @@
 body{
+  background-image:url(../images/bg_pattern.jpg);
 }
+
+div#contenido{
+  background-color:#FFF;
+  border-radius:10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  overflow:auto;
+  width:1000px;
+  margin:20px auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  padding:10px;
+}
+
+div.inset { text-shadow:#fff 0px 1px 0, #000 0 -1px 0;}
+
+div#tituloHeader { line-height:1.5em; font-size:4em; font-weight:bold; color:#777;} 
+div#subtituloHeader { line-height:1em; font-size:1em; font-weight:bold; color:#AAA; margin:-10px 0px 0px 33px;} 
 
 div#header{
   height:100px;
-  background-color:#412AA8;
 }
 
-table{
-  border-collapse:collapse;
+h3#menuTitulo{
+  background-color: #555555;
+  color: #FFFFFF;
+  height: 24px;
+  margin: 0;
+  text-align: center; 
 }
 
-td#contenido{
-  padding:5px 0px 0px 20px;
+#menu{
+  background-color:#CCC;
+  float:left;
+  border: 3px solid;
+  border-color:#555;
+  -moz-border-radius:10px;
+  -moz-box-shadow: 2px 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 2px 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  -webkit-border-radius:10px;
+  margin: 0px 30px 0px 0px;
 }
 
-td#menu{
-  background-color:#412aa8;
+#yield{
+  float:left;
 }
 
 ul.botones{
   list-style:none;
-  width:250px;
+  padding:10px;
+  margin:0px;
 }
 
 a.botones{
-  display: block;
-  color:#FFFFFF;
-  line-height:200%;
-  background-image:url('../images/btn.png');
-  padding-left:5px;
-  border:solid 1px;
+  background: #222 url(/images/alert-overlay.png) repeat-x;
+  display: inline-block;
+  padding: 5px 10px 6px;
+  color: #fff;
+  margin:0px 0px 10px 0px;
+  width:120px;
+  text-align:center;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 
 a.botones:link {
@@ -41,7 +84,7 @@ a.botones:visited {
 }
 
 a.botones:hover {
-  color:#412aa8;
+  color:#DDD;
   text-decoration:none;
 }
 

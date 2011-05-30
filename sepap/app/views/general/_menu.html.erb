@@ -1,3 +1,4 @@
+<h3 id="menuTitulo"><%=current_user.try(:nombre)%><h3>
 <ul class="botones">
 <li><%=link_to "Inicio", root_path, :class=>"botones"%></li>
 <% if user_signed_in? %>

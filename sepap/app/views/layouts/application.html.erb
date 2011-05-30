@@ -7,14 +7,11 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div id="header">
-      <%= render "/general/header"%>
+    <div id="contenido">
+      <div id="header"><%= render "/general/header"%></div>
+      <div id="menu"><%= render "/general/menu"%></div>
+      <div id="yield"><%=yield%></div>
+      <%=params[:controller]%>
     </div>
-    <table>
-      <tr>
-        <td id="menu"><%= render "/general/menu"%></td>
-        <td id="contenido"><%=yield%></td>
-      <tr>
-    </table>
   </body>
 </html>
