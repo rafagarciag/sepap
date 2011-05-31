@@ -6,7 +6,7 @@ class Ability
         user ||= User.new #Usuario ETC
     
         if user.admin?
-           can :manage, :all
+            can :manage, :all
         elsif user.profesor?
         	can :manage, Problem
         	can :destroy, Problem
