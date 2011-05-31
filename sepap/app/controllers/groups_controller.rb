@@ -97,7 +97,7 @@ end
   # POST /groups.xml
   def create
     @group = Group.new(params[:group])
-@group.user_id = current_user.id
+	@group.user_id = current_user.id
 
 #====================================
 #Crear grupo de alumnos desde archivo
@@ -109,57 +109,57 @@ end
 
 #end
 #====================================
-    respond_to do |format|
-      if @group.save
-       archivo = File.new("archivos/grupos/#{@group.clave}/miembros", "r")
+	respond_to do |format|
+	if @group.save
+		archivo = File.new("archivos/grupos/#{@group.clave}/miembros", "r")
 
-while (line = archivo.gets)
-arr = line.split(',')
+		while (line = archivo.gets)
+			arr = line.split(',')
 
-if arr.length == 3 #Verifica que sean tres elementos separados por coma "matricula, nombre, apellido(s)"
-matricula = arr[0].squeeze(" ").strip.downcase #Se eliminan espacios en blanco extra, ya sea al inicio, en medio, o al final del string y se hace minuscula la 'A'
-nombre = arr[1].squeeze(" ").strip
-apellidos = arr[2].squeeze(" ").strip
+			if arr.length == 3 #Verifica que sean tres elementos separados por coma "matricula, nombre, apellido(s)"
+				matricula = arr[0].squeeze(" ").strip.downcase #Se eliminan espacios en blanco extra, ya sea al inicio, en medio, o al final del string y se hace minuscula la 'A'
+				nombre = arr[1].squeeze(" ").strip
+				apellidos = arr[2].squeeze(" ").strip
 
-#Si ya existe el alumno, solo se le asigna el grupo
-miembro = User.find_by_matricula("#{matricula}")
-if miembro != nil
-miembro.group_id = @group.id
-miembro.save
-else
-miembro = User.new
-miembro.matricula = "#{matricula}"
-miembro.nombre = "#{nombre}"
-miembro.apellido = "#{apellidos}"
-miembro.email = "#{matricula}@itesm.mx"
-miembro.estudiante = true
-miembro.profesor = false
-miembro.admin = false
-miembro.password = "#{matricula}"
-miembro.password_confirmation = "#{matricula}"
-miembro.group_id = @group.id
-miembro.save
-end
-end
-end
-archivo.close
+				#Si ya existe el alumno, solo se le asigna el grupo
+				miembro = User.find_by_matricula("#{matricula}")
+				if miembro != nil
+					miembro.group_id = @group.id
+					miembro.save
+				else
+					miembro = User.new
+					miembro.matricula = "#{matricula}"
+					miembro.nombre = "#{nombre}"
+					miembro.apellido = "#{apellidos}"
+					miembro.email = "#{matricula}@itesm.mx"
+					miembro.estudiante = true
+					miembro.profesor = false
+					miembro.admin = false
+					miembro.password = "#{matricula}"
+					miembro.password_confirmation = "#{matricula}"
+					miembro.group_id = @group.id
+					miembro.save
+				end
+			end
+		end
+		archivo.close
 
         format.html { redirect_to(@group, :notice => 'El Grupo fue creado exitosamente.') }
         format.xml { render :xml => @group, :status => :created, :location => @group }
-      else
+	else
         format.html { render :action => "new" }
         format.xml { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
+	end
     end
   end
   
   #Da de baja a un alumno de un grupo, NO elimina al alumno de la base de datos
   def sacar
-usuario = User.find(params[:miembro])
-grupo = Group.find(params[:group_id])
+	usuario = User.find(params[:miembro])
+	grupo = Group.find(params[:group_id])
 
-usuario.group_id = nil
-usuario.save
+	usuario.group_id = nil
+	usuario.save
 
     respond_to do |format|
       format.html { redirect_to(grupo_path(:id => grupo.id))}

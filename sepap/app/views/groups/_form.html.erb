@@ -13,27 +13,23 @@
 
   <div class="field">
     <%= f.label :clave %><br />
-    <%= f.text_field :clave %>
+    <%= f.text_field :clave, :size => 12 %>
   </div>
   <div class="field">
     <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
+    <%= f.text_field :nombre, :size => 12 %>
   </div>
   <div class="field">
     <%= f.label :campus %><br />
-    <%= f.text_field :campus %>
+    <%= f.text_field :campus, :size => 12 %>
   </div>
   <div class="field">
     <%= f.label :semestre %><br />
-    <%= f.text_field :semestre %>
+    <%= f.text_field :semestre, :size => 12 %>
   </div>
   <div class="field">
-    <%= f.label :ano , "Año"%><br />
-    <%= f.text_field :ano %>
-  </div>
-  <div class="field">
-    <%= f.label :mes %><br />
-    <%= f.text_field :mes %>
+    <%= f.label :fecha %><br />
+    <%= f.text_field :fecha, :size => 12 %>
   </div>
   <div>
     <%=f.file_field :miembros %>
