@@ -3,7 +3,7 @@
 <li><%=link_to "Inicio", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
 <li><%=link_to "Lista de Problemas", problems_path, :class=>"botones "+(@tab=="listaP"? "botonon" : "botonoff")%></li>
 <% if user_signed_in? %>
-  <li><%=link_to "Subir Solucion", new_attempt_path, :class=>"botones "+(@tab=="newA"? "botonon" : "botonoff")%></li>
+  <li><%=link_to "Subir Solución", new_attempt_path, :class=>"botones "+(@tab=="newA"? "botonon" : "botonoff")%></li>
   <li><%=link_to "Editar Perfil", edit_user_registration_path, :class=>"botones "+(@tab=="editU"? "botonon" : "botonoff")%></li>
   <li><%=link_to "Historial", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
   <%if current_user.profesor? or current_user.admin? %>

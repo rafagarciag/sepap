@@ -5,7 +5,7 @@
     <th align="left">Clave</th>
     <th align="left">Nombre</th>
     <th align="left">Semestre</th>
-    <th align="left">A&ntilde;o</th>
+    <th align="left">Fecha</th>
     <th align="left">Profesor</th>
     <th></th>
     <th></th>
@@ -17,7 +17,7 @@
     <td width=100><%= link_to group.clave, group %></td>
     <td width=100><%= group.nombre %></td>
     <td width=100><%= group.semestre %></td>
-    <td width=100><%= group.ano %></td>
+    <td width=100><%= group.fecha %></td>
     <td width=100><%= group.user.nombre %></td>
     <td><%= link_to 'Editar', edit_group_path(group) %></td>
     <td><%= link_to 'Borrar', group, :confirm => '¿Está seguro que desea borrar el grupo?', :method => :delete %></td>
