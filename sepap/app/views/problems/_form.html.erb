@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :numero, 'Número de problema' %><br />
-    <%= f.text_field :numero %>
+    <%= f.text_field :numero, :size => 6 %>
   </div>
   
   <div class="field">
@@ -30,10 +30,10 @@
   	Tipo de problema 
   	<br />
   	<%= f.radio_button :modulo, 'false' %>
-  	Completo
+  	<%= f.label :modulo_false, 'Completo' %>
 	<br />
 	<%= f.radio_button :modulo, 'true' %>
-	Módulo
+	<%= f.label :modulo_true, 'Módulos' %>
   </div>
   
   <div class="field">
@@ -42,7 +42,7 @@
   </div>
   
   <fieldset>
-  	  <legend>Solución</legend>
+  	  <legend><b>Solución</b></legend>
 	  <div class="field">
 		<%= f.label :solution, 'Ejecutable con el main (archivo compilado)' %><br />
 		<%= f.file_field :solution %>
@@ -56,7 +56,7 @@
   <br />
   
   <fieldset>
-      <legend>Entradas</legend>
+      <legend><b>Entradas</b></legend>
       <div class="field">
         <%= f.label :input, 'Entradas 1' %><br />
         <%= f.file_field :input %>
@@ -74,7 +74,7 @@
   <br />
 
   <fieldset>
-      <legend>Salidas</legend>
+      <legend><b>Salidas</b></legend>
       <div class="field">
         <%= f.label :output, 'Salidas 1' %><br />
         <%= f.file_field :output %>

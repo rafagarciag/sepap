@@ -1,10 +1,18 @@
 <h1>Listado de problemas</h1>
 
-<table>
+<table border="0">
   <tr>
     <th align="left" width=100>Número</th>
-    <th align="left" width=150>Título</th>
-    <th align="left" width=110>Usuario</th>
+    <th align="left" width=170>Título</th>
+    <% if user_signed_in? %>
+    	<% if current_user.admin? || current_user.profesor? %>
+    		<th align="left" width=110>Creado por</th>
+    	<% else %>
+    		<th> </th>
+    	<% end %>
+    <% else %>
+    	<th> </th>
+    <% end %>
     <th> </th>
     <th> </th>
   </tr>
@@ -13,13 +21,31 @@
   <tr>
     <td><%= link_to problem.numero, problem %></td>
     <td><%= problem.titulo %></td>
-    <td><%= problem.user.nombre %></td>
+    
     
     <% if user_signed_in? %>
+		
 		<% if current_user.admin? || current_user.profesor? %>
-			<td><%= link_to image_tag('Edit.jpg'), edit_problem_path(problem) %></td>
-			<td><%= link_to image_tag('Delete.jpg'), problem, :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
-		<% end %>	
+			<td><%= problem.user.nombre %></td>
+			
+			<% if (problem.user_id == current_user.id) || current_user.admin? %>
+				<td><%= link_to image_tag('Edit.jpg'), edit_problem_path(problem) %></td>
+				<td><%= link_to image_tag('Delete.jpg'), problem, :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
+			<% else %>
+				<td> </td>
+				<td> </td>
+			<% end %>
+			
+		<% else %>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		<% end %>
+			
+	<% else %>
+		<td> </td>
+		<td> </td>
+		<td> </td>
 	<% end %>
     
    

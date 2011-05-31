@@ -12,9 +12,10 @@
   <b>Por:</b>
   <%= @problem.user.nombre %>
 </p>
-
-<%if current_user.admin? || current_user.profesor?%>
-	<%= link_to 'Editar', edit_problem_path(@problem) %>
-<%end%>	
+<% if user_signed_in? %>
+	<%if current_user.admin? || current_user.profesor?%>
+		<%= link_to 'Editar', edit_problem_path(@problem) %>
+	<% end %>
+<% end %>
 <%= link_to 'Lista de problemas', problems_path %>
 
