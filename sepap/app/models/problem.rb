@@ -17,6 +17,8 @@ class Problem < ActiveRecord::Base
 	validates_numericality_of :tiempo, :message => "El tiempo límite debe contener solamente números"
 
 	validates_presence_of :solution, :on=>:create, :message => "Falta archivo de solución"
+	
+	validates_presence_of :metodo, :if=>:modulo, :message => "Falta archivo de metodos"
 
 	validates_presence_of :input, :on=>:create, :message => "Falta archivo 'Entradas 1'"
 	validates_presence_of :input2, :on=>:create, :message => "Falta archivo 'Entradas 2'"
