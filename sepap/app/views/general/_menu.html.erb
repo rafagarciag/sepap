@@ -13,7 +13,7 @@
     <li><%=link_to "Editar Usuarios", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
   <%end%>
   <%if current_user.admin?%>
-    <li><%=link_to "Administrar", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
+    <li><%=link_to "Administrar", admin_index_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
   <%end%>
     <li><%=link_to "Salir", destroy_user_session_path, :class=>"botones botonoff"%></li>
 <% else %>
