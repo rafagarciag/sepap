@@ -1,10 +1,12 @@
 class AdminController < ApplicationController
 	def index
+        @tab = "admin"
 		#el index es estático, solo tiene links a las opciones
 	end
   
 	def alta_profesores_lista
 		@profesores = []
+                @tab = "admin"
 		usuarios = User.select('id, matricula, nombre, apellido, admin, profesor')
 		usuarios.each do |usuario|
 			if (usuario.matricula[0].chr == "l") || (usuario.matricula[0].chr == "L")
@@ -19,6 +21,7 @@ class AdminController < ApplicationController
 	end
   
 	def alta_profesores
+                @tab = "admin"
 	  	prof = params[:miembro]
 	  	
 	  		x = User.find(prof)
