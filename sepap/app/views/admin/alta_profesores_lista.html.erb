@@ -1,0 +1,16 @@
+<h1> Dar de alta a un profesor </h1>
+
+<table>
+	<tr> 
+		<th width="100" align="left"> Autorizar </th>
+		<th width="100" align="left"> Matrícula </th>
+		<th width="200" align="left"> Nombre </th>
+	</tr>
+	<% @profesores.each do |prof| %>
+	<tr>
+		<td> <%= link_to 'X', alta_profesores_path(:miembro => prof.id), :method => :post, :confirm => "¿Desea dar de permisos de profesor a #{prof.nombre} #{prof.apellido}?" %>  </td>
+		<td> <%= prof.matricula %> </td>
+		<td> <%= prof.nombre %> <%= prof.apellido %> </td>
+	</tr>
+	<% end %>
+</table>

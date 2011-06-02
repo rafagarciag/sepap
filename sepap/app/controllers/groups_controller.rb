@@ -34,20 +34,19 @@ load_and_authorize_resource
   end
   
   #POST /grupos/1
-  def show_resumen #cuando se utiliza el buscador
-   @group = Group.find(params[:group_id])
-   if Problem.where(:numero => params[:num]) #checa si existe el numero de problema
-   intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id)
-   @con_intento = []
-   intentos.each do |i|
-   if i_grupo = i.user.group #checar priemro si el usuario pertenece a un grupo
-   if i_grupo.id == @group.id #luego checa si es el grupo que buscamos
-   @con_intento << i
-   end
-   end
-   end
-  
-end
+	def show_resumen #cuando se utiliza el buscador
+		@group = Group.find(params[:group_id])
+		if Problem.where(:numero => params[:num]) #checa si existe el numero de problema
+			intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id)
+			@con_intento = []
+			intentos.each do |i|
+			if i_grupo = i.user.group #checar priemro si el usuario pertenece a un grupo
+				if i_grupo.id == @group.id #luego checa si es el grupo que buscamos
+					@con_intento << i
+				end
+			end
+		end 
+	end
 
    respond_to do |format|
       format.html
@@ -64,13 +63,13 @@ end
   
    if FileTest.exist?("#{nombre_archivo}")
    archivo = File.new("#{nombre_archivo}", "r")
-@codigo = ""
-archivo.each {|line|
-@codigo << line
-}
-
-archivo.close
-end
+	@codigo = ""
+	archivo.each {|line|
+		@codigo << line
+	}
+	
+	archivo.close
+	end
 
    respond_to do |format|
       format.html

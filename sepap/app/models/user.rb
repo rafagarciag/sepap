@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	def self.find_for_authentication(conditions) 
 		conditions[:matricula].downcase! 
 		super(conditions) 
-	end 
+	end
 
 
   # Include default devise modules. Others available are:

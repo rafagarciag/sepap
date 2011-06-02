@@ -20,6 +20,9 @@ Sepap::Application.routes.draw do
 		match 'grupos/:group_id/:user_id' => 'Groups#show_consulta', :as => :show_consulta
 		match 'grupos/:group_id/:user_id/:problem_id' => 'Groups#show_codigo', :as => :show_codigo, :via => :get
 
+	match 'admin/alta' => 'Admin#alta_profesores_lista', :as => :alta_profesores_lista, :via => :get
+	match 'admin/alta/:miembro' => 'Admin#alta_profesores', :as => :alta_profesores, :via => :post
+	
 	devise_for :users
 
 	get "home/index"
