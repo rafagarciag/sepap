@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 Sepap::Application.routes.draw do
+  get "historial/index"
+
   get "admin/index"
 
 	resources :attempts
