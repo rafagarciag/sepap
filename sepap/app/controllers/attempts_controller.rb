@@ -5,6 +5,7 @@ class AttemptsController < ApplicationController
   # GET /attempts.xml
   def index
     @attempts = Attempt.all
+    @tab = "hist"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -115,6 +116,20 @@ class AttemptsController < ApplicationController
 		
 		#se llama al compilador
 		resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+		
+		if resultado.include? "ACEPTADO"
+			resultado = "Aceptado"
+			
+			elsif resultado.include? "RECHAZADO"
+				resultado = "Rechazado"
+			
+			elsif resultado.include? "Error de compilación"
+				resultado = "Error de compilación"
+			
+			elsif resultado.include? "Tiempo excedido"
+				resultado = "Tiempo excedido"
+
+		end
 
 		#en caso de producirse un error y no tener un resultado
 		@attempt.update_attribute(:resultado, "#{resultado}")
