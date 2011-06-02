@@ -1,5 +1,5 @@
 body{
-  background-image:url(../images/bg_pattern.jpg);
+  background-image:url(../images/bg_pattern.png);
 }
 
 div#contenido{
@@ -45,6 +45,7 @@ h3#menuTitulo{
 #yield{
   float:left;
   margin: 0px 0px 20px 0px;
+  width:790px;
 }
 
 #footer{

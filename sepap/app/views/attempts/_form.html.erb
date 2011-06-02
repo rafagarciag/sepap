@@ -24,9 +24,8 @@
   	<br />
     <select id="lenguaje" name="lenguaje"><option>Java</option><option>C/C++</option></select> 
   </div>
-
   <div class="actions">
-    <%= f.submit( "Subir solución", :onclick =>"clickBoton()")%>
+    <%= f.submit( "Subir solución", :onclick =>"clickBoton()", :class=>"botones")%>
     <%=image_tag("loading.gif", :size => "50x50", :id=>"loading")%>
   </div>
 <% end %>
