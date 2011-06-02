@@ -1,5 +1,28 @@
-<h1>Lista de intentos</h1>
+<h1>Historial de intentos</h1>
 
+<table>
+	<tr>
+		<th> Problema </th>
+		<th> Título </th>
+		<th> Aceptado </th>
+		<th> Rechazado </th>
+		<th> Error de compilación </th>
+		<th> Tiempo excedido </th>
+	</tr>
+	<% @attempts.each do |attempt| %>
+	<tr>
+		<td> <%= link_to attempt.numero_problema, attempt %> </td>
+		<td> <%= attempt.problem.titulo %> </td>
+		<td> <%= attempt.resultado %> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+	</tr>
+	<% end %>
+</table>
+<br />
+<br />
+<br />
 <table>
   <tr>
     <th>Numero problema</th>
