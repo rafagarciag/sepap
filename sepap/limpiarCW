@@ -1,0 +1,4 @@
+#!/bin/bash
+#Borra el cache de los uploads manejados por CarrierWave
+
+rm -r public/uploads/tmp/*
