@@ -15,7 +15,10 @@
 
 <p>
   <b>Resultado:</b>
-  <%= @attempt.resultado %>
+  <div id="<%= if @attempt.resultado=="Aceptado" "aceptado" end; %>">
+
+    <%= @attempt.resultado %>
+  </div>
 </p>
 
 <% if @attempt.resultado.include? 'Error de compilación' %>
