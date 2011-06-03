@@ -4,7 +4,8 @@ class AttemptsController < ApplicationController
   # GET /attempts
   # GET /attempts.xml
   def index
-    @attempts = Attempt.all
+
+    @attempts = current_user.attempts.select('*, count(id) as conteo').group(:resultado)
     @tab = "hist"
 
     respond_to do |format|
@@ -120,14 +121,14 @@ class AttemptsController < ApplicationController
 		if resultado.include? "ACEPTADO"
 			resultado = "Aceptado"
 			
-			elsif resultado.include? "RECHAZADO"
-				resultado = "Rechazado"
-			
 			elsif resultado.include? "Error de compilación"
 				resultado = "Error de compilación"
 			
 			elsif resultado.include? "Tiempo excedido"
 				resultado = "Tiempo excedido"
+			
+			else 
+				resultado = "Rechazado"
 
 		end
 
