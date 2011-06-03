@@ -6,6 +6,7 @@
 #===============================================
 javaPID=$1
 tiempoLimite=$2
+
 limite=$(expr $(expr $tiempoLimite \* 2) + 2)	#se hace un sleep de 0.5 segundos, por es es *2
 tope=$(expr $tiempoLimite \* 2)
 

@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 	attr_accessible :email, :password, :password_confirmation, :remember_me, :nombre, :apellido, :matricula, :admin, :profesor, :group_id 
   
 	#Relaciones con otras clases
+	has_many :attempts
 	has_many :problems
 	belongs_to :group
 
