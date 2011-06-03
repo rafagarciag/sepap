@@ -1,7 +1,20 @@
 <h2>Editar Usuario</h2>
 <%@tab="editU"%>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count>1? "#{@user.errors.count} Errores":"#{@user.errors.count} Error" %></h2>
+
+      <ul>
+      <% @user.errors.each do |attr_name, message| %>
+        <%if message=="can't be blank"
+        	message="Se requiere la contraseña actual para realizar los cambios"
+        end%>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <p><%= f.label :email, 'Correo Electrónico' %><br />
   <%= f.text_field :email %></p>
@@ -18,7 +31,7 @@
   <p><%= f.label :password_confirmation, 'Confirmar nueva contraseña' %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password, 'Contraseña Actual'%> <i>(requerimos tu contraseña actual para registrar los cambios)</i><br />
+  <p><%= f.label :current_password, 'Contraseña Actual'%><br />
   <%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Actualizar información" %></p>
