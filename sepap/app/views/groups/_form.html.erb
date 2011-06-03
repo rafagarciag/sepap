@@ -1,11 +1,11 @@
 <%= form_for@group, :html => {:multipart => true} do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+      <h2><%= @group.errors.count>1? "#{@group.errors.count} Errores":"#{@group.errors.count} Error" %></h2>
 
       <ul>
-      <% @group.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @group.errors.each do |attr_name, message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>

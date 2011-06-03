@@ -1,11 +1,11 @@
 <%= form_for @attempt, :html => {:multipart => true} do |f| %>
   <% if @attempt.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@attempt.errors.count, "error") %> prohibited this attempt from being saved:</h2>
+      <h2><%= @attempt.errors.count>1? "#{@attempt.errors.count} Errores":"#{@beneficiario.errors.count} Error" %></h2>
 
       <ul>
-      <% @attempt.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @attempt.errors.each do |attr_name, message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
