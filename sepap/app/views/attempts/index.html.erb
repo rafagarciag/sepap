@@ -9,43 +9,19 @@
 		<th> Error de compilación </th>
 		<th> Tiempo excedido </th>
 	</tr>
-	<% @attempts.each do |attempt| %>
+	<% @problemas.each do |problema| %>
 	<tr>
-		<td> <%= link_to attempt.numero_problema, attempt %> </td>
-		<td> <%= attempt.problem.titulo %> </td>
-		<td> <%= attempt.conteo %> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
+		<% attempt = @attempts.where(:numero_problema => problema.numero_problema) %>
+		<td> <%= link_to problema.numero_problema, attempt.first %> </td>
+		<td> <%= attempt.first.problem.titulo %> </td>
+		<td> <%= attempt.select('count(id) as conteoAceptado').where(:resultado => "Aceptado").first.conteoAceptado %> </td>
+		<td> <%= attempt.select('count(id) as conteoR').where(:resultado => "Rechazado").first.conteoR %> </td>
+		<td> <%= attempt.select('count(id) as conteoE').where(:resultado => "Error de compilación").first.conteoE %> </td>
+		<td> <%= attempt.select('count(id) as conteoTE').where(:resultado => "Tiempo excedido").first.conteoTE %> </td>
 	</tr>
 	<% end %>
 </table>
 <br />
-<br />
-<br />
-<table>
-  <tr>
-    <th>Numero problema</th>
-    <th>Resultado</th>
-    <th>Usuario</th>
-    <th>Problema</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @attempts.each do |attempt| %>
-  <tr>
-    <td><%= attempt.numero_problema %></td>
-    <td><%= attempt.resultado %></td>
-    <td><%= attempt.user.nombre %></td>
-    <td><% attempt.problem %></td>
-    <td><%= link_to 'Ver', attempt %></td>
-    <td><%= link_to image_tag('Edit.jpg'), edit_attempt_path(attempt) %></td>
-    <td><%= link_to image_tag('Delete.jpg'), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
 <br />
 

@@ -4,9 +4,11 @@ class AttemptsController < ApplicationController
   # GET /attempts
   # GET /attempts.xml
   def index
-
-    @attempts = current_user.attempts.select('*, count(id) as conteo').group(:resultado)
-    @tab = "hist"
+	@tab = "hist"
+	@problemas = current_user.attempts.select('numero_problema').group(:numero_problema)
+    @attempts = current_user.attempts
+    
+    
 
     respond_to do |format|
       format.html # index.html.erb
