@@ -31,8 +31,7 @@ ActiveRecord::Schema.define(:version => 20110528220301) do
     t.datetime "updated_at"
     t.string   "campus"
     t.string   "semestre"
-    t.integer  "ano"
-    t.string   "mes"
+    t.date     "fecha"
     t.string   "miembros"
   end
 
