@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
 	belongs_to :group
 
 	#Validaciones para la forma
+	validates_presence_of :email, :message => "El correo no puede estar en blanco"
+	validates_presence_of :password, :message => "La contraseña no puede estar en blanco"
 	validates_presence_of :nombre, :message => "El nombre no puede estar en blanco"
 	validates_presence_of :apellido, :message => "El apellido no puede estar en blanco"
 	validates_presence_of :matricula, :message => "La matrícula no puede estar en blanco"
