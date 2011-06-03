@@ -1,7 +1,7 @@
 <%= form_for @problem, :html => {:multipart => true} do |f| %>
   <% if @problem.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
+      <h2><%= @problem.errors.count>1? "#{@problem.errors.count} Errores":"#{@problem.errors.count} Error" %></h2>
 
       <ul>
       <% @problem.errors.each do |attr_name, message| %>
