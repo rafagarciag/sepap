@@ -23,18 +23,29 @@ class AttemptsController < ApplicationController
     
 	#Desplegar el error de compilación en caso de existir
     if @attempt.resultado.include? 'Error de compilación'
-    	archivo = File.new("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error", "r")
+    	if FileTest.exist?("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error")
+			archivo = File.new("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error", "r")
 
-    	@error = ""
-  		archivo.each {|line|
-  			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
-  			#linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
-  			#linea = line.gsub(/\/([a-z]|sepap|((a|l)[0-9]+)|[0-9]+)+/, "")
-  			linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
-  			@error << linea
-		}
-		archivo.close
+			@error = ""
+	  		archivo.each {|line|
+	  			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
+	  			#linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
+	  			#linea = line.gsub(/\/([a-z]|sepap|((a|l)[0-9]+)|[0-9]+)+/, "")
+	  			linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
+	  			@error << linea
+			}
+			archivo.close
+		end
     end
+    
+    if FileTest.exist?("#{@attempt.code}")
+		source = File.new("#{@attempt.code}", "r")
+		@codigo = ""
+		source.each {|line|
+			@codigo << line
+		}
+		source.close
+	end
     
     respond_to do |format|
       format.html # show.html.erb

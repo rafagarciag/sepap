@@ -12,7 +12,7 @@
 	<% @problemas.each do |problema| %>
 	<tr>
 		<% attempt = @attempts.where(:numero_problema => problema.numero_problema) %>
-		<td> <%= link_to problema.numero_problema, attempt.first %> </td>
+		<td> <%= link_to problema.numero_problema, attempt.last %> </td>
 		<td> <%= attempt.first.problem.titulo %> </td>
 		<td> <%= attempt.select('count(id) as conteoAceptado').where(:resultado => "Aceptado").first.conteoAceptado %> </td>
 		<td> <%= attempt.select('count(id) as conteoR').where(:resultado => "Rechazado").first.conteoR %> </td>

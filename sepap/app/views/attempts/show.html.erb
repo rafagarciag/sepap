@@ -22,6 +22,11 @@
 	<%= text_area_tag 'errorP', @error , :disabled => true, :size => "90x40" %>
 <% end %>
 
+<br />
+<br />
+Código fuente:
+<%= text_area_tag 'codigo', @codigo , :disabled => true, :size => "90x40" %>
+
 
 <%if current_user.admin? || current_user.profesor?%>
 	<%= link_to 'Editar', edit_attempt_path(@attempt) %>
