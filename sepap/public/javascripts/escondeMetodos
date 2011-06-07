@@ -1,0 +1,5 @@
+$j(document).ready(function(){
+  $j("#btnModulo").click(function(){
+    $j(this).hide();
+  });
+});
