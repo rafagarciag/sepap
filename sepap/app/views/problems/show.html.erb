@@ -4,11 +4,13 @@
   <b>Problema <%= @problem.numero %></b>
 </p>
 
-<p>
+<p>  
   <% if user_signed_in? %>
-  <%= link_to "Enviar solucion", nuevo_intento_path( :numero => @problem.numero)%>
+    <%= link_to "Enviar solución", nuevo_intento_path( :numero => @problem.numero), :class=>"botonoff botones"%>
   <% end %>
 </p>
+
+
 <br />
 <p>
   <%= @problem.descripcion.html_safe %>
@@ -22,11 +24,17 @@
 			</p>
 	<% end %>
 <% end %>
+<p>
+ <% if user_signed_in? %>
+  <%= link_to "Enviar solución", nuevo_intento_path( :numero => @problem.numero), :class=>"botonoff botones"%>
+  <% end %>
+</p>
 
 <% if user_signed_in? %>
 	<%if current_user.admin? || current_user.profesor?%>
 		<%= link_to 'Editar', edit_problem_path(@problem) %>
 	<% end %>
 <% end %>
+
 <%= link_to 'Lista de problemas', problems_path %>
  
