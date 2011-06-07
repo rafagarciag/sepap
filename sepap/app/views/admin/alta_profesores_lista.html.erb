@@ -8,7 +8,7 @@
 	</tr>
 	<% @profesores.each do |prof| %>
 	<tr>
-		<td> <%= link_to 'X', alta_profesores_path(:miembro => prof.id), :method => :post, :confirm => "¿Desea dar de permisos de profesor a #{prof.nombre} #{prof.apellido}?" %>  </td>
+		<td> <%= link_to image_tag('Aceptar.jpg'), alta_profesores_path(:miembro => prof.id), :method => :post, :confirm => "¿Desea dar de permisos de profesor a #{prof.nombre} #{prof.apellido}?" %>  </td>
 		<td> <%= prof.matricula %> </td>
 		<td> <%= prof.nombre %> <%= prof.apellido %> </td>
 	</tr>
