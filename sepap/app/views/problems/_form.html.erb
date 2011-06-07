@@ -29,10 +29,10 @@
   <div class="field">
   	Tipo de problema 
   	<br />
-  	<%= f.radio_button :modulo, 'false' %>
+  	<%= f.radio_button :modulo, 'false', :id=>"btnCompleto"%>
   	<%= f.label :modulo_false, 'Completo' %>
 	<br />
-	<%= f.radio_button :modulo, 'true' %>
+	<%= f.radio_button :modulo, 'true', :id=>"btnModulo" %>
 	<%= f.label :modulo_true, 'Módulos' %>
   </div>
   
@@ -48,7 +48,7 @@
 		<%= image_tag "infoicon.png" ,:size => "20x20"%><br />
 		<%= f.file_field :solution %>
 	  </div>
-	  <div class="field">
+	  <div class="field" id="divModulo">
 		<%= f.label :metodo, 'Metodo(s) utilizado(s) (archivo compilado)' %><br />
 		<%= f.file_field :metodo %>
 	  </div>
@@ -93,6 +93,7 @@
   </fieldset>
   <br />
   <div class="actions">
-    <%= f.submit "Registrar Cambios"%>
+    <%= f.submit( "Registrar Cambios", :onclick =>"clickBoton()", :class=>"botones")%>
+    <%=image_tag("loading.gif", :size => "50x50", :id=>"loading")%>
   </div>
 <% end %>
