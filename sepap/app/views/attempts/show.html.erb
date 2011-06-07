@@ -15,10 +15,19 @@
 
 <p>
   <b>Resultado:</b>
-  <div id="<%= if @attempt.resultado=="Aceptado" "aceptado" end; %>">
-
-    <%= @attempt.resultado %>
-  </div>
+    <%if @attempt.resultado == "Aceptado"%>
+    <div id="aceptado" class="respuesta">
+    <%= image_tag "verde.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    </div>
+    <%elsif @attempt.resultado == "Rechazado" %>
+    <div id="rechazado" class="respuesta">
+    <%= image_tag "magenta.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    </div>
+    <%else%>
+    <div id="error" class="respuesta">
+    <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    </div>
+    <%end%>
 </p>
 
 <% if @attempt.resultado.include? 'Error de compilación' %>
