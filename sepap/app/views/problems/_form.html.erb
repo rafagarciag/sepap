@@ -43,13 +43,20 @@
   
   <fieldset>
   	  <legend><b>Solución</b></legend>
+	  
 	  <div class="field">
 		<%= f.label :solution, 'Ejecutable con el main' %> 
-		<%= image_tag "infoicon.png" ,:size => "20x20"%><br />
+		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoSol"%>
+		<span id="spInfoSol", class="tooltip">Archivo compilado p.e. Problema1001.class</span>
+		<br />
 		<%= f.file_field :solution %>
 	  </div>
+	  
 	  <div class="field" id="divModulo">
-		<%= f.label :metodo, 'Metodo(s) utilizado(s) (archivo compilado)' %><br />
+		<%= f.label :metodo, 'Metodo(s) utilizado(s)' %>
+		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoMod"%>
+		<span id="spInfoMod", class="tooltip"> Archivo compilado con los metodos que se le pediran al alumno p.e. Metodo1001.class</span>
+		<br />
 		<%= f.file_field :metodo %>
 	  </div>
   </fieldset>
@@ -59,7 +66,10 @@
   <fieldset>
       <legend><b>Entradas</b></legend>
       <div class="field">
-        <%= f.label :input, 'Entradas 1' %><br />
+        <%= f.label :input, 'Entradas 1' %>
+        <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoEntrada"%>
+		<span id="spInfoEntrada", class="tooltip"> Archivos con las entradas que se evaluara el problema.</span>
+        <br />
         <%= f.file_field :input %>
       </div>
       <div class="field">
@@ -77,7 +87,10 @@
   <fieldset>
       <legend><b>Salidas</b></legend>
       <div class="field">
-        <%= f.label :output, 'Salidas 1' %><br />
+        <%= f.label :output, 'Salidas 1' %>
+        <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoSalida"%>
+		<span id="spInfoSalida", class="tooltip"> Archivos con las salidas que se esperan de acuerdo a las entradas.</span>
+        <br />
         <%= f.file_field :output %>
       </div>
       

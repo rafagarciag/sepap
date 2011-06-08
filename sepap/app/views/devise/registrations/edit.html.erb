@@ -25,7 +25,10 @@
   <p><%= f.label :apellido, 'Apellidos' %><br />
   <%= f.text_field :apellido %></p>
 
-  <p><%= f.label :password, 'Nueva contraseña' %> <i>(dejar en blanco si no se desea cambiar contraseña)</i><br />
+  <p><%= f.label :password, 'Nueva contraseña' %> 
+  		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoPw"%>
+		<span id="spInfoPw", class="tooltip"> Deja el campo en blanco si no quieres cambiar tu contraseña.</span>
+  <br />
   <%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation, 'Confirmar nueva contraseña' %><br />
