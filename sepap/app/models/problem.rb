@@ -4,7 +4,7 @@ class Problem < ActiveRecord::Base
 	attr_accessible :numero, :titulo, :descripcion, :solution, :input, :input2, :input3, :output, :output2, :output3, :id, :tiempo, :modulo, :metodo
 	
 	#Relaciones con otras clases
-	has_many :attempts
+	has_many :attempts, :dependent => :delete_all
 	belongs_to :user
 
 	#Validaciones para la forma

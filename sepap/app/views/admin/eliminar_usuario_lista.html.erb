@@ -1,0 +1,16 @@
+<h1> Eliminar Usuarios </h1>
+
+<table>
+	<tr>
+		<th align="left" width=100 > Eliminar </th>
+		<th align="left" width=100 > Matrícula </th>
+		<th align="left" > Nombre </th>
+	</tr>
+	<% @usuarios.each do |usuario| %>
+	<tr>
+		<td> </td>
+		<td> <%= usuario.matricula %> </td>
+		<td> <%= usuario.nombre %> <%= usuario.apellido %> </td>
+	</tr>
+	<% end %>
+</table>
