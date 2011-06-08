@@ -4,9 +4,11 @@ class AdminController < ApplicationController
 		#el index es estático, solo tiene links a las opciones
 	end
   
+	# Se despliega una lista con los usuarios con matricula 'L00123456'
+	#	y que aun no tienen derechos de profesor
 	def alta_profesores_lista
 		@profesores = []
-                @tab = "admin"
+		@tab = "admin"
 		usuarios = User.select('id, matricula, nombre, apellido, admin, profesor')
 		usuarios.each do |usuario|
 			if (usuario.matricula[0].chr == "l") || (usuario.matricula[0].chr == "L")
@@ -20,8 +22,9 @@ class AdminController < ApplicationController
 		end
 	end
   
+	# Se le dan derechos de profesor a un usuario
 	def alta_profesores
-                @tab = "admin"
+		@tab = "admin"
 	  	prof = params[:miembro]
 	  	
 	  		x = User.find(prof)
@@ -29,12 +32,17 @@ class AdminController < ApplicationController
 	  		x.admin = false
 	  		x.estudiante = false
 	  		x.save
-
 	  	
 	  	respond_to do |format|
 		  format.html { redirect_to(alta_profesores_lista_path)}
 		  format.xml { head :ok }
 		end
+	end
+	
+
+	def eliminar_usuario_lista
+		@tab = "admin"	
+		@usuarios = User.select('id, matricula, nombre, apellido').order(:matricula)
 	end
 
 end
