@@ -2,6 +2,8 @@ body{
   background-image:url(../images/bg_pattern.png);
 }
 
+a img { border:none; }
+
 div#contenido{
   background-color:#FFF;
   overflow:auto;
