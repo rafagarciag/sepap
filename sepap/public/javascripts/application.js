@@ -15,9 +15,25 @@ $j(document).ready(function(){
     $j("#spInfoSalida").hide()
 
     $j("#spInfoPw").hide()
+    
+     $j("#spInfoMiembros").hide()
+     
+     $j("#spInfoCodigo").hide()
+     
+     $j("#agregaalumno").hide()
   
   $j("#btnCompleto").click(function(){
     $j("#divModulo").hide();
+  });
+  
+  
+  
+    $j("#infoCodigo").mouseover(function(){
+    $j("#spInfoCodigo").show();
+  });
+  
+  $j("#infoCodigo").mouseout(function(){
+    $j("#spInfoCodigo").hide();
   });
   
   
@@ -70,6 +86,20 @@ $j(document).ready(function(){
   });
   
   
+  
+    $j("#infoMiembros").mouseover(function(){
+    $j("#spInfoMiembros").show();
+  });
+  
+    $j("#infoMiembros").mouseout(function(){
+    $j("#spInfoMiembros").hide();
+  });
+
+
+  $j("#btnAgregar").click(function(){
+    $j("#textoAgregar").hide();
+    $j("#agregaalumno").show();
+  });  
   
   $j("#btnModulo").click(function(){
     $j("#divModulo").show();
