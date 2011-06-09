@@ -92,6 +92,28 @@ load_and_authorize_resource
     @group = Group.find(params[:id])
   end
 
+  def agrega_alumno
+  #    miembro = User.find_by_matricula("#{matricula}")
+	#    if miembro != nil
+	#		miembro.group_id = @group.id
+	#		miembro.save
+	#	else
+	#		miembro = User.new
+	#		miembro.matricula = "#{matricula}"
+	#		miembro.nombre = "#{nombre}"
+	#		miembro.apellido = "#{apellidos}"
+	#		miembro.email = "#{matricula}@itesm.mx"
+	#		miembro.estudiante = true
+	#		miembro.profesor = false
+	#		miembro.admin = false
+	#		miembro.password = "#{matricula}"
+	#		miembro.password_confirmation = "#{matricula}"
+	#		miembro.group_id = @group.id
+	#		miembro.save
+	#	end
+    
+  end
+
   # POST /groups
   # POST /groups.xml
   def create
