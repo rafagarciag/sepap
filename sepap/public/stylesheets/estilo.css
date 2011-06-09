@@ -165,3 +165,7 @@ h1{
     -webkit-border-radius:5px;
     border-radius:5px;
 }
+    
+#historial{
+	text-align:center;
+}
