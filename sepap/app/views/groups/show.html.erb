@@ -53,5 +53,22 @@
 </table>
 </br>
 <%=  image_tag "agregar.png", :size=>"20x20", :id=>"btnAgregar" %> <span id="textoAgregar">Agregar un alumno</span>
-<span id="agregaalumno" > Falta poner la formita </span>
+<span id="agregaalumno" >
+<%= form_tag(agrega_alumno_path(:group_id => @group.id), :method => :post) do %>
+	Matrícula:
+	</br>
+	 <%= text_field_tag 'matricula' %>
+	</br>
+	Nombre:
+	</br>
+	 <%= text_field_tag 'nombre' %>
+	</br>
+	Apellido:
+	</br>
+	 <%= text_field_tag 'apellidos' %>
+	</br>
+	</br>
+	<%= submit_tag "Agregar" %>
+<% end %> 
+</span>
 
