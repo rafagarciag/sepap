@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 	attr_accessible :email, :password, :password_confirmation, :remember_me, :nombre, :apellido, :matricula, :admin, :profesor, :group_id 
   
 	#Relaciones con otras clases
-	has_many :attempts
+	has_many :attempts,  :dependent => :delete_all	#Se eliminan los attempts si se elimina un alumno
 	has_many :problems
 	belongs_to :group
 
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 	#Esto se utiliza para que no acepte A00123456 y a00123456 como diferentes
 	validates_uniqueness_of :matricula, :case_sensitive => false, :message => "Ya existe un usuario con la misma matrícula"
 	#Valida longitud minima y maxima de nombre y apellido
-	validates_length_of :nombre, :maximum => 20, :message => "El nombre esta muy largo"
-	validates_length_of :apellido, :maximum => 40, :message => "El apellido esta muy largo"
+	validates_length_of :nombre, :maximum => 40, :message => "El nombre no puede tener más de 40 caracteres"
+	validates_length_of :apellido, :maximum => 50, :message => "El apellido no puede tener más de 50 caracteres"
 
 end

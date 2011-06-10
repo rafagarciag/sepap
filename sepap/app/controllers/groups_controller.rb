@@ -16,6 +16,7 @@ load_and_authorize_resource
   # GET /groups/1
   # GET /groups/1.xml
   def show
+  	@tab = "listaG"
     @group = Group.find(params[:id])
     @miembros = User.where(:group_id => @group.id).order(:matricula) #regresa los miembros del grupo, ordenados por matricula
     
@@ -156,9 +157,23 @@ load_and_authorize_resource
   def sacar
 	usuario = User.find(params[:miembro])
 	grupo = Group.find(params[:group_id])
+	
+	puts "///////////////////////////////////"
+	puts usuario.nombre
+	puts usuario.matricula
+	puts usuario.group.clave
+	puts usuario.group_id
+	puts "//////////////////////////////////"
 
 	usuario.group_id = nil
-	usuario.save
+	if usuario.save
+		puts "LO GUARDO"
+	else
+		puts "NO LO GUARDOOOO"
+	end
+	
+	puts "///////// LO NUEVO /////////////"
+	puts usuario.group_id
 
     respond_to do |format|
       format.html { redirect_to(grupo_path(:id => grupo.id))}
