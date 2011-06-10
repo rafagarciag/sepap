@@ -93,6 +93,45 @@ load_and_authorize_resource
     @group = Group.find(params[:id])
   end
 
+  def agrega_alumno
+      @group = Group.find(params[:group_id])
+      matricula = (params[:matricula]).squeeze(" ").strip.downcase
+      nombre = (params[:nombre]).squeeze(" ").strip
+      apellidos = (params[:apellidos]).squeeze(" ").strip
+      miembro = User.find_by_matricula("#{matricula}")
+      puts "busco"
+	    if miembro != nil
+			miembro.group_id = @group.id
+			puts "encontro"
+		else
+			miembro = User.new
+			miembro.matricula = "#{matricula}"
+			miembro.nombre = "#{nombre}"
+			miembro.apellido = "#{apellidos}"
+			miembro.email = "#{matricula}@itesm.mx"
+			miembro.estudiante = true
+			miembro.profesor = false
+			miembro.admin = false
+			miembro.password = "#{matricula}"
+			miembro.password_confirmation = "#{matricula}"
+			miembro.group_id = @group.id
+		end
+		puts "salio del if"
+		if miembro.save
+		puts "grabo"
+		     respond_to do |format|
+                format.html { redirect_to(@group, :message => "Se agregó el alumno al grupo")}
+                format.xml { head :ok }
+             end
+        else
+        puts "no grabo"
+            respond_to do |format|
+                format.html { redirect_to(@group, :message => "Error al agregar el alumno")}
+                format.xml { head :ok }
+            end
+        end
+  end
+
   # POST /groups
   # POST /groups.xml
   def create

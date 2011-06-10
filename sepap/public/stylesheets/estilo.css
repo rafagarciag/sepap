@@ -2,6 +2,8 @@ body{
   background-image:url(../images/bg_pattern.png);
 }
 
+a img { border:none; }
+
 div#contenido{
   background-color:#FFF;
   overflow:auto;
@@ -146,4 +148,26 @@ h1{
 
 #resultado{
   margin: -30px 0px 0px 65px;
+}
+
+.tooltip{
+    position: absolute;
+    padding:6px 8px 8px 8px;
+    background:#222;
+    z-index:10;
+    display:inline-block; /*important*/
+    /*font*/
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:11px;
+    line-height:16px;
+    color:#fff;
+    /*css3 rounded corners*/
+    -moz-border-radius:5px;
+    -khtml-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+}
+    
+#historial{
+	text-align:center;
 }
