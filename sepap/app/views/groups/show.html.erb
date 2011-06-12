@@ -52,10 +52,10 @@
 	<% end %>
 </table>
 </br>
-<%=  image_tag "agregar.png", :size=>"20x20", :id=>"btnAgregar" %> <span id="textoAgregar">Agregar un alumno</span>
+<%=  image_tag "agregar.png", :size=>"20x20", :id=>"btnAgregar" %> <span id="textoAgregar">Agregar un alumno a este grupo</span>
 <span id="agregaalumno" >
 <%= form_tag(agrega_alumno_path(:group_id => @group.id), :method => :post) do %>
-	Matrícula:
+	Matrícula (con formato A00123456):
 	</br>
 	 <%= text_field_tag 'matricula' %>
 	</br>
@@ -63,7 +63,7 @@
 	</br>
 	 <%= text_field_tag 'nombre' %>
 	</br>
-	Apellido:
+	Apellidos:
 	</br>
 	 <%= text_field_tag 'apellidos' %>
 	</br>
