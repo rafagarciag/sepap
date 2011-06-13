@@ -37,22 +37,32 @@ load_and_authorize_resource
   #POST /grupos/1
 	def show_resumen #cuando se utiliza el buscador
 		@group = Group.find(params[:group_id])
-		if Problem.where(:numero => params[:num]) #checa si existe el numero de problema
-			intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id)
-			@con_intento = []
-			intentos.each do |i|
-			if i_grupo = i.user.group #checar priemro si el usuario pertenece a un grupo
-				if i_grupo.id == @group.id #luego checa si es el grupo que buscamos
-					@con_intento << i
-				end
+		@con_intento = []
+		@sin_intento = []
+		numero = params[:num]
+
+		if Problem.find_by_numero(numero) #checa si existe el numero de problema
+			miembros = @group.users.order(:matricula)	#Todos los miembros del grupo
+			
+			miembros.each do |m|
+				#primero checa si el usuario ya tiene algun attempt de ese numero
+				if m.attempts.find_by_numero_problema(numero)
+					
+					intentos = m.attempts.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => numero).group(:user_id)
+					intentos.each do |i|
+						@con_intento << i
+					end
+				else
+					@sin_intento << m
 			end
-		end 
+		end
 	end
 
    respond_to do |format|
       format.html
     end
   end
+  
   
   def show_codigo
    @usuario = User.find(params[:user_id])

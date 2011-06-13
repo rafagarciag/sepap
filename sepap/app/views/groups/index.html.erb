@@ -19,8 +19,8 @@
     <td width=100><%= group.semestre %></td>
     <td width=100><%= group.fecha %></td>
     <td width=100><%= group.user.nombre %></td>
-    <td><%= link_to image_tag('Edit.jpg'), edit_group_path(group) %></td>
-    <td><%= link_to image_tag('Delete.jpg'), group, :confirm => '¿Está seguro que desea borrar el grupo?', :method => :delete %></td>
+    <td><%= link_to image_tag('Edit.jpg', :title => 'Editar grupo'), edit_group_path(group) %></td>
+    <td><%= link_to image_tag('Delete.jpg', :title => 'Eliminar grupo'), group, :confirm => '¿Está seguro que desea borrar el grupo?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

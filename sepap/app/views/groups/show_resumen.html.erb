@@ -12,9 +12,9 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 		<th width=90 align="left"> N&uacute;mero de problema </th>
 		<th width=90 align="left"> Alumno </th>
 		<th width=110 align="left"> Resultado </th>
-		<th align="left"> Lenguaje </th>
-		<th align="left"> Intentos </th>
-		<th align="left"> Fecha </th>
+		<th width =100 align="left"> Lenguaje </th>
+		<th width =80 align="left"> Intentos </th>
+		<th width =100 align="left"> Fecha de último intento</th>
 	</tr>
 	
 	<% @con_intento.each do |i| %>
@@ -25,6 +25,17 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 		<td><%= i.lenguaje %> </td>
 		<td><%= i.conteo %></td>
 		<td><%= i.created_at.strftime("%d / %m / %Y") %> </td>
+	</tr>
+	<% end %>
+	
+	<% @sin_intento.each do |i| %>
+	<tr>
+		<td><%= params[:num] %></td>
+		<td><%= i.matricula %></td>
+		<td> -- </td>
+		<td> -- </td>
+		<td> 0 </td>
+		<td> -- </td>
 	</tr>
 	<% end %>
 

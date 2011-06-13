@@ -12,8 +12,9 @@ class Problem < ActiveRecord::Base
 	validates_presence_of :titulo, :message => "Falta especificar el título del problema"
 	validates_presence_of :descripcion, :message => "Falta redactar la especificación del problema"
 	validates_presence_of :tiempo, :message => "Falta especificar el tiempo límite"
+	validates_inclusion_of :tiempo, :in => 1..40, :message => "El tiempo límite debe ser: >= 1 && <= 40 "
 	validates_uniqueness_of :numero, :message => "El número está duplicado"
-	validates_numericality_of :numero, :message => "El número de problema debe contener solamente números"
+	validates_numericality_of :numero, :only_integer => true, :message => "El número de problema debe contener solamente números enteros"
 	validates_numericality_of :tiempo, :message => "El tiempo límite debe contener solamente números"
 
 	validates_presence_of :solution, :on=>:create, :message => "Falta archivo de solución"

@@ -22,22 +22,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :tiempo, 'Tiempo límite (en segundos)' %><br />
+    <%= f.label :tiempo, 'Tiempo límite (en segundos, número entero)' %><br />
     <%= f.text_field :tiempo, :size => 4, :value => 15 %>
   </div>
   
   <div class="field">
   	Tipo de problema 
   	<br />
-  	<%= f.radio_button :modulo, 'false', :id=>"btnCompleto"%>
+  	<%= f.radio_button :modulo, 'false' %>
   	<%= f.label :modulo_false, 'Completo' %>
 	<br />
-	<%= f.radio_button :modulo, 'true', :id=>"btnModulo" %>
-	<%= f.label :modulo_true, 'Módulos' %>
+	<%= f.radio_button :modulo, 'true'%>
+	<%= f.label :modulo_true, 'Por módulos' %>
   </div>
   
   <div class="field">
-    <%= f.label :descripcion, 'Descripción' %><br />
+    <%= f.label :descripcion, 'Descripción (incluir tags de HTML para dar formato al texto)' %><br />
     <%= f.text_area :descripcion, :cols => 80, :rows => 40 %>
   </div>
   
@@ -47,7 +47,16 @@
 	  <div class="field">
 		<%= f.label :solution, 'Ejecutable con el main' %> 
 		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoSol"%>
-		<span id="spInfoSol", class="tooltip">Archivo compilado p.e. Problema1001.class</span>
+		<span id="spInfoSol", class="tooltip">
+			Archivo compilado con el 'main' del problema resuelto, <br />
+			el nombre debe iniciar con la palabra 'Problema' más <br />
+			el núnero del problema <br />
+			Ejemplo:
+			<br />
+			<code>
+				Problema1001.class
+			</code>
+		</span>
 		<br />
 		<%= f.file_field :solution %>
 	  </div>
@@ -55,7 +64,17 @@
 	  <div class="field" id="divModulo">
 		<%= f.label :metodo, 'Metodo(s) utilizado(s)' %>
 		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoMod"%>
-		<span id="spInfoMod", class="tooltip"> Archivo compilado con los metodos que se le pediran al alumno p.e. Metodo1001.class</span>
+		<span id="spInfoMod", class="tooltip"> 
+			Archivo compilado con los métodos que se utilizan en el main, <br />
+			el nombre debe iniciar con la palabra 'Metodo' más el <br />
+			número del problema <br />
+			Ejemplo:
+			<br />
+			<code>
+				Metodo1001.class
+			</code>
+		
+		</span>
 		<br />
 		<%= f.file_field :metodo %>
 	  </div>
@@ -68,7 +87,17 @@
       <div class="field">
         <%= f.label :input, 'Entradas 1' %>
         <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoEntrada"%>
-		<span id="spInfoEntrada", class="tooltip"> Archivos con las entradas que se evaluara el problema.</span>
+		<span id="spInfoEntrada", class="tooltip"> 
+		Archivos de texto plano con las entradas para evaluar el problema,  <br />
+		uno de estos tres se tomará al azar para la evaluación. <br />
+		Es muy importante que cada uno de estos archivos de entrada coincida <br />
+		con su respectivo archivo de salida en el orden en que aquí se ingresaron <br />
+		Ejemplo: <br />
+		<code>
+			El problema 1001 evaluado con el archivo ingresado en 'Entradas 1' <br />
+			debe producir como salida lo que se incluye en el archivo 'Salidas 1'
+		</code>
+		</span>
         <br />
         <%= f.file_field :input %>
       </div>
@@ -89,7 +118,17 @@
       <div class="field">
         <%= f.label :output, 'Salidas 1' %>
         <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoSalida"%>
-		<span id="spInfoSalida", class="tooltip"> Archivos con las salidas que se esperan de acuerdo a las entradas.</span>
+		<span id="spInfoSalida", class="tooltip"> 
+			Archivos de texto plano con las salidas que debe producir el problema <br />
+			al evaluarse con su respectivo archivo de entrada. <br />
+			Es muy importante que cada uno de estos archivos de salida coincida <br />
+			con su respectivo archivo de entrada en el orden en que aquí se ingresaron <br />
+			Ejemplo: <br />
+			<code>
+				El problema 1001 evaluado con el archivo ingresado en 'Entradas 1' <br />
+				debe producir como salida lo que se incluye en el archivo 'Salidas 1'
+			</code>
+		</span>
         <br />
         <%= f.file_field :output %>
       </div>
