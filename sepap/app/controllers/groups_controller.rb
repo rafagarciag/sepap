@@ -16,6 +16,7 @@ load_and_authorize_resource
   # GET /groups/1
   # GET /groups/1.xml
   def show
+  	@tab = "listaG"
     @group = Group.find(params[:id])
     @miembros = User.where(:group_id => @group.id).order(:matricula) #regresa los miembros del grupo, ordenados por matricula
     
@@ -36,22 +37,32 @@ load_and_authorize_resource
   #POST /grupos/1
 	def show_resumen #cuando se utiliza el buscador
 		@group = Group.find(params[:group_id])
-		if Problem.where(:numero => params[:num]) #checa si existe el numero de problema
-			intentos = Attempt.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => params[:num]).group(:user_id)
-			@con_intento = []
-			intentos.each do |i|
-			if i_grupo = i.user.group #checar priemro si el usuario pertenece a un grupo
-				if i_grupo.id == @group.id #luego checa si es el grupo que buscamos
-					@con_intento << i
-				end
+		@con_intento = []
+		@sin_intento = []
+		numero = params[:num]
+
+		if Problem.find_by_numero(numero) #checa si existe el numero de problema
+			miembros = @group.users.order(:matricula)	#Todos los miembros del grupo
+			
+			miembros.each do |m|
+				#primero checa si el usuario ya tiene algun attempt de ese numero
+				if m.attempts.find_by_numero_problema(numero)
+					
+					intentos = m.attempts.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => numero).group(:user_id)
+					intentos.each do |i|
+						@con_intento << i
+					end
+				else
+					@sin_intento << m
 			end
-		end 
+		end
 	end
 
    respond_to do |format|
       format.html
     end
   end
+  
   
   def show_codigo
    @usuario = User.find(params[:user_id])
@@ -93,25 +104,42 @@ load_and_authorize_resource
   end
 
   def agrega_alumno
-  #    miembro = User.find_by_matricula("#{matricula}")
-	#    if miembro != nil
-	#		miembro.group_id = @group.id
-	#		miembro.save
-	#	else
-	#		miembro = User.new
-	#		miembro.matricula = "#{matricula}"
-	#		miembro.nombre = "#{nombre}"
-	#		miembro.apellido = "#{apellidos}"
-	#		miembro.email = "#{matricula}@itesm.mx"
-	#		miembro.estudiante = true
-	#		miembro.profesor = false
-	#		miembro.admin = false
-	#		miembro.password = "#{matricula}"
-	#		miembro.password_confirmation = "#{matricula}"
-	#		miembro.group_id = @group.id
-	#		miembro.save
-	#	end
-    
+      @group = Group.find(params[:group_id])
+      matricula = (params[:matricula]).squeeze(" ").strip.downcase
+      nombre = (params[:nombre]).squeeze(" ").strip
+      apellidos = (params[:apellidos]).squeeze(" ").strip
+      miembro = User.find_by_matricula("#{matricula}")
+      puts "busco"
+	    if miembro != nil
+			miembro.group_id = @group.id
+			puts "encontro"
+		else
+			miembro = User.new
+			miembro.matricula = "#{matricula}"
+			miembro.nombre = "#{nombre}"
+			miembro.apellido = "#{apellidos}"
+			miembro.email = "#{matricula}@itesm.mx"
+			miembro.estudiante = true
+			miembro.profesor = false
+			miembro.admin = false
+			miembro.password = "#{matricula}"
+			miembro.password_confirmation = "#{matricula}"
+			miembro.group_id = @group.id
+		end
+		puts "salio del if"
+		if miembro.save
+		puts "grabo"
+		     respond_to do |format|
+                format.html { redirect_to(@group, :message => "Se agregó el alumno al grupo")}
+                format.xml { head :ok }
+             end
+        else
+        puts "no grabo"
+            respond_to do |format|
+                format.html { redirect_to(@group, :message => "Error al agregar el alumno")}
+                format.xml { head :ok }
+            end
+        end
   end
 
   # POST /groups
@@ -178,9 +206,23 @@ load_and_authorize_resource
   def sacar
 	usuario = User.find(params[:miembro])
 	grupo = Group.find(params[:group_id])
+	
+	puts "///////////////////////////////////"
+	puts usuario.nombre
+	puts usuario.matricula
+	puts usuario.group.clave
+	puts usuario.group_id
+	puts "//////////////////////////////////"
 
 	usuario.group_id = nil
-	usuario.save
+	if usuario.save
+		puts "LO GUARDO"
+	else
+		puts "NO LO GUARDOOOO"
+	end
+	
+	puts "///////// LO NUEVO /////////////"
+	puts usuario.group_id
 
     respond_to do |format|
       format.html { redirect_to(grupo_path(:id => grupo.id))}

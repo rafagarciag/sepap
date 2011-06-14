@@ -41,8 +41,11 @@ class AdminController < ApplicationController
 	
 
 	def eliminar_usuario_lista
-		@tab = "admin"	
-		@usuarios = User.select('id, matricula, nombre, apellido').order(:matricula)
+		@tab = "admin"
+		@usuarios = User.select('id, matricula, nombre, apellido').order(:matricula).page(params[:page]).per(5)
+		
+		#Se usa kaminari para paginación con el .page
+
 	end
 
 end

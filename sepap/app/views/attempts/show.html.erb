@@ -13,8 +13,10 @@
   <%= @attempt.user.matricula %>
 </p>
 
+<br />
+
 <p>
-  <b>Resultado:</b>
+
     <%if @attempt.resultado == "Aceptado"%>
     <div id="aceptado" class="respuesta">
     <%= image_tag "verde.ico" %><div id="resultado"><%= @attempt.resultado %></div>
@@ -41,10 +43,10 @@ Código fuente:
 
 
 <%if current_user.admin? || current_user.profesor?%>
-	<%= link_to 'Editar', edit_attempt_path(@attempt) %>
+	<% link_to 'Editar', edit_attempt_path(@attempt) %>
 <%end%>	
 
 <%if current_user.admin? || current_user.profesor?%>
-	<%= link_to 'Regresar', attempts_path %>
+	<% link_to 'Regresar', attempts_path %>
 <%end%>	
 

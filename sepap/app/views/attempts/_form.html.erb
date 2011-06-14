@@ -18,7 +18,21 @@
   <div class="field">
     <%= f.label :code, 'Código fuente' %>
     <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoCodigo"%>
-		<span id="spInfoCodigo", class="tooltip"> Archivo de codigo fuente p.e. Problema1001.java</span>
+		<span id="spInfoCodigo", class="tooltip"> 
+			Archivo de código fuente, es muy importante que el nombre inicie 
+			<br />
+			con la palabra 'Problema' o 'Método' según sea el caso, más el número 
+			<br />
+			de problema que está solucionando. 
+			<br />
+			Ejemplo:
+			<br />
+			<code>
+				Problema1001.java
+				<br />
+				Metodo1001.java
+			</code>
+		</span>
     <br />
     <%= f.file_field :code %>
   </div>

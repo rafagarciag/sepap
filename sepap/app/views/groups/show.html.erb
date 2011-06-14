@@ -45,13 +45,30 @@
 	</tr>
 	<% @miembros.each do |m| %>
 	<tr>
-		<td><%= link_to image_tag('Delete.jpg'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
+		<td><%= link_to image_tag('Delete.jpg', :title => 'Sacar alumno del grupo'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
 		<td><%= link_to m.matricula, show_consulta_path(:group_id => @group.id, :user_id => m.id) %></td>
 		<td><%= m.nombre %>&nbsp;<%= m.apellido %></td>
 	</tr>
 	<% end %>
 </table>
 </br>
-<%=  image_tag "agregar.png", :size=>"20x20", :id=>"btnAgregar" %> <span id="textoAgregar">Agregar un alumno</span>
-<span id="agregaalumno" > Falta poner la formita </span>
+<%=  image_tag "agregar.png", :size=>"20x20", :id=>"btnAgregar" %> <span id="textoAgregar">Agregar un alumno a este grupo</span>
+<span id="agregaalumno" >
+<%= form_tag(agrega_alumno_path(:group_id => @group.id), :method => :post) do %>
+	Matrícula (con formato A00123456):
+	</br>
+	 <%= text_field_tag 'matricula' %>
+	</br>
+	Nombre:
+	</br>
+	 <%= text_field_tag 'nombre' %>
+	</br>
+	Apellidos:
+	</br>
+	 <%= text_field_tag 'apellidos' %>
+	</br>
+	</br>
+	<%= submit_tag "Agregar" %>
+<% end %> 
+</span>
 

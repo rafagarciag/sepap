@@ -9,8 +9,6 @@
   <%if current_user.profesor? or current_user.admin? %>
     <li><%=link_to "Crear Problema", new_problem_path, :class=>"botones "+(@tab=="newP"? "botonon" : "botonoff")%></li>
     <li><%=link_to "Grupos", groups_path, :class=>"botones "+(@tab=="listaG"? "botonon" : "botonoff")%></li>
-    <li><%=link_to "Editar Alumnos", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
-    <li><%=link_to "Editar Usuarios", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
   <%end%>
   <%if current_user.admin?%>
     <li><%=link_to "Administrar", admin_index_path, :class=>"botones "+(@tab=="admin"? "botonon" : "botonoff")%></li>

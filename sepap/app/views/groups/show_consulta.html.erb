@@ -13,12 +13,14 @@
 <table>
 	<tr>
 		<th width=100 align="left"> N&uacute;mero de problema </th>
-		<th align="left"> Resultado </td>
+		<th width=200 align="left"> Resultado </th>
+		<th width=100 align="left"> Fecha </th>
 	</tr>
 	<% @intentos.each do |i| %>
 	<tr>
-		<td><%= i.numero_problema %></td>
-		<td><%= i.resultado %>
+		<td><%= i.numero_problema %> </td>
+		<td><%= i.resultado %> </td>
+		<td><%= i.created_at.strftime("%d / %m / %Y") %> </td>
 	</tr>
 	<% end %>
 </table>

@@ -34,7 +34,21 @@
   <div>
   	<%= f.label :miembros %>
   	<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoMiembros"%>
-	<span id="spInfoMiembros", class="tooltip"> Archivo con los miembros del grupo con el formato:  matricula, nombre, apellidos</span>
+	<span id="spInfoMiembros", class="tooltip"> 
+		Archivo de texto plano con los miembros del grupo,
+		<br />
+		cada línea del archivo debe tener el siguiente formato
+		<br />
+		Matrícula, Nombre(s), Apellido(s)
+		<br />
+		Ejemplo:
+		<br />
+		<code>
+			a00123456, Juan, Perez Morales
+			<br />
+			a00123457, José Antonio, Garza Luna
+		</code>
+	</span>
 	<br />
     <%=f.file_field :miembros %>
   </div>
