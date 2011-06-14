@@ -4,6 +4,9 @@ var $j = jQuery.noConflict();
 $j(function(){$j('#group_fecha').datepicker($j.datepicker.regional[ "es" ]);});
 
 $j(document).ready(function(){
+
+	$j('.unaZebra tr:even').addClass('zebra');
+
     $j("#divModulo").hide();
   
     $j("#spInfoSol").hide()
