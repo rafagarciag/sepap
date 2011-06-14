@@ -4,9 +4,6 @@ var $j = jQuery.noConflict();
 $j(function(){$j('#group_fecha').datepicker($j.datepicker.regional[ "es" ]);});
 
 $j(document).ready(function(){
-
-	$j('.unaZebra tr:even').addClass('zebra');
-
     $j("#divModulo").hide();
   
     $j("#spInfoSol").hide()
@@ -25,41 +22,30 @@ $j(document).ready(function(){
      
      $j("#agregaalumno").hide()
   
-  $j("#btnCompleto").click(function(){
-    $j("#divModulo").hide();
-  });
-  
-  
   
     $j("#infoCodigo").mouseover(function(){
     $j("#spInfoCodigo").show();
   });
   
-  $j("#infoCodigo").mouseout(function(){
+  	$j("#infoCodigo").mouseout(function(){
     $j("#spInfoCodigo").hide();
   });
   
-  
-  
-  $j("#infoSol").mouseover(function(){
+  	$j("#infoSol").mouseover(function(){
     $j("#spInfoSol").show();
   });
   
-  $j("#infoSol").mouseout(function(){
+  	$j("#infoSol").mouseout(function(){
     $j("#spInfoSol").hide();
-  });
+  }); 
   
-  
-  
-  $j("#infoMod").mouseover(function(){
+  	$j("#infoMod").mouseover(function(){
     $j("#spInfoMod").show();
   });
   
-  $j("#infoMod").mouseout(function(){
+  	$j("#infoMod").mouseout(function(){
     $j("#spInfoMod").hide();
-  });
-  
-  
+  }); 
   
     $j("#infoEntrada").mouseover(function(){
     $j("#spInfoEntrada").show();
@@ -69,8 +55,6 @@ $j(document).ready(function(){
     $j("#spInfoEntrada").hide();
   });
   
-  
-  
     $j("#infoSalida").mouseover(function(){
     $j("#spInfoSalida").show();
   });
@@ -78,7 +62,6 @@ $j(document).ready(function(){
     $j("#infoSalida").mouseout(function(){
     $j("#spInfoSalida").hide();
   });
-  
   
     $j("#infoPw").mouseover(function(){
     $j("#spInfoPw").show();
@@ -88,8 +71,6 @@ $j(document).ready(function(){
     $j("#spInfoPw").hide();
   });
   
-  
-  
     $j("#infoMiembros").mouseover(function(){
     $j("#spInfoMiembros").show();
   });
@@ -98,11 +79,17 @@ $j(document).ready(function(){
     $j("#spInfoMiembros").hide();
   });
 
-
   $j("#btnAgregar").click(function(){
     $j("#textoAgregar").hide();
     $j("#agregaalumno").show();
-  });  
+  }); 
+
+
+  
+  
+    $j("#btnCompleto").click(function(){
+    $j("#divModulo").hide();
+  }); 
   
   $j("#btnModulo").click(function(){
     $j("#divModulo").show();

@@ -29,10 +29,10 @@
   <div class="field">
   	Tipo de problema 
   	<br />
-  	<%= f.radio_button :modulo, 'false' %>
+  	<%= f.radio_button :modulo, 'false', :id=>"btnCompleto" %>
   	<%= f.label :modulo_false, 'Completo' %>
 	<br />
-	<%= f.radio_button :modulo, 'true'%>
+	<%= f.radio_button :modulo, 'true', :id=>"btnModulo"%>
 	<%= f.label :modulo_true, 'Por módulos' %>
   </div>
   
@@ -47,9 +47,6 @@
 	  <div class="field">
 		<%= f.label :solution, 'Ejecutable con el main' %> 
 		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoSol"%>
-<<<<<<< HEAD
-		<span id="spInfoSol", class="tooltip">Archivo compilado. Ejemplo: Problema1001.class</span>
-=======
 		<span id="spInfoSol", class="tooltip">
 			Archivo compilado con el 'main' del problema resuelto, <br />
 			el nombre debe iniciar con la palabra 'Problema' más <br />
@@ -60,7 +57,6 @@
 				Problema1001.class
 			</code>
 		</span>
->>>>>>> 046dd5c7312658fe7bcfeb1a1f7f37c11b0c919d
 		<br />
 		<%= f.file_field :solution %>
 	  </div>

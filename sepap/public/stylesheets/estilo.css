@@ -176,3 +176,7 @@ h1{
 td.zebra{
 	background-color:red;
 }
+
+#btnAgregar:hover{
+	cursor:pointer;
+}
