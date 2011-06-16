@@ -131,6 +131,34 @@ h1{
   box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+.noticesuccess{
+  background-color:#FFBABA;
+  color:#D80000;
+  border:1px solid;
+  text-align:center;
+  width:400px;
+  padding:10px;
+  height:15px;
+  font-size:1.1em;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.noticefail{
+  background-color:#DFF2BF;
+  color:#4F8A10; 
+  border:1px solid;
+  text-align:center;
+  width:400px;
+  padding:10px;
+  height:15px;
+  font-size:1.1em;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
 #rechazado{
   background-color:#FFBABA;
   color:#D80000;
