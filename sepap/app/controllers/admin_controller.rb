@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+
 	def index
         @tab = "admin"
 		#el index es estático, solo tiene links a las opciones
