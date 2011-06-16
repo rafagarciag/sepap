@@ -129,13 +129,13 @@ load_and_authorize_resource
 		if miembro.save
 		    @exito = true;
 		     respond_to do |format|
-                format.html { redirect_to@group, :notice => "Se agregó el alumno al grupo"}
+                format.html { redirect_to@group, :notice => "Se agregó el alumno al grupo."}
                 format.xml { head :ok }
              end
         else
             respond_to do |format|
        		    @exito = true;
-                format.html { redirect_to@group, :notice => "Error al agregar el alumno"}
+                format.html { redirect_to@group, :notice => "Error al agregar el alumno."}
                 format.xml { head :ok }
             end
         end
@@ -217,13 +217,13 @@ load_and_authorize_resource
 	if usuario.save
 		    @exito = true;
 		     respond_to do |format|
-                format.html { redirect_to grupo, :notice => "Se eliminó el alumno del grupo"}
+                format.html { redirect_to grupo, :notice => "Se eliminó al alumno del grupo."}
                 format.xml { head :ok }
              end
         else
             respond_to do |format|
        		    @exito = true;
-                format.html { redirect_to grupo, :notice => "Error al eliminar el alumno"}
+                format.html { redirect_to grupo, :notice => "Error al eliminar el alumno."}
                 format.xml { head :ok }
             end
         end
