@@ -87,11 +87,11 @@ $j(document).ready(function(){
 
   
   
-    $j("#btnCompleto").click(function(){
+    $j("#problem_modulo_false").click(function(){
     $j("#divModulo").hide();
   }); 
   
-  $j("#btnModulo").click(function(){
+  $j("#problem_modulo_true").click(function(){
     $j("#divModulo").show();
   });
 });
