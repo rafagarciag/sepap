@@ -1,6 +1,7 @@
 <h1> Eliminar Usuarios </h1>
 
 <%= paginate @usuarios %>
+<br />
 <table>
 	<tr>
 		<th align="left" width=100 > Eliminar </th>
@@ -9,7 +10,7 @@
 	</tr>
 	<% @usuarios.each do |usuario| %>
 	<tr>
-		<td> </td>
+		<td> <%= link_to 'X', eliminar_usuario_path(:id => usuario.id), :confirm => '¿Está completamente seguro de eliminar a este usuario? Se eliminará toda la información relacionada a este usuario', :method => :delete %> </td>
 		<td> <%= usuario.matricula %> </td>
 		<td> <%= usuario.nombre %> <%= usuario.apellido %> </td>
 	</tr>

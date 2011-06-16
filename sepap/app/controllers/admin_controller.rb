@@ -47,5 +47,16 @@ class AdminController < ApplicationController
 		#Se usa kaminari para paginación con el .page
 
 	end
+	
+	# DELETE /admin/eliminar/1
+	def eliminar_usuario
+		@usuario = User.find(params[:id])
+		@usuario.destroy
+		
+		respond_to do |format|
+			format.html { redirect_to(eliminar_usuario_lista_path) }
+			format.xml { head :ok }
+		end
+	end
 
 end
