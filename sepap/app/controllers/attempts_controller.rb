@@ -31,7 +31,10 @@ class AttemptsController < ApplicationController
 	  			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
 	  			#linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
 	  			#linea = line.gsub(/\/([a-z]|sepap|((a|l)[0-9]+)|[0-9]+)+/, "")
-	  			linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
+	  			
+	  			#linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
+	  			
+	  			linea = line.gsub(/\/([a-z]|[0-9]|\/)+\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
 	  			@error << linea
 			}
 			archivo.close

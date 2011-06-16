@@ -29,8 +29,8 @@
 			<td><%= problem.user.nombre %></td>
 			
 			<% if (problem.user_id == current_user.id) || current_user.admin? %>
-				<td><%= link_to image_tag('Edit.jpg'), edit_problem_path(problem) %></td>
-				<td><%= link_to image_tag('Delete.jpg'), problem, :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
+				<td><%= link_to image_tag('Edit.jpg'), edit_problem_path(problem), :title=>"Editar Problema" %></td>
+				<td><%= link_to image_tag('Delete.jpg'), problem, :title=>"Eliminar Problema", :confirm => 'La acción eliminará el problema de la base de datos así como los archivos que se hayan adjuntado del mismo', :method => :delete %></td>
 			<% else %>
 				<td> </td>
 				<td> </td>

@@ -26,6 +26,7 @@ Sepap::Application.routes.draw do
 	match 'admin/alta' => 'Admin#alta_profesores_lista', :as => :alta_profesores_lista, :via => :get
 	match 'admin/alta/:miembro' => 'Admin#alta_profesores', :as => :alta_profesores, :via => :post
 	match 'admin/eliminar' => 'Admin#eliminar_usuario_lista', :as => :eliminar_usuario_lista, :via => :get
+	match 'admin/eliminar/:id' => 'Admin#eliminar_usuario', :as => :eliminar_usuario, :via => :delete
 	
 	devise_for :users
 
