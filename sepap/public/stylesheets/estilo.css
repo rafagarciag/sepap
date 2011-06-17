@@ -9,6 +9,8 @@ div#contenido{
   overflow:auto;
   width:1000px;
   margin:-10px auto;
+  -moz-box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
   padding:10px;
 }
@@ -131,11 +133,39 @@ h1{
   border:1px solid;
   width:180px;
   padding:10px;
-  height:30px;
+  height:100px;
   font-size:1.3em;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.noticesuccess{
+  background-color:#FFBABA;
+  color:#D80000;
+  border:1px solid;
+  text-align:center;
+  width:400px;
+  padding:10px;
+  height:15px;
+  font-size:1.1em;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.noticefail{
+  background-color:#DFF2BF;
+  color:#4F8A10; 
+  border:1px solid;
+  text-align:center;
+  width:400px;
+  padding:10px;
+  height:15px;
+  font-size:1.1em;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #rechazado{

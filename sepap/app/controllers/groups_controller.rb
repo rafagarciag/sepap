@@ -126,17 +126,16 @@ load_and_authorize_resource
 			miembro.password_confirmation = "#{matricula}"
 			miembro.group_id = @group.id
 		end
-		puts "salio del if"
 		if miembro.save
-		puts "grabo"
+		    @exito = true;
 		     respond_to do |format|
-                format.html { redirect_to(@group, :message => "Se agregó el alumno al grupo")}
+                format.html { redirect_to@group, :notice => "Se agregó el alumno al grupo."}
                 format.xml { head :ok }
              end
         else
-        puts "no grabo"
             respond_to do |format|
-                format.html { redirect_to(@group, :message => "Error al agregar el alumno")}
+       		    @exito = true;
+                format.html { redirect_to@group, :notice => "Error al agregar el alumno."}
                 format.xml { head :ok }
             end
         end
@@ -216,18 +215,18 @@ load_and_authorize_resource
 
 	usuario.group_id = nil
 	if usuario.save
-		puts "LO GUARDO"
-	else
-		puts "NO LO GUARDOOOO"
-	end
-	
-	puts "///////// LO NUEVO /////////////"
-	puts usuario.group_id
-
-    respond_to do |format|
-      format.html { redirect_to(grupo_path(:id => grupo.id))}
-      format.xml { head :ok }
-    end
+		    @exito = true;
+		     respond_to do |format|
+                format.html { redirect_to grupo, :notice => "Se eliminó al alumno del grupo."}
+                format.xml { head :ok }
+             end
+        else
+            respond_to do |format|
+       		    @exito = true;
+                format.html { redirect_to grupo, :notice => "Error al eliminar el alumno."}
+                format.xml { head :ok }
+            end
+        end
   end
 
   # PUT /groups/1
