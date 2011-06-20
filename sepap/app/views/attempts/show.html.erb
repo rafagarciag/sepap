@@ -20,14 +20,27 @@
     <%if @attempt.resultado == "Aceptado"%>
     <div id="aceptado" class="respuesta">
     <%= image_tag "verde.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    </br>
+    <p class="descripcion">¡Felicidades, tu solución al problema fue exitosa!</p>
     </div>
+    
     <%elsif @attempt.resultado == "Rechazado" %>
     <div id="rechazado" class="respuesta">
     <%= image_tag "magenta.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    </br>
+    <p class="descripcion">Lo sentimos, tu respuesta esta equivocada.</p>
     </div>
+   
+   <%elsif @attempt.resultado == "Tiempo excedido" %>
+    <div id="error" class="respuesta">
+    <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    <p class="descripcion">Tu código tardó más tiempo del permitido.</p>
+    </div>
+    
     <%else%>
     <div id="error" class="respuesta">
     <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
+    <p class="descripcion">Lo sentimos, tu código no se pudo compilar en el servidor.</p>
     </div>
     <%end%>
 </p>
