@@ -55,7 +55,7 @@
 	</tr>
 	<% @miembros.each do |m| %>
 	<tr>
-		<td><%= link_to image_tag('Delete.jpg', :title => 'Sacar alumno del grupo'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
+		<td><%= link_to image_tag('Delete.jpg', :title => 'Dar de baja al alumno del grupo'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
 		<td><%= link_to m.matricula, show_consulta_path(:group_id => @group.id, :user_id => m.id) %></td>
 		<td><%= m.nombre %>&nbsp;<%= m.apellido %></td>
 	</tr>
