@@ -30,6 +30,10 @@ div#logo{
   margin-right:385px;
 }
 
+div#logoTec{
+  float:right;
+ }
+
 
 h3#menuTitulo{
   background-color: #555555;
