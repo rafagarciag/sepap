@@ -5,7 +5,7 @@ load_and_authorize_resource
   # GET /groups.xml
   def index
     @tab = "listaG" 
-    @groups = Group.where(:user_id => current_user.id) #Solamente los grupos del maestro logeado
+    @groups = Group.where(:user_id => current_user.id).page(params[:page]).per(15) #Solamente los grupos del maestro logeado
     
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,7 @@ load_and_authorize_resource
   def show
   	@tab = "listaG"
     @group = Group.find(params[:id])
-    @miembros = User.where(:group_id => @group.id).order(:matricula) #regresa los miembros del grupo, ordenados por matricula
+    @miembros = User.where(:group_id => @group.id).order(:matricula).page(params[:page]).per(15) #regresa los miembros del grupo, ordenados por matricula
     
     respond_to do |format|
       format.html # show.html.erb
