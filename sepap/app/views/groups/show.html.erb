@@ -46,7 +46,8 @@
 <% link_to 'Editar grupo', edit_group_path(@group) %>
 <% link_to 'Regresar', groups_path %>
 <hr />
-
+<%= paginate @miembros%>
+</br>
 <table>
 	<tr>
 		<th width=30> </th>
