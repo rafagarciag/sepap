@@ -4,7 +4,7 @@ class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.xml
   def index
-    @problems = Problem.all
+    @problems = Problem.find(:all, :order => "numero")
     @tab="listaP" 
     respond_to do |format|
       format.html # index.html.erb
