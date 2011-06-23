@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-
+	load_and_authorize_resource :class => User
 	def index
         @tab = "admin"
 		#el index es estático, solo tiene links a las opciones

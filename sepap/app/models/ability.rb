@@ -4,22 +4,24 @@ class Ability
     
     def initialize(user)
         user ||= User.new #Usuario ETC
-    
-        if user.admin?
-            can :manage, :all
-        elsif user.profesor?
-        	can :manage, Problem
-        	can :destroy, Problem
-        	can :manage, Group
-        	can :manage, Attempt
-        elsif user.estudiante?
-        	can :create, Attempt
-        	can :read, Attempt
-        	can :read, Problem
-        else
-        	can :read, Problem
-        end
-        
+    	
+    	if user.id==nil
+    		can :read, Problem
+    	else
+		    if user.admin?
+		        can :manage, :all
+		    end
+		    if user.profesor?
+		    	can :manage, Problem
+		    	can :destroy, Problem
+		    	can :manage, Group
+		    	can :manage, Attempt
+		    end
+		    if user.estudiante?
+		    	can :create, Attempt
+		    	can :read, Attempt
+		    	can :read, Problem
+		    end
+		end
     end
-    
 end
