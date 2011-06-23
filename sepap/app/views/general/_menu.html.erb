@@ -1,4 +1,4 @@
-<h3 id="menuTitulo"><%="Menú" if !user_signed_in?%><%=current_user.try(:nombre)%></h3>
+<h3 id="menuTitulo">Menú</h3>
 <ul class="botones">
 <li><%=link_to "Inicio", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
 <li><%=link_to "Lista de Problemas", problems_path, :class=>"botones "+(@tab=="listaP"? "botonon" : "botonoff")%></li>
