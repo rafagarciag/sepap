@@ -40,3 +40,39 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 	<% end %>
 
 </table>
+
+<br />
+
+<table>
+	<tr>
+		<th width=90 align="left"> N&uacute;mero de problema </th>
+		<th width=90 align="left"> Alumno </th>
+		<th width=110 align="left"> Resultado </th>
+		<th width =100 align="left"> Lenguaje </th>
+		<th width =80 align="left"> Intentos </th>
+		<th width =100 align="left"> Fecha de último intento</th>
+	</tr>
+	
+	<% @por_matricula.each do |i| %>
+		<% if i.class.name == "Attempt" %>
+			<tr>
+				<td><%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %></td>
+				<td><%= i.user.matricula %></td>
+				<td><%= i.resultado %></td>
+				<td><%= i.lenguaje %> </td>
+				<td><%= i.conteo %></td>
+				<td><%= i.created_at.strftime("%d / %m / %Y") %> </td>
+			</tr>
+		<% else %>
+			<tr>
+				<td><%= @numero %></td>
+				<td><%= i.matricula %></td>
+				<td> -- </td>
+				<td> -- </td>
+				<td> 0 </td>
+				<td> -- </td>
+			</tr>
+		<% end %>
+	<% end %>
+
+</table>
