@@ -5,7 +5,8 @@ load_and_authorize_resource
   # GET /groups.xml
   def index
     @tab = "listaG" 
-    @groups = Group.where(:user_id => current_user.id).page(params[:page]).per(15) #Solamente los grupos del maestro logeado
+    @groups = Group.where(:user_id => current_user.id).page(params[:page]).per(15) 
+    #Solamente los grupos del maestro logeado
     
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +19,8 @@ load_and_authorize_resource
   def show
   	@tab = "listaG"
     @group = Group.find(params[:id])
-    @miembros = User.where(:group_id => @group.id).order(:matricula).page(params[:page]).per(15) #regresa los miembros del grupo, ordenados por matricula
+    @miembros = User.where(:group_id => @group.id).order(:matricula).page(params[:page]).per(30) 
+    #regresa los miembros del grupo, ordenados por matricula
     
     respond_to do |format|
       format.html # show.html.erb
@@ -39,21 +41,24 @@ load_and_authorize_resource
 		@group = Group.find(params[:group_id])
 		@con_intento = []
 		@sin_intento = []
-		numero = params[:num]
+		@por_matricula = []
+		@numero = params[:num]
 
-		if Problem.find_by_numero(numero) #checa si existe el numero de problema
+		if Problem.find_by_numero(@numero) #checa si existe el numero de problema
 			miembros = @group.users.order(:matricula)	#Todos los miembros del grupo
 			
 			miembros.each do |m|
 				#primero checa si el usuario ya tiene algun attempt de ese numero
-				if m.attempts.find_by_numero_problema(numero)
+				if m.attempts.find_by_numero_problema(@numero)
 					
-					intentos = m.attempts.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => numero).group(:user_id)
+					intentos = m.attempts.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => @numero).group(:user_id)
 					intentos.each do |i|
 						@con_intento << i
+						@por_matricula << i 
 					end
 				else
 					@sin_intento << m
+					@por_matricula << m
 			end
 		end
 	end

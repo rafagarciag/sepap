@@ -10,11 +10,11 @@ class AdminController < ApplicationController
 	def alta_profesores_lista
 		@profesores = []
 		@tab = "admin"
-		usuarios = User.select('id, matricula, nombre, apellido, admin, profesor')
+		usuarios = User.select('id, matricula, nombre, apellido, admin, profesor').order(:matricula)
 		usuarios.each do |usuario|
 			if (usuario.matricula[0].chr == "l") || (usuario.matricula[0].chr == "L")
 			#se checa primero que la matricula empiece con 'l'
-			#'chr' se utiliza para lees el caracter tomando el ASCII
+			#'chr' se utiliza para leer el caracter tomando el ASCII
 				if (!usuario.admin? && !usuario.profesor?)
 				#checar que no sea admin ni profesor aun
 					@profesores << usuario
