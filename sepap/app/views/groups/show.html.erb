@@ -6,6 +6,16 @@
     <% end %>
 <% end %>
 
+<div>
+<% errores = params[:errores] %>
+<% if !errores.empty? %>
+		  	<% errores.each do |numero, linea| %>
+				Error en línea <%= numero %> del archivo: <%= linea %>
+				<br />
+		  	<% end %>
+<% end %>
+</div>
+
 </br>
 
 <table>
