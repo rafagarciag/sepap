@@ -273,3 +273,11 @@ td.zebra{
     border-top:none;
     border-right:none;
 }
+
+th#porBloques,th#porMatricula{
+	text-decoration:underline;
+}
+
+th#porBloques:hover,th#porMatricula:hover{
+	cursor:pointer;
+}
