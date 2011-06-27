@@ -7,7 +7,7 @@ gem 'rake', '0.9.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'mysql2', '< 0.3'
 #Control de Usuarios
 gem 'devise'
 gem 'cancan'
@@ -15,7 +15,7 @@ gem 'cancan'
 #Manejo de Archivos
 gem 'carrierwave'
 
-#Paginacion 
+#Paginacion
 gem 'kaminari'
 
 
