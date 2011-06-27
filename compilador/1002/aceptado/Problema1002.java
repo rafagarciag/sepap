@@ -10,7 +10,6 @@ public class Problema1002{
 		int n = 0;
 		for (int i=1; i<=casos; i++){
 			n = ent.nextInt();
-			System.out.println("Caso "+i+": "+n);
 			Metodo1002.calcula(n); 
 			System.out.println();
 		}	
