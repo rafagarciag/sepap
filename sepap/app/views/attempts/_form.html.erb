@@ -1,15 +1,17 @@
 <%= form_for @attempt, :html => {:multipart => true} do |f| %>
-  <% if @attempt.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @attempt.errors.count>1? "#{@attempt.errors.count} Errores":"#{@beneficiario.errors.count} Error" %></h2>
 
-      <ul>
-      <% @attempt.errors.each do |attr_name, message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	  <% if @attempt.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= @attempt.errors.count>1? "#{@attempt.errors.count} Errores":"#{@attempt.errors.count} Error" %></h2>
+
+		  <ul>
+		  <% @attempt.errors.each do |attr_name, message| %>
+		    <li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
+
 
   <div class="field">
     <%= f.label :numero_problema, 'Número de problema' %><br />

@@ -6,9 +6,19 @@
     <% end %>
 <% end %>
 
+<div>
+<% errores = params[:errores] %>
+<% if !errores.empty? %>
+		  	<% errores.each do |numero, linea| %>
+				Error en línea <%= numero %> del archivo: <%= linea %>
+				<br />
+		  	<% end %>
+<% end %>
+</div>
+
 </br>
 
-<table style="background-color: #7ea8a2;">
+<table>
 	<tr>
 		<td width=100><b>Clave:</b></td>
 		<td><%= @group.clave %></td>
@@ -46,7 +56,8 @@
 <% link_to 'Editar grupo', edit_group_path(@group) %>
 <% link_to 'Regresar', groups_path %>
 <hr />
-
+<%= paginate @miembros%>
+</br>
 <table>
 	<tr>
 		<th width=30> </th>
@@ -55,7 +66,7 @@
 	</tr>
 	<% @miembros.each do |m| %>
 	<tr>
-		<td><%= link_to image_tag('Delete.jpg', :title => 'Sacar alumno del grupo'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
+		<td><%= link_to image_tag('Delete.jpg', :title => 'Dar de baja al alumno del grupo'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
 		<td><%= link_to m.matricula, show_consulta_path(:group_id => @group.id, :user_id => m.id) %></td>
 		<td><%= m.nombre %>&nbsp;<%= m.apellido %></td>
 	</tr>

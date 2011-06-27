@@ -5,7 +5,9 @@ class AttemptsController < ApplicationController
   # GET /attempts.xml
   def index
 	@tab = "hist"
-	@problemas = current_user.attempts.select('numero_problema').group(:numero_problema)
+	
+	@problemas = current_user.attempts.select('numero_problema').group(:numero_problema).page(params[:page]).per(20)
+	
     @attempts = current_user.attempts
     
     

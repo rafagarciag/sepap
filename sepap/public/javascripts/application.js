@@ -21,6 +21,8 @@ $j(document).ready(function(){
      $j("#spInfoCodigo").hide()
      
      $j("#agregaalumno").hide()
+     
+     $j("table#porMatricula").hide()
   
   
     $j("#infoCodigo").mouseover(function(){
@@ -87,11 +89,24 @@ $j(document).ready(function(){
 
   
   
-    $j("#problem_modulo_false").click(function(){
+  $j("#problem_modulo_false").click(function(){
     $j("#divModulo").hide();
   }); 
   
   $j("#problem_modulo_true").click(function(){
     $j("#divModulo").show();
   });
+  
+  
+  $j("th#porBloques").click(function(){
+    $j("table#porBloques").hide();
+    $j("table#porMatricula").show();
+  }); 
+  
+  $j("th#porMatricula").click(function(){
+    $j("table#porMatricula").hide();
+    $j("table#porBloques").show();
+  }); 
+  
+  
 });

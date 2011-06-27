@@ -1,23 +1,23 @@
 <h1>Historial de intentos</h1>
-
-<table class="unaZebra">
+<%= paginate @problemas %>
+<table class="unaZebra" >
 	<tr>
-		<th> Problema </th>
-		<th> Título </th>
-		<th> Aceptado </th>
-		<th> Rechazado </th>
-		<th> Error de compilación </th>
-		<th> Tiempo excedido </th>
+		<th class="tituloHistorialOrillaI"> Problema </th>
+		<th class="tituloHistorial"> Título </th>
+		<th class="tituloHistorial"> Aceptado </th>
+		<th class="tituloHistorial"> Rechazado </th>
+		<th class="tituloHistorial"> Error de compilación </th>
+		<th class="tituloHistorialOrillaD"> Tiempo excedido </th>
 	</tr>
 	<% @problemas.each do |problema| %>
 	<tr>
 		<% attempt = @attempts.where(:numero_problema => problema.numero_problema) %>
-		<td> <%= link_to problema.numero_problema, attempt.last %> </td>
-		<td> <%= attempt.first.problem.titulo %> </td>
-		<td> <%= attempt.select('count(id) as conteoAceptado').where(:resultado => "Aceptado").first.conteoAceptado %> </td>
-		<td> <%= attempt.select('count(id) as conteoR').where(:resultado => "Rechazado").first.conteoR %> </td>
-		<td> <%= attempt.select('count(id) as conteoE').where(:resultado => "Error de compilación").first.conteoE %> </td>
-		<td> <%= attempt.select('count(id) as conteoTE').where(:resultado => "Tiempo excedido").first.conteoTE %> </td>
+		<td class="celdaHistorialOrillaI" > <%= link_to problema.numero_problema, attempt.last %> </td class="celdaHistorial">
+		<td class="celdaHistorial"> <%= attempt.first.problem.titulo %> </td class="celdaHistorial">
+		<td class="celdaHistorial"> <%= attempt.select('count(id) as conteoAceptado').where(:resultado => "Aceptado").first.conteoAceptado %> </td class="celdaHistorial">
+		<td class="celdaHistorial"> <%= attempt.select('count(id) as conteoR').where(:resultado => "Rechazado").first.conteoR %> </td class="celdaHistorial">
+		<td class="celdaHistorial"> <%= attempt.select('count(id) as conteoE').where(:resultado => "Error de compilación").first.conteoE %> </td class="celdaHistorial">
+		<td class="celdaHistorialOrillaD"> <%= attempt.select('count(id) as conteoTE').where(:resultado => "Tiempo excedido").first.conteoTE %> </td class="celdaHistorial">
 	</tr>
 	<% end %>
 </table>

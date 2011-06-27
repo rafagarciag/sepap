@@ -4,7 +4,10 @@ class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.xml
   def index
-    @problems = Problem.all
+    #@problems = Problem.find(:all, :order => "numero")
+    @problems = Problem.select('problems.*').order(:numero).page(params[:page]).per(15)
+    #Se utiliza kaminari para paginacion con .page
+    
     @tab="listaP" 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-
+	load_and_authorize_resource :class => User
 	def index
         @tab = "admin"
 		#el index es estático, solo tiene links a las opciones
@@ -10,11 +10,11 @@ class AdminController < ApplicationController
 	def alta_profesores_lista
 		@profesores = []
 		@tab = "admin"
-		usuarios = User.select('id, matricula, nombre, apellido, admin, profesor')
+		usuarios = User.select('id, matricula, nombre, apellido, admin, profesor').order(:matricula)
 		usuarios.each do |usuario|
 			if (usuario.matricula[0].chr == "l") || (usuario.matricula[0].chr == "L")
 			#se checa primero que la matricula empiece con 'l'
-			#'chr' se utiliza para lees el caracter tomando el ASCII
+			#'chr' se utiliza para leer el caracter tomando el ASCII
 				if (!usuario.admin? && !usuario.profesor?)
 				#checar que no sea admin ni profesor aun
 					@profesores << usuario
@@ -43,7 +43,7 @@ class AdminController < ApplicationController
 
 	def eliminar_usuario_lista
 		@tab = "admin"
-		@usuarios = User.select('id, matricula, nombre, apellido').order(:matricula).page(params[:page]).per(5)
+		@usuarios = User.select('id, matricula, nombre, apellido').order(:matricula).page(params[:page]).per(15)
 		
 		#Se usa kaminari para paginación con el .page
 
