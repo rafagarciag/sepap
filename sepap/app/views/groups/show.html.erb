@@ -8,11 +8,12 @@
 
 <div>
 <% errores = params[:errores] %>
-<% if !errores.empty? %>
-		  	<% errores.each do |numero, linea| %>
-				Error en línea <%= numero %> del archivo: <%= linea %>
-				<br />
-		  	<% end %>
+<%if !errores.nil? %>
+  <% if !errores.empty? %>
+    <% errores.each do |numero, linea| %>
+      Error en línea <%= numero %> del archivo: <%= linea %><br />
+    <% end %>
+  <% end %>
 <% end %>
 </div>
 
@@ -90,6 +91,6 @@
 	</br>
 	</br>
 	<%= submit_tag "Agregar" %>
-<% end %> 
+<% end %>
 </span>
 
