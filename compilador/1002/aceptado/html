@@ -1,6 +1,6 @@
-Realiza una aplicación que dado un entero positivo de 3 dígitos, genere todas 
+Realiza un método que dado un entero positivo de 3 dígitos, genere todas 
 las posibles sumas de dos enteros que den como resultado ese mismo entero. 
-La aplicación debe cumplir con las siguientes reglas:
+El método debe cumplir con las siguientes reglas:
 <br />
 <ul>
 	<li>
@@ -12,34 +12,30 @@ La aplicación debe cumplir con las siguientes reglas:
 	</li>
 </ul>
 <br />
-<b> Entradas </b>
+<b> Entrada </b>
 <br />
-Como primer renglón se dará N que es el total de casos, posteriormente vendrán los N números enteros
-positivos de 3 dígitos.
+Como entrada al método se dará un número entero de tres dígitos. 
 <br />
 <br />
 <b> Salida </b>
 <br />
-La aplicación debe mostrar para cada caso las sumas (A + B) y al final la cantidad de sumas que se
-obtuvieron. Para todos los desplegados debes cumplir con el formato que se muestra en el ejemplo.
+El método debe imprimir las sumas (A + B) y al final la cantidad de sumas que se
+obtuvieron. Se debe cumplir con el formato que se muestra en el ejemplo.
+<br />
+<br />
+<b> Encabezado del método </b>
+<br />
+<code> public static void calcula(int n) </code>
 <br />
 <br />
 
 <b> Ejemplo de Entrada: </b>
 <br />
-3
-<br />
 302
-<br />
-104
-<br />
-312
 <br />
 <br />
 
 <b> Ejemplo de Salida: </b>
-<br />
-Caso 1: 302
 <br />
 251 + 51 = 302
 <br />
@@ -54,23 +50,3 @@ Caso 1: 302
 Total de Sumas = 5
 <br />
 <br />
-Caso 2: 104
-<br />
-102 + 02 = 104
-<br />
-Total de Sumas = 1
-<br />
-<br />
-Caso 3: 312
-<br />
-256 + 56 = 312
-<br />
-284 + 28 = 312
-<br />
-286 + 26 = 312
-<br />
-291 + 21 = 312
-<br />
-306 + 06 = 312
-<br />
-Total de Sumas = 5
