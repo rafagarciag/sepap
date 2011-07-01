@@ -1,28 +1,44 @@
+<% errores = params[:errores] %>
 <% if flash[:notice] %>
     <% if @exito %>
       <div class="noticesuccess">
       	<%= flash[:notice] %>
-      	<% if !errores.nil %>
+      	<% if !errores.nil? %>
       		<% if !errores.empty? %>
-      			pero hubo errores en algunas líneas del archivo
+      			pero hubo errores en algunas líneas del archivo <br /><br />
+      			<div id="erroresGrupo">
+      			<%if !errores.nil? %>
+				  <% if !errores.empty? %>
+					<% errores.each do |numero, linea| %>
+					  Error en línea <%= numero %> del archivo: <%= linea %><br />
+					<% end %>
+				  <% end %>
+				<% end %>
+      			</div>
       		<% end %>
       	<% end %>      
       </div>
     <% else %>
-      <div class="noticefail"><%= flash[:notice] %></div>
+      <div class="noticefail">
+      	<%= flash[:notice] %>
+      	<% if !errores.nil? %>
+      		<% if !errores.empty? %>
+      			pero hubo errores en algunas líneas del archivo <br /><br />
+      			<div id="erroresGrupo">
+      			<%if !errores.nil? %>
+				  <% if !errores.empty? %>
+					<% errores.each do |numero, linea| %>
+					  Error en línea <%= numero %> del archivo: <%= linea %><br />
+					<% end %>
+				  <% end %>	
+				<% end %>
+      			</div>
+      		<% end %>
+      	<% end %>
+      </div>
     <% end %>
 <% end %>
 
-<div>
-<% errores = params[:errores] %>
-<%if !errores.nil? %>
-  <% if !errores.empty? %>
-    <% errores.each do |numero, linea| %>
-      Error en línea <%= numero %> del archivo: <%= linea %><br />
-    <% end %>
-  <% end %>
-<% end %>
-</div>
 
 </br>
 
