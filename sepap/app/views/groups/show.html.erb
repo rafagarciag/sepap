@@ -1,6 +1,13 @@
 <% if flash[:notice] %>
     <% if @exito %>
-      <div class="noticesuccess"><%= flash[:notice] %></div>
+      <div class="noticesuccess">
+      	<%= flash[:notice] %>
+      	<% if !errores.nil %>
+      		<% if !errores.empty? %>
+      			pero hubo errores en algunas líneas del archivo
+      		<% end %>
+      	<% end %>      
+      </div>
     <% else %>
       <div class="noticefail"><%= flash[:notice] %></div>
     <% end %>

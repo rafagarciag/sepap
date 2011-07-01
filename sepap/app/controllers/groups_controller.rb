@@ -180,7 +180,9 @@ load_and_authorize_resource
 					miembro = User.find_by_matricula("#{matricula}")
 					if miembro != nil
 						miembro.group_id = @group.id
-						miembro.save
+						if !miembro.save
+							@errores[i] = line
+						end
 					else
 						miembro = User.new
 						miembro.matricula = "#{matricula}"
@@ -193,14 +195,18 @@ load_and_authorize_resource
 						miembro.password = "#{matricula}"
 						miembro.password_confirmation = "#{matricula}"
 						miembro.group_id = @group.id
-						miembro.save
+						if !miembro.save
+							@errores[i] = line
+						end
 					end
 				else
-					@errores[i] = line
+					if !line.blank?
+						@errores[i] = line
+					end
 				end
 				
 				#Va contando el número de linea
-				i += i
+				i += 1
 				
 			end #Cierra while
 			archivo.close
