@@ -1,4 +1,3 @@
-Caso 1: 302
 251 + 51 = 302
 275 + 27 = 302
 276 + 26 = 302
@@ -6,11 +5,9 @@ Caso 1: 302
 301 + 01 = 302
 Total de Sumas = 5
 
-Caso 2: 104
 102 + 02 = 104
 Total de Sumas = 1
 
-Caso 3: 312
 256 + 56 = 312
 284 + 28 = 312
 286 + 26 = 312
@@ -18,29 +15,23 @@ Caso 3: 312
 306 + 06 = 312
 Total de Sumas = 5
 
-Caso 4: 999
 909 + 90 = 999
 Total de Sumas = 1
 
-Caso 5: 100
 100 + 00 = 100
 Total de Sumas = 1
 
-Caso 6: 120
 105 + 15 = 120
 110 + 10 = 120
 110 + 10 = 120
 Total de Sumas = 3
 
-Caso 7: 201
 183 + 18 = 201
 Total de Sumas = 1
 
-Caso 8: 501
 456 + 45 = 501
 Total de Sumas = 1
 
-Caso 9: 500
 450 + 50 = 500
 455 + 45 = 500
 455 + 45 = 500
@@ -48,43 +39,36 @@ Caso 9: 500
 500 + 00 = 500
 Total de Sumas = 5
 
-Caso 10: 998
 899 + 99 = 998
 904 + 94 = 998
 908 + 90 = 998
 949 + 49 = 998
 Total de Sumas = 4
 
-Caso 11: 997
 907 + 90 = 997
 Total de Sumas = 1
 
-Caso 12: 996
 898 + 98 = 996
 903 + 93 = 996
 906 + 90 = 996
 948 + 48 = 996
 Total de Sumas = 4
 
-Caso 13: 777
 707 + 70 = 777
 Total de Sumas = 1
 
-Caso 14: 666
 583 + 83 = 666
 603 + 63 = 666
 606 + 60 = 666
 633 + 33 = 666
 Total de Sumas = 4
 
-Caso 15: 222
 161 + 61 = 222
 201 + 21 = 222
 202 + 20 = 222
 211 + 11 = 222
 Total de Sumas = 4
 
-Caso 16: 298
 199 + 99 = 298
 249 + 49 = 298
 269 + 29 = 298
@@ -92,19 +76,15 @@ Caso 16: 298
 274 + 24 = 298
 Total de Sumas = 5
 
-Caso 17: 277
 252 + 25 = 277
 Total de Sumas = 1
 
-Caso 18: 257
 234 + 23 = 257
 Total de Sumas = 1
 
-Caso 19: 671
 610 + 61 = 671
 Total de Sumas = 1
 
-Caso 20: 880
 790 + 90 = 880
 800 + 80 = 880
 800 + 80 = 880

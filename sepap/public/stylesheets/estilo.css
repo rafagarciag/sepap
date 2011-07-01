@@ -145,8 +145,8 @@ h1{
 }
 
 .noticefail{
-  background-color:#FFBABA;
-  color:#D80000;
+  background-color:#AAAAAA;
+  color:#000000;
   border:1px solid;
   text-align:center;
   width:400px;
@@ -159,8 +159,8 @@ h1{
 }
 
 .noticesuccess{
-  background-color:#DFF2BF;
-  color:#4F8A10; 
+  background-color:#AAAAAA;
+  color:#000000; 
   border:1px solid;
   text-align:center;
   width:400px;

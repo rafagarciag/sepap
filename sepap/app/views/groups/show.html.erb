@@ -1,10 +1,28 @@
 <% if flash[:notice] %>
     <% if @exito %>
-      <div class="noticesuccess"><%= flash[:notice] %></div>
+      <div class="noticesuccess">
+      	<%= flash[:notice] %>
+      	<% if !errores.nil %>
+      		<% if !errores.empty? %>
+      			pero hubo errores en algunas líneas del archivo
+      		<% end %>
+      	<% end %>      
+      </div>
     <% else %>
       <div class="noticefail"><%= flash[:notice] %></div>
     <% end %>
 <% end %>
+
+<div>
+<% errores = params[:errores] %>
+<%if !errores.nil? %>
+  <% if !errores.empty? %>
+    <% errores.each do |numero, linea| %>
+      Error en línea <%= numero %> del archivo: <%= linea %><br />
+    <% end %>
+  <% end %>
+<% end %>
+</div>
 
 </br>
 
@@ -80,6 +98,6 @@
 	</br>
 	</br>
 	<%= submit_tag "Agregar" %>
-<% end %> 
+<% end %>
 </span>
 
