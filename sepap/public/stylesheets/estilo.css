@@ -27,7 +27,7 @@ div#header{
 
 div#logo{
   float:left;
-  margin-right:385px;
+  margin-right:300px;
 }
 
 div#logoTec{
@@ -145,13 +145,13 @@ h1{
 }
 
 .noticefail{
-  background-color:#FFBABA;
-  color:#D80000;
+  background-color:#AAAAAA;
+  color:#000000;
   border:1px solid;
   text-align:center;
-  width:400px;
+  min-width:400px;
   padding:10px;
-  height:15px;
+  min-height:15px;
   font-size:1.1em;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
@@ -159,17 +159,21 @@ h1{
 }
 
 .noticesuccess{
-  background-color:#DFF2BF;
-  color:#4F8A10; 
+  background-color:#AAAAAA;
+  color:#000000; 
   border:1px solid;
   text-align:center;
-  width:400px;
+  min-width:400px;
   padding:10px;
-  height:15px;
+  min-height:15px;
   font-size:1.1em;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#erroresGrupo{
+	text-align:left;
 }
 
 #rechazado{

@@ -18,6 +18,8 @@ gem 'carrierwave'
 #Paginacion
 gem 'kaminari'
 
+#Deployment
+gem 'mysql2', '< 0.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

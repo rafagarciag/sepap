@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.4'
 gem 'rake', '0.9.2'
+gem 'mysql2', '< 0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -40,7 +41,10 @@ gem 'kaminari'
 # group :development, :test do
 #   gem 'webrat'
 # end
+<<<<<<< HEAD
+=======
 
-group :production do
-  gem 'mysql2', '< 0.3'
-end
+#group :production do
+#  gem 'mysql2', '< 0.3'
+#end
+>>>>>>> 302d2c161f510abff6d6b666f2d6c75c253e7837
