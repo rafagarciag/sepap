@@ -1,0 +1,95 @@
+<% if flash[:notice] %>
+    <% if @exito %>
+      <div class="noticesuccess"><%= flash[:notice] %></div>
+    <% else %>
+      <div class="noticefail"><%= flash[:notice] %></div>
+    <% end %>
+<% end %>
+
+<div>
+<% errores = params[:errores] %>
+<% if !errores.try(:empty?) %>
+		  	<% errores.each do |numero, linea| %>
+				Error en línea <%= numero %> del archivo: <%= linea %>
+				<br />
+		  	<% end %>
+<% end %>
+</div>
+
+</br>
+
+<table>
+	<tr>
+		<td width=100><b>Clave:</b></td>
+		<td><%= @group.clave %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Nombre:</b></td>
+		<td><%= @group.nombre %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Campus:</b></td>
+		<td><%= @group.campus %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Semestre:</b></td>
+		<td><%= @group.semestre %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Fecha:</b></td>
+		<td><%= @group.fecha %></td>
+	</tr>
+	<tr>
+		<td width=100><b>Profesor:</b></td>
+		<td><%= @group.user.nombre %></td>
+	</tr>
+</table>
+
+<br />
+
+<b>Revisar por n&uacute;mero de problema</b>
+<br />
+<%= form_tag(show_resumen_path(:group_id => @group.id), :method => :post) do %>
+	<%= text_field_tag 'num' %>
+	<%= submit_tag "Buscar" %>
+<% end %>
+<% link_to 'Editar grupo', edit_group_path(@group) %>
+<% link_to 'Regresar', groups_path %>
+<hr />
+<%= paginate @miembros%>
+</br>
+<table>
+	<tr>
+		<th width=30> </th>
+		<th width=100 align="left"> Matr&iacute;cula </th>
+		<th align="left"> Nombre </td>
+	</tr>
+	<% @miembros.each do |m| %>
+	<tr>
+		<td><%= link_to image_tag('Delete.jpg', :title => 'Dar de baja al alumno del grupo'), sacar_path(:group_id => @group.id, :miembro => m.id), :confirm => '¿Desea dar de baja al alumno de este grupo?', :method => :post %> </td>
+		<td><%= link_to m.matricula, show_consulta_path(:group_id => @group.id, :user_id => m.id) %></td>
+		<td><%= m.nombre %>&nbsp;<%= m.apellido %></td>
+	</tr>
+	<% end %>
+</table>
+</br>
+<%=  image_tag "agregar.png", :size=>"20x20", :id=>"btnAgregar"%> <span id="textoAgregar">Agregar un alumno a este grupo</span>
+<span id="agregaalumno" >
+<%= form_tag(agrega_alumno_path(:group_id => @group.id), :method => :post) do %>
+	Matrícula (con formato A00123456):
+	</br>
+	 <%= text_field_tag 'matricula' %>
+	</br>
+	Nombre:
+	</br>
+	 <%= text_field_tag 'nombre' %>
+	</br>
+	Apellidos:
+	</br>
+	 <%= text_field_tag 'apellidos' %>
+	</br>
+	</br>
+	<%= submit_tag "Agregar" %>
+<% end %>
+</span>
+
