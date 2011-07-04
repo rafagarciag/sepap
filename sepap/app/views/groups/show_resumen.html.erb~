@@ -1,6 +1,10 @@
 <h1> B&uacute;squeda </h1>
 Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre %> - <%= @group.clave %>"
 <br />
+<%= #form_tag (show_resumen_path(:group_id => @group.id), :method => :post) do %>
+	<%= # text_field_tag 'num' %>
+	<%= #submit_tag "Buscar" %>
+<% # end %>
 <hr />
 
 <table id="porBloques">

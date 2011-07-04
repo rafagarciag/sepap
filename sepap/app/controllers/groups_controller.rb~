@@ -4,10 +4,10 @@ load_and_authorize_resource
   # GET /groups
   # GET /groups.xml
   def index
-    @tab = "listaG"
-    @groups = Group.where(:user_id => current_user.id).page(params[:page]).per(15)
+    @tab = "listaG" 
+    @groups = Group.where(:user_id => current_user.id).page(params[:page]).per(15) 
     #Solamente los grupos del maestro logeado
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @groups }
@@ -19,15 +19,15 @@ load_and_authorize_resource
   def show
   	@tab = "listaG"
     @group = Group.find(params[:id])
-    @miembros = User.where(:group_id => @group.id).order(:matricula).page(params[:page]).per(30)
+    @miembros = User.where(:group_id => @group.id).order(:matricula).page(params[:page]).per(30) 
     #regresa los miembros del grupo, ordenados por matricula
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @group }
     end
   end
-
+  
   def show_consulta #cuando se despliegan todos los intentos de un alumno
    @intentos = Attempt.where(:user_id => params[:user_id])
    @usuario = User.find(params[:user_id])
@@ -35,7 +35,7 @@ load_and_authorize_resource
       format.html
     end
   end
-
+  
   #POST /grupos/1
 	def show_resumen #cuando se utiliza el buscador
 		@group = Group.find(params[:group_id])
@@ -46,15 +46,15 @@ load_and_authorize_resource
 
 		if Problem.find_by_numero(@numero) #checa si existe el numero de problema
 			miembros = @group.users.order(:matricula)	#Todos los miembros del grupo
-
+			
 			miembros.each do |m|
 				#primero checa si el usuario ya tiene algun attempt de ese numero
 				if m.attempts.find_by_numero_problema(@numero)
-
+					
 					intentos = m.attempts.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => @numero).group(:user_id)
 					intentos.each do |i|
 						@con_intento << i
-						@por_matricula << i
+						@por_matricula << i 
 					end
 				else
 					@sin_intento << m
@@ -67,8 +67,8 @@ load_and_authorize_resource
       format.html
     end
   end
-
-
+  
+  
   def show_codigo
    @usuario = User.find(params[:user_id])
    @problema = Problem.find(params[:problem_id])
@@ -76,14 +76,14 @@ load_and_authorize_resource
    #Buscar el archivo (.java)
    #Checar si existe el .java en caso de que se haya borrado manualmente
    # o por un error
-
+  
    if FileTest.exist?("#{nombre_archivo}")
    archivo = File.new("#{nombre_archivo}", "r")
 	@codigo = ""
 	archivo.each {|line|
 		@codigo << line
 	}
-
+	
 	archivo.close
 	end
 
@@ -204,10 +204,10 @@ load_and_authorize_resource
 						@errores[i] = line
 					end
 				end
-
+				
 				#Va contando el número de linea
 				i += 1
-
+				
 			end #Cierra while
 			archivo.close
 			@exito = true
@@ -220,12 +220,12 @@ load_and_authorize_resource
 		end #Cierra if
     end #Cierra respond
   end #Cierra metodo
-
+  
   #Da de baja a un alumno de un grupo, NO elimina al alumno de la base de datos
   def sacar
 	usuario = User.find(params[:miembro])
 	grupo = Group.find(params[:group_id])
-
+	
 	puts "///////////////////////////////////"
 	puts usuario.nombre
 	puts usuario.matricula
