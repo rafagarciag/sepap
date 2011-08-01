@@ -104,50 +104,103 @@ class AttemptsController < ApplicationController
 
     respond_to do |format|
       if @attempt.save
+      
+      	#=============================================================================
+      	#Se realiza el proceso de compilacion y verificacion de resultados para Java
+      	#=============================================================================
+      	if @attempt.lenguaje.include? "Java"
       	     
-      	#Checa si el problema a resolver es de modulos
-		if @attempt.problem.modulo?
-			link = `cd archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}; ln -s #{@attempt.problem.solution}`
-		end
-     
-      	#tiempo limite
-      	tiempo = @attempt.problem.tiempo
-      	
-		#archivo con el codigo fuente del alumno
-		archivo = @attempt.code
-		#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+		  	#Checa si el problema a resolver es de modulos
+		  	#Crea link simbolico 
+			if @attempt.problem.modulo?
+				link = `cd archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}; ln -s #{@attempt.problem.solution}`
+			end
+		 
+		  	#tiempo limite
+		  	tiempo = @attempt.problem.tiempo
+		  	
+			#archivo con el codigo fuente del alumno
+			archivo = @attempt.code
+			#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		
-		#archivo que se ejecutará despues de compilar
-		ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
+			#archivo que se ejecutará despues de compilar
+			ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
 		
-		#entrada con la que se correrá el ejecutable
-		entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
+			#entrada con la que se correrá el ejecutable
+			entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
 		
-		#archivo donde se guardará la salida al ejecutar el archivo del alumno
-		salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+			#archivo donde se guardará la salida al ejecutar el archivo del alumno
+			salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
 		
-		#salida esperada proporcionada por el profesor
-		salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
+			#salida esperada proporcionada por el profesor
+			salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
 		
-		#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
-		error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
+			#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
+			error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
 		
 		
-		#se llama al compilador
-		resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+			#se llama al compilador
+			resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
 		
-		if resultado.include? "ACEPTADO"
-			resultado = "Aceptado"
+			if resultado.include? "ACEPTADO"
+				resultado = "Aceptado"
 			
-			elsif resultado.include? "Error de compilación"
-				resultado = "Error de compilación"
+				elsif resultado.include? "Error de compilación"
+					resultado = "Error de compilación"
 			
-			elsif resultado.include? "Tiempo excedido"
-				resultado = "Tiempo excedido"
+				elsif resultado.include? "Tiempo excedido"
+					resultado = "Tiempo excedido"
 			
-			else 
-				resultado = "Rechazado"
+				else 
+					resultado = "Rechazado"
 
+			end
+			
+		#=============================================================================
+      	#Se realiza el proceso de compilacion y verificacion de resultados para C/C++
+      	#=============================================================================
+		elsif @attempt.lenguaje.include? "C/C++"
+			#tiempo limite
+		  	tiempo = @attempt.problem.tiempo
+		  	
+			#archivo con el codigo fuente del alumno
+			archivo = @attempt.code
+			
+			#archivo que se ejecutará despues de compilar
+			ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}"
+			
+			#entrada con la que se correrá el ejecutable
+			entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
+		
+			#archivo donde se guardará la salida al ejecutar el archivo del alumno
+			salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+		
+			#salida esperada proporcionada por el profesor
+			salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
+		
+			#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
+			error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
+		
+		
+			#se llama al compilador
+			resultado = `./compilarC #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+		
+			if resultado.include? "ACEPTADO"
+				resultado = "Aceptado"
+			
+				elsif resultado.include? "Error de compilación"
+					resultado = "Error de compilación"
+			
+				elsif resultado.include? "Tiempo excedido"
+					resultado = "Tiempo excedido"
+			
+				else 
+					resultado = "Rechazado"
+
+			end
+			
+			puts "HOLA AMIGOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+			
 		end
 
 		#en caso de producirse un error y no tener un resultado

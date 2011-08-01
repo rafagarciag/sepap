@@ -1,5 +1,11 @@
+html {
+	overflow-y: scroll;
+	height:100%;
+}
+
 body{
   background-image:url(../images/bg_pattern.png);
+  height:100%;
 }
 
 a img { border:none; }
@@ -13,6 +19,7 @@ div#contenido{
   -webkit-box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
   padding:10px;
+  min-height:100%;
 }
 
 div.inset { text-shadow:#fff 0px 1px 0, #000 0 -1px 0;}
@@ -60,6 +67,7 @@ h3#menuTitulo{
   float:left;
   margin: 0px 0px 20px 0px;
   width:790px;
+  min-height:100%;	#El footer tiene que salir hasta abajo, pero no jala
 }
 
 #footer{

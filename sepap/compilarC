@@ -1,0 +1,32 @@
+#!/bin/bash
+#Se compila el archivo y se ejecuta para luego comparar la salida con al salida esperada
+archivo=$1
+ejecutable=$2
+entrada=$3
+salida=$4
+salida_esperada=$5
+error=$6
+tiempo=$7
+
+echo "" > $error
+echo "" > $salida
+
+g++ $archivo -o $ejecutable &> $error
+if [ $? -eq 0 ]; then		#checa que la compilacion haya sido exitosa
+	
+	$ejecutable < $entrada &> $salida &
+	CppPID=$!
+	./matar $CppPID $tiempo &	#se manda llamar otro script con el PID del ejecutable y el tiempo limite
+	matarPID=$!
+	
+	wait $CppPID
+	cmp -s $salida $salida_esperada
+	if [ $? -eq 0 ]; then		#archivos iguales = 0
+		echo ACEPTADO
+	else
+		echo RECHAZADO
+	fi
+	
+else
+	echo "Error de compilación"
+fi
