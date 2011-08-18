@@ -139,7 +139,7 @@ load_and_authorize_resource
              end
         else
             respond_to do |format|
-       		    @exito = true;
+       		    @exito = false;
                 format.html { redirect_to@group, :notice => "Error al agregar el alumno."}
                 format.xml { head :ok }
             end
@@ -227,7 +227,7 @@ load_and_authorize_resource
              end
         else
             respond_to do |format|
-       		    @exito = true;
+       		    @exito = false;
                 format.html { redirect_to grupo, :notice => "Error al dar de baja al alumno."}
                 format.xml { head :ok }
             end
