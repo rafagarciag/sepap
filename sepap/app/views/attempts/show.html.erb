@@ -28,19 +28,19 @@
     <div id="rechazado" class="respuesta">
     <%= image_tag "magenta.ico" %><div id="resultado"><%= @attempt.resultado %></div>
     </br>
-    <p class="descripcion">Lo sentimos, tu respuesta esta equivocada.</p>
+    <p class="descripcion">Lo sentimos, tu solución ha sido rechazada.</p>
     </div>
    
    <%elsif @attempt.resultado == "Tiempo excedido" %>
     <div id="error" class="respuesta">
     <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
-    <p class="descripcion">Tu código tardó más tiempo del permitido.</p>
+    <p class="descripcion">Tu solución tardó más tiempo del permitido.</p>
     </div>
     
     <%else%>
     <div id="error" class="respuesta">
     <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
-    <p class="descripcion">Lo sentimos, tu código no se pudo compilar en el servidor.</p>
+    <p class="descripcion">Lo sentimos, tu código no ha podido ser compilado en el servidor.</p>
     </div>
     <%end%>
 </p>
@@ -52,6 +52,8 @@
 <br />
 <br />
 Código fuente:
+<br />
+<br />
 <%= text_area_tag 'codigo', @codigo , :disabled => true, :size => "90x40" %>
 
 

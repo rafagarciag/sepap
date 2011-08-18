@@ -1,13 +1,7 @@
 <h2>Problema <%= @problem.numero %>: <%= @problem.titulo %></h2>
 <%= link_to "Enviar solución", nuevo_intento_path( :numero => @problem.numero), :class=>"botonoff botones" if user_signed_in? %>
 
-<!--
-<%-# interpretar(@problem.descripcion) -%>
--->
-
-<p>
-	<%= @problem.descripcion.html_safe %>
-</p>
+<%= interpretar(@problem.descripcion) %>
 
 <% if user_signed_in? %>
   <%if current_user.admin? || current_user.profesor?%>

@@ -13,14 +13,12 @@ gem 'carrierwave'
 
 #Paginacion
 gem 'kaminari'
-
-#Plancarte ¬__¬
-#gem 'redcarpet'
-#gem 'albino'
-#gem 'nokogiri'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
 
 #Deployment
-#gem 'mysql2', '< 0.3'
+gem 'mysql2', '< 0.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

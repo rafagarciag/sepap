@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
   def interpretar(texto)
-    opciones = [:hard_wrap, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+    opciones = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
     sintaxis(Redcarpet.new(texto, *opciones).to_html).html_safe
   end
   def sintaxis(html)

@@ -16,11 +16,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: sepap_production
+  adapter: sqlite3
+  database: db/production.sqlite3
   pool: 5
-  username: root
-  password: Plan303030
-  host: localhost
+  timeout: 5000

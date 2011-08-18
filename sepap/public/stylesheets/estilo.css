@@ -1,5 +1,11 @@
+html {
+	overflow-y: scroll;
+	height:100%;
+}
+
 body{
   background-image:url(../images/bg_pattern.png);
+  height:100%;
 }
 
 a img { border:none; }
@@ -13,6 +19,7 @@ div#contenido{
   -webkit-box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.5);
   padding:10px;
+  min-height:100%;
 }
 
 div.inset { text-shadow:#fff 0px 1px 0, #000 0 -1px 0;}
@@ -27,7 +34,7 @@ div#header{
 
 div#logo{
   float:left;
-  margin-right:385px;
+  margin-right:300px;
 }
 
 div#logoTec{
@@ -60,6 +67,7 @@ h3#menuTitulo{
   float:left;
   margin: 0px 0px 20px 0px;
   width:790px;
+  min-height:100%;	#El footer tiene que salir hasta abajo, pero no jala
 }
 
 #footer{
@@ -145,13 +153,13 @@ h1{
 }
 
 .noticefail{
-  background-color:#FFBABA;
-  color:#D80000;
+  background-color:#AAAAAA;
+  color:#000000;
   border:1px solid;
   text-align:center;
-  width:400px;
+  min-width:400px;
   padding:10px;
-  height:15px;
+  min-height:15px;
   font-size:1.1em;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
@@ -159,17 +167,21 @@ h1{
 }
 
 .noticesuccess{
-  background-color:#DFF2BF;
-  color:#4F8A10; 
+  background-color:#AAAAAA;
+  color:#000000; 
   border:1px solid;
   text-align:center;
-  width:400px;
+  min-width:400px;
   padding:10px;
-  height:15px;
+  min-height:15px;
   font-size:1.1em;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#erroresGrupo{
+	text-align:left;
 }
 
 #rechazado{
@@ -272,4 +284,12 @@ td.zebra{
     border:1px solid black;
     border-top:none;
     border-right:none;
+}
+
+th#porBloques,th#porMatricula{
+	text-decoration:underline;
+}
+
+th#porBloques:hover,th#porMatricula:hover{
+	cursor:pointer;
 }
