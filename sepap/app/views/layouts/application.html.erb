@@ -9,10 +9,11 @@
   <body>
     <div id="contenido">
       <div id="header"><%= render "/general/header"%></div>
-      <div id="menu"><%= render "/general/menu"%></div>
-      <div id="yield"><%=yield%></div>
-      <hr />
-      <div id="footer"><%= render "/general/footer"%></div>
+      <div class="wrapper">
+	<div id="menu"><%= render "/general/menu"%></div>
+	<div id="yield"><%=yield%></div>
+      </div>
     </div>
+    <div id="footer"><hr /><%= render "/general/footer"%></div>
   </body>
 </html>

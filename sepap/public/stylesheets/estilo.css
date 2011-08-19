@@ -24,9 +24,9 @@ div#contenido{
 
 div.inset { text-shadow:#fff 0px 1px 0, #000 0 -1px 0;}
 
-div#tituloHeader { line-height:1.5em; font-size:4em; font-weight:bold; color:#0D3B7C;} 
+div#tituloHeader { line-height:1.5em; font-size:4em; font-weight:bold; color:#0D3B7C;}
 
-div#subtituloHeader { line-height:1em; font-size:1em; font-weight:bold; color:#0D3B7C; margin:-10px 0px 0px 33px;} 
+div#subtituloHeader { line-height:1em; font-size:1em; font-weight:bold; color:#0D3B7C; margin:-10px 0px 0px 33px;}
 
 div#header{
   height:100px;
@@ -47,7 +47,15 @@ h3#menuTitulo{
   color: #FFFFFF;
   height: 20px;
   margin: 0;
-  text-align: center; 
+  text-align: center;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto 40px;
+  overflow:auto;
 }
 
 #menu{
@@ -73,6 +81,10 @@ h3#menuTitulo{
 #footer{
  color:#0D3B7C;
  text-align:center;
+ position:relative;
+ bottom:40px;
+ width:1000px;
+ margin:0px auto;
 }
 
 ul.botones{
@@ -168,7 +180,7 @@ h1{
 
 .noticesuccess{
   background-color:#AAAAAA;
-  color:#000000; 
+  color:#000000;
   border:1px solid;
   text-align:center;
   min-width:400px;
@@ -191,7 +203,7 @@ h1{
 
 #aceptado{
   background-color:#DFF2BF;
-  color:#4F8A10;  
+  color:#4F8A10;
 }
 
 #error{
@@ -220,7 +232,7 @@ h1{
     -webkit-border-radius:5px;
     border-radius:5px;
 }
-    
+
 #historial{
 	text-align:center;
 	border-collapse:collapse;
