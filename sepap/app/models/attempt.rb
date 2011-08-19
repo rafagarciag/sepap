@@ -1,4 +1,6 @@
 # -*- encoding : utf-8 -*-
+require 'file_size_validator'
+
 class Attempt < ActiveRecord::Base
 	attr_accessible :code, :numero_problema, :resultado, :lenguaje
 	
@@ -13,4 +15,5 @@ class Attempt < ActiveRecord::Base
 
 	#esto utiliza la gema carrierwave 
 	mount_uploader :code, CodeUploader
+	validates :code,    :file_size => { :maximum => 0.1.megabytes.to_i }
 end
