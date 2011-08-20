@@ -139,8 +139,9 @@ load_and_authorize_resource
              end
         else
             respond_to do |format|
-       		    @exito = true;
-                format.html { redirect_to @group, :notice => "Error al agregar el alumno."}
+       		    @exito = false;
+                format.html { redirect_to@group, :notice => "Error al agregar el alumno."}
+
                 format.xml { head :ok }
             end
         end
@@ -243,7 +244,11 @@ load_and_authorize_resource
         else
             respond_to do |format|
        		    @exito = false;
+<<<<<<< HEAD
+                format.html { redirect_to grupo, :notice => "Error al dar de baja al alumno."}
+=======
                 format.html { redirect_to grupo, :notice => "Ha ocurrido un error intentar dar de baja el alumno"}
+>>>>>>> 3c8a6f3b0402dbc30d3d59b9705b7eaad008529d
                 format.xml { head :ok }
             end
         end

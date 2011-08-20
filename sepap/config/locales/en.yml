@@ -8,3 +8,8 @@ en:
       previous: "&lt; Anterior"
       next: "Siguiente &gt;"
       truncate: "..."
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is to small (should be at least %{file_size})"
+      size_too_big: "El archivo es muy grande (Tamaño maximo: %{file_size})"
