@@ -79,6 +79,9 @@ class AttemptsController < ApplicationController
   # POST /attempts
   # POST /attempts.xml
   def create
+  	
+  	
+  	
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
     
@@ -86,6 +89,10 @@ class AttemptsController < ApplicationController
 	@attempt.lenguaje = params[:lenguaje]
     #Aqui genera un numero aleatorio para definir que entrada y salida usara
     num = 1 + rand(3)
+    
+    #Para pegar el codigo en la pagina o subir el archivo
+    pegar = params[:envio] 
+   	
     
     
     
@@ -105,10 +112,24 @@ class AttemptsController < ApplicationController
     respond_to do |format|
       if @attempt.save
       
+      
       	#=============================================================================
       	#Se realiza el proceso de compilacion y verificacion de resultados para Java
       	#=============================================================================
       	if @attempt.lenguaje.include? "Java"
+      	     
+      	     if pegar.include? "pegar"
+      	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
+      	     	ar.puts params[:codigo]
+      	     	
+      	     	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+      	     	ar.close
+      	     	
+      	     	@attempt.code = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+      	     	@attempt.save
+      	     else
+      	     	archivo = @attempt.code
+      	     end
       	     
 		  	#Checa si el problema a resolver es de modulos
 		  	#Crea link simbolico 
@@ -120,7 +141,7 @@ class AttemptsController < ApplicationController
 		  	tiempo = @attempt.problem.tiempo
 		  	
 			#archivo con el codigo fuente del alumno
-			archivo = @attempt.code
+			#archivo = @attempt.code
 			#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		
 			#archivo que se ejecutará despues de compilar
@@ -198,8 +219,6 @@ class AttemptsController < ApplicationController
 					resultado = "Rechazado"
 
 			end
-			
-			puts "HOLA AMIGOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 			
 		end
 
