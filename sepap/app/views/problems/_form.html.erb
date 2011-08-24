@@ -37,9 +37,10 @@
   </div>
 
   <div class="field">
+    <%= f.label :descripcion, 'Descripcion'%><br />
     <%= f.label :descripcion, 'El siguiente texto se interpretará con' %>    <%= link_to " markdown", "http://daringfireball.net/projects/markdown/dingus", :target=>"_new" %>
 <br />
-    <%= f.text_area :descripcion, :cols => 97, :rows => 40 %>
+    <%= f.text_area :descripcion, :cols => 95, :rows => 40 %>
   </div>
 
   <fieldset>

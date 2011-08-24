@@ -4,6 +4,8 @@ var $j = jQuery.noConflict();
 $j(function(){$j('#group_fecha').datepicker($j.datepicker.regional[ "es" ]);});
 
 $j(document).ready(function(){
+    $j("#divPegar").hide();
+    
     $j("#divModulo").hide();
   
     $j("#spInfoSol").hide()
@@ -95,6 +97,16 @@ $j(document).ready(function(){
   
   $j("#problem_modulo_true").click(function(){
     $j("#divModulo").show();
+  });
+  
+  $j("#btnPegar").click(function(){
+    $j("#divPegar").show();
+    $j("#divSubir").hide();
+  }); 
+  
+  $j("#btnSubir").click(function(){
+    $j("#divSubir").show();
+    $j("#divPegar").hide();
   });
   
   

@@ -18,6 +18,22 @@
     <%= f.text_field :numero_problema, :size => 6, :value=>@numero%>
   </div>
   <div class="field">
+  	Lenguaje
+  	<br />
+    <select id="lenguaje" name="lenguaje"><option>Java</option><option>C/C++</option></select> 
+  </div>
+  
+  <div class="field">
+  	Forma de envio
+  	<br />
+  	<input type="radio" name="envio" id="btnSubir" checked="true" value="subir"/>
+  	<label>Subir archivo</label>
+  	<br />
+  	<input type="radio" name="envio" id="btnPegar" value="pegar"/>
+  	<label>Pegar codigo</label>
+  </div>
+  
+  <div class="field" id="divSubir">
     <%= f.label :code, 'Código fuente' %>
     <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoCodigo"%>
 		<span id="spInfoCodigo", class="tooltip"> 
@@ -38,13 +54,17 @@
     <br />
     <%= f.file_field :code %>
   </div>
-  <div class="field">
-  	Lenguaje
-  	<br />
-    <select id="lenguaje" name="lenguaje"><option>Java</option><!--<option>C/C++</option>--></select> 
+  
+  <div >
+  <div class="field" id="divPegar">
+    <label>Codigo</label>
+    <textarea id="codigo" name="codigo" cols="95" rows="40">Utiliza esta area para pegar tu codigo fuente...</textarea>
   </div>
+  </div>
+  
   <div class="actions">
     <%= f.submit( "Subir solución", :onclick =>"clickBoton()", :class=>"botones")%>
-    <%=image_tag("loading.gif", :size => "50x50", :id=>"loading")%>
   </div>
+  
+  <%=image_tag("loading.gif", :size => "50x50", :id=>"loading")%>
 <% end %>
