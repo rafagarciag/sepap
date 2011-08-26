@@ -167,8 +167,12 @@ load_and_authorize_resource
 #====================================
 	respond_to do |format|
 		if @group.save
+			
+			#Convertir saltos de linea de Windows/Mac a saltos de linea para Linux
+			`dos2unix -c mac archivos/grupos/#{@group.clave}/miembros`
+			
 			archivo = File.new("archivos/grupos/#{@group.clave}/miembros", "r")
-
+			
 			while (line = archivo.gets)
 				arr = line.split(',')
 
