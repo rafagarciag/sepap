@@ -47,5 +47,9 @@ class CodeUploader < CarrierWave::Uploader::Base
      original_filename.capitalize
     end
    end
+   
+   def default_url
+		'prueba.java'
+   end
 
 end

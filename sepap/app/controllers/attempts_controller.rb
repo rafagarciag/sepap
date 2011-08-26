@@ -119,13 +119,15 @@ class AttemptsController < ApplicationController
       	if @attempt.lenguaje.include? "Java"
       	     
       	     if pegar.include? "pegar"
+      	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
       	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
       	     	ar.puts params[:codigo]
       	     	
       	     	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
       	     	ar.close
       	     	
-      	     	@attempt.code = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+      	     	
+      	     	@attempt.code = ar
       	     	@attempt.save
       	     else
       	     	archivo = @attempt.code
