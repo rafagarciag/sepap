@@ -31,6 +31,7 @@
     <%= f.label :fecha %><br />
     <%= f.text_field :fecha, :size => 12 %>
   </div>
+<% if @group.new_record?%>
   <div>
   	<%= f.label :miembros %>
   	<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoMiembros"%>
@@ -50,8 +51,9 @@
 		</code>
 	</span>
 	<br />
-    <%=f.file_field :miembros %>
+    <%=f.file_field (:miembros) %>
   </div>
+ <% end %>
   </br>
   <div class="actions">
     <%= f.submit "Registrar cambios" %>
