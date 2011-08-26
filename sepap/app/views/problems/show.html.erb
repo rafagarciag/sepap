@@ -15,12 +15,10 @@
   <% end %>
 <% end %>
 
-<%= link_to "Enviar solución", nuevo_intento_path( :numero => @problem.numero), :class=>"botonoff botones" if user_signed_in? %><br />
-
-<%= link_to 'Lista de problemas', problems_path, :class=>"botonoff botones" %><br />
+<%= link_to 'Lista de problemas', problems_path %><br />
 
 <% if user_signed_in? %>
   <%if current_user.admin? || current_user.profesor?%>
-    <%= link_to 'Editar', edit_problem_path(@problem), :class=>"botonoff botones" %>
+    <%= link_to 'Editar', edit_problem_path(@problem)%>
   <% end %>
 <% end %>
