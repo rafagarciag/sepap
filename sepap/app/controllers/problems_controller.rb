@@ -56,9 +56,10 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(params[:problem])
     @problem.user_id = current_user.id
-
+	
     respond_to do |format|
       if @problem.save
+      	`dos2unix -c mac #{@problem.input} #{@problem.input2} #{@problem.input3} #{@problem.output} #{@problem.output2} #{@problem.output3}`
         format.html { redirect_to(@problem, :notice => 'El problema fue creado exitosamente.') }
         format.xml  { render :xml => @problem, :status => :created, :location => @problem }
       else
