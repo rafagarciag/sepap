@@ -72,7 +72,9 @@ load_and_authorize_resource
   def show_codigo
    @usuario = User.find(params[:user_id])
    @problema = Problem.find(params[:problem_id])
-   nombre_archivo = "archivos/alumno/#{@usuario.matricula}/#{@problema.numero}/Problema#{@problema.numero}.java"
+   nombre_archivo = @usuario.attempts.last.code
+
+
    #Buscar el archivo (.java)
    #Checar si existe el .java en caso de que se haya borrado manualmente
    # o por un error
