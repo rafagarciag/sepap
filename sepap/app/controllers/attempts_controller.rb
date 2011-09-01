@@ -79,9 +79,6 @@ class AttemptsController < ApplicationController
   # POST /attempts
   # POST /attempts.xml
   def create
-  	
-  	
-  	
     @attempt = Attempt.new(params[:attempt])
     @attempt.user_id = current_user.id
     
@@ -91,150 +88,146 @@ class AttemptsController < ApplicationController
     num = 1 + rand(3)
     
     #Para pegar el codigo en la pagina o subir el archivo
-    pegar = params[:envio] 
-   	
+    envio = params[:envio] 
     
-    
-    
-    # =======================================================
-    # Aqui compila el codigo fuente y produce un resultado
-    #incluir un if para cambiar la extension .java cuando se implemente otro lenguaje
-    
-    #=====
-    #desde qui corta
-    #=====
-    #@attempt.save 
-    
-    
-    
-    #=========================================================
+    if @attempt.lenguaje=="Java" && @attempt.code.file.extension()!="java"
+    	redirect_to new_attempt_path(:numero => @attempt.problem.numero)
+    else
+		
+		# =======================================================
+		# Aqui compila el codigo fuente y produce un resultado
+		#=========================================================
 
-    respond_to do |format|
-      if @attempt.save
-      
-      
-      	#=============================================================================
-      	#Se realiza el proceso de compilacion y verificacion de resultados para Java
-      	#=============================================================================
-      	if @attempt.lenguaje.include? "Java"
-      	     
-      	     if pegar.include? "pegar"
-      	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
-      	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
-      	     	ar.puts params[:codigo]
-      	     	
-      	     	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
-      	     	ar.close
-      	     	
-      	     	
-      	     	@attempt.code = ar
-      	     	@attempt.save
-      	     else
-      	     	archivo = @attempt.code
-      	     end
-      	     
-		  	#Checa si el problema a resolver es de modulos
-		  	#Crea link simbolico 
-			if @attempt.problem.modulo?
-				link = `cd archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}; ln -s #{@attempt.problem.solution}`
-			end
-		 
-		  	#tiempo limite
-		  	tiempo = @attempt.problem.tiempo
-		  	
-			#archivo con el codigo fuente del alumno
-			#archivo = @attempt.code
-			#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+		respond_to do |format|
+		  if @attempt.save
+		   
+		  	#=============================================================================
+		  	#Se realiza el proceso de compilacion y verificacion de resultados para Java
+		  	#=============================================================================
+		  	if @attempt.lenguaje.include? "Java"
+		  	     
+		  	     if envio.include? "pegar"
+		  	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
+		  	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
+		  	     	ar.puts params[:codigo]
+		  	     	
+		  	     	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+		  	     	ar.close
+		  	     	
+		  	     	
+		  	     	@attempt.code = ar
+		  	     	@attempt.save
+		  	     else
+		  	     	archivo = @attempt.code
+		  	     end
+		  	     
+			  	#Checa si el problema a resolver es de modulos
+			  	#Crea link simbolico 
+				if @attempt.problem.modulo?
+					link = `cd archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}; ln -s #{@attempt.problem.solution}`
+				end
+			 
+			  	#tiempo limite
+			  	tiempo = @attempt.problem.tiempo
+			  	
+				#archivo con el codigo fuente del alumno
+				#archivo = @attempt.code
+				#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		
-			#archivo que se ejecutará despues de compilar
-			ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
+				#archivo que se ejecutará despues de compilar
+				ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema} Problema#{@attempt.numero_problema}"
 		
-			#entrada con la que se correrá el ejecutable
-			entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
+				#entrada con la que se correrá el ejecutable
+				entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
 		
-			#archivo donde se guardará la salida al ejecutar el archivo del alumno
-			salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+				#archivo donde se guardará la salida al ejecutar el archivo del alumno
+				salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
 		
-			#salida esperada proporcionada por el profesor
-			salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
+				#salida esperada proporcionada por el profesor
+				salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
 		
-			#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
-			error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
+				#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
+				error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
 		
 		
-			#se llama al compilador
-			resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+				#se llama al compilador
+				resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
 		
-			if resultado.include? "ACEPTADO"
-				resultado = "Aceptado"
+				if resultado.include? "ACEPTADO"
+					resultado = "Aceptado"
 			
-				elsif resultado.include? "Error de compilación"
-					resultado = "Error de compilación"
+					elsif resultado.include? "Error de compilación"
+						resultado = "Error de compilación"
 			
-				elsif resultado.include? "Tiempo excedido"
-					resultado = "Tiempo excedido"
+					elsif resultado.include? "Tiempo excedido"
+						resultado = "Tiempo excedido"
 			
-				else 
-					resultado = "Rechazado"
+					else 
+						resultado = "Rechazado"
 
-			end
+				end
 			
-		#=============================================================================
-      	#Se realiza el proceso de compilacion y verificacion de resultados para C/C++
-      	#=============================================================================
-		elsif @attempt.lenguaje.include? "C/C++"
-			#tiempo limite
-		  	tiempo = @attempt.problem.tiempo
-		  	
-			#archivo con el codigo fuente del alumno
-			archivo = @attempt.code
+			#=============================================================================
+		  	#Se realiza el proceso de compilacion y verificacion de resultados para C/C++
+		  	#=============================================================================
+			elsif @attempt.lenguaje.include? "C/C++"
+				#tiempo limite
+			  	tiempo = @attempt.problem.tiempo
+			  	
+				#archivo con el codigo fuente del alumno
+				archivo = @attempt.code
 			
-			#archivo que se ejecutará despues de compilar
-			ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}"
+				#archivo que se ejecutará despues de compilar
+				ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}"
 			
-			#entrada con la que se correrá el ejecutable
-			entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
+				#entrada con la que se correrá el ejecutable
+				entrada = "archivos/maestro/#{@attempt.numero_problema}/entrada#{num}"
 		
-			#archivo donde se guardará la salida al ejecutar el archivo del alumno
-			salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
+				#archivo donde se guardará la salida al ejecutar el archivo del alumno
+				salida = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/salida"
 		
-			#salida esperada proporcionada por el profesor
-			salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
+				#salida esperada proporcionada por el profesor
+				salida_esperada = "archivos/maestro/#{@attempt.numero_problema}/salida_esperada#{num}"
 		
-			#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
-			error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
+				#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
+				error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
 		
 		
-			#se llama al compilador
-			resultado = `./compilarC #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
+				#se llama al compilador
+				resultado = `./compilarC #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
 		
-			if resultado.include? "ACEPTADO"
-				resultado = "Aceptado"
+				if resultado.include? "ACEPTADO"
+					resultado = "Aceptado"
 			
-				elsif resultado.include? "Error de compilación"
-					resultado = "Error de compilación"
+					elsif resultado.include? "Error de compilación"
+						resultado = "Error de compilación"
 			
-				elsif resultado.include? "Tiempo excedido"
-					resultado = "Tiempo excedido"
+					elsif resultado.include? "Tiempo excedido"
+						resultado = "Tiempo excedido"
 			
-				else 
-					resultado = "Rechazado"
+					else 
+						resultado = "Rechazado"
 
-			end
+				end
 			
+			end
+
+			#en caso de producirse un error y no tener un resultado
+			@attempt.update_attribute(:resultado, "#{resultado}")
+
+		
+		    format.html { redirect_to(@attempt, :notice => 'El Intento fue creado exitosamente.') }
+		    format.xml  { render :xml => @attempt, :status => :created, :location => @attempt }
+		  else
+		    format.html { render :action => "new" }
+		    format.xml  { render :xml => @attempt.errors, :status => :unprocessable_entity }
+		  end
+		  
+		  
 		end
-
-		#en caso de producirse un error y no tener un resultado
-		@attempt.update_attribute(:resultado, "#{resultado}")
-
-		
-        format.html { redirect_to(@attempt, :notice => 'El Intento fue creado exitosamente.') }
-        format.xml  { render :xml => @attempt, :status => :created, :location => @attempt }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @attempt.errors, :status => :unprocessable_entity }
-      end
     end
+    
+    
   end
 
   # PUT /attempts/1
