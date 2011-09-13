@@ -72,7 +72,9 @@ load_and_authorize_resource
   def show_codigo
    @usuario = User.find(params[:user_id])
    @problema = Problem.find(params[:problem_id])
-   nombre_archivo = @usuario.attempts.last.code
+   
+   #se arregla el bug de mostrar codigo 
+   nombre_archivo = @usuario.attempts.find_last_by_numero_problema(@problema.numero).code
 
 
    #Buscar el archivo (.java)
