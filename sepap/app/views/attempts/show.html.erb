@@ -23,20 +23,20 @@
     </br>
     <p class="descripcion">¡Felicidades, tu solución al problema fue exitosa!</p>
     </div>
-    
+
     <%elsif @attempt.resultado == "Rechazado" %>
     <div id="rechazado" class="respuesta">
     <%= image_tag "magenta.ico" %><div id="resultado"><%= @attempt.resultado %></div>
     </br>
     <p class="descripcion">Lo sentimos, tu solución ha sido rechazada.</p>
     </div>
-   
+
    <%elsif @attempt.resultado == "Tiempo excedido" %>
     <div id="error" class="respuesta">
     <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
     <p class="descripcion">Tu solución tardó más tiempo del permitido.</p>
     </div>
-    
+
     <%else%>
     <div id="error" class="respuesta">
     <%= image_tag "ambar.ico" %><div id="resultado"><%= @attempt.resultado %></div>
@@ -54,14 +54,14 @@
 Código fuente:
 <br />
 <br />
-<%= text_area_tag 'codigo', @codigo , :disabled => true, :size => "90x40" %>
+<%= text_area_tag 'codigo', @codigo , :size => "90x40" %>
 
 
 <%if current_user.admin? || current_user.profesor?%>
 	<% link_to 'Editar', edit_attempt_path(@attempt) %>
-<%end%>	
+<%end%>
 
 <%if current_user.admin? || current_user.profesor?%>
 	<% link_to 'Regresar', attempts_path %>
-<%end%>	
+<%end%>
 
