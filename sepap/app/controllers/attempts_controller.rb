@@ -106,8 +106,10 @@ class AttemptsController < ApplicationController
 		  	#=============================================================================
 		  	if @attempt.lenguaje.include? "Java"
 		  	     
+		  	     #Verifica si el codigo fuente viene en un archivo adjunto o pegado en el campo de texto
 		  	     if envio.include? "pegar"
 		  	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
+		  	     	#Esto solo va a funcionar con los problemas completos (no por modulos)
 		  	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
 		  	     	ar.puts params[:codigo]
 		  	     	
@@ -152,20 +154,6 @@ class AttemptsController < ApplicationController
 		
 				#se llama al compilador
 				resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
-		
-				if resultado.include? "ACEPTADO"
-					resultado = "Aceptado"
-			
-					elsif resultado.include? "Error de compilación"
-						resultado = "Error de compilación"
-			
-					elsif resultado.include? "Tiempo excedido"
-						resultado = "Tiempo excedido"
-			
-					else 
-						resultado = "Rechazado"
-
-				end
 			
 			#=============================================================================
 		  	#Se realiza el proceso de compilacion y verificacion de resultados para C/C++
@@ -195,21 +183,26 @@ class AttemptsController < ApplicationController
 		
 				#se llama al compilador
 				resultado = `./compilarC #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
-		
-				if resultado.include? "ACEPTADO"
-					resultado = "Aceptado"
 			
-					elsif resultado.include? "Error de compilación"
-						resultado = "Error de compilación"
+			end
 			
-					elsif resultado.include? "Tiempo excedido"
-						resultado = "Tiempo excedido"
-			
-					else 
-						resultado = "Rechazado"
+			#Verifica el resultado que arroja el script 
+			if resultado.include? "ACEPTADO"
+				resultado = "Aceptado"
+				rutaAceptado = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/aceptado"
+				#Hace una copia del codigo fuente en caso de ser aceptado
+				`mkdir -p #{rutaAceptado}`
+				`cp #{archivo} #{rutaAceptado}/`
 
-				end
-			
+				elsif resultado.include? "Error de compilación"
+					resultado = "Error de compilación"
+
+				elsif resultado.include? "Tiempo excedido"
+					resultado = "Tiempo excedido"
+
+				else 
+					resultado = "Rechazado"
+
 			end
 
 			#en caso de producirse un error y no tener un resultado
