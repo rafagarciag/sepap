@@ -8,19 +8,29 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 		<th width=90 align="left"> Número de problema </th>
 		<th width=90 align="left" id="porBloques"> Alumno </th>
 		<th width=110 align="left"> Resultado </th>
-		<th width =100 align="left"> Lenguaje </th>
-		<th width =80 align="left"> Intentos </th>
-		<th width =100 align="left"> Fecha de último intento</th>
+		<th width=100 align="left"> Lenguaje </th>
+		<th width=80 align="left"> Intentos </th>
+		<th width=125 align="left"> Fecha de último intento</th>
 	</tr>
 
 	<% @con_intento.each do |i| %>
 	<tr>
-		<td><%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %></td>
-		<td><%= i.user.matricula %></td>
-		<td><%= i.resultado %></td>
+		<% if FileTest.exist?("archivos/alumno/#{i.user.matricula}/#{i.numero_problema}/aceptado/#{File.basename(i.code.url)}") %>
+			<td>
+				<%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %>
+			</td>
+			<td><%= i.user.matricula %></td>
+			<td>Aceptado</td>
+		<% else %>
+			<td>
+				<%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %>
+			</td>
+			<td><%= i.user.matricula %></td>
+			<td><%= i.resultado %></td>
+		<% end %>
 		<td><%= i.lenguaje %> </td>
 		<td><%= i.conteo %></td>
-		<td><%= i.created_at.strftime("%d / %m / %Y") %> </td>
+		<td><%= i.created_at.strftime("%d/%m/%Y - %H:%Mhrs") %> </td>
 	</tr>
 	<% end %>
 
