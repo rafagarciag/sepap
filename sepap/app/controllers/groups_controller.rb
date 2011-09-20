@@ -171,7 +171,7 @@ load_and_authorize_resource
 		if @group.save
 			
 			#Convertir saltos de linea de Windows/Mac a saltos de linea para Linux
-			`dos2unix -c mac archivos/grupos/#{@group.clave}/miembros`
+			`mac2unix archivos/grupos/#{@group.clave}/miembros`
 			
 			archivo = File.new("archivos/grupos/#{@group.clave}/miembros", "r")
 			
