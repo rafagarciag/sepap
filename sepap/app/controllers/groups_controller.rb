@@ -37,7 +37,8 @@ load_and_authorize_resource
   end
 
   #POST /grupos/1
-	def show_resumen #cuando se utiliza el buscador
+  #cuando se utiliza el buscador por numero de problema
+	def show_resumen 
 		@group = Group.find(params[:group_id])
 		@con_intento = []
 		@sin_intento = []
@@ -52,6 +53,7 @@ load_and_authorize_resource
 				if m.attempts.find_by_numero_problema(@numero)
 
 					intentos = m.attempts.select('attempts.*, count(attempts.id) as conteo').where(:numero_problema => @numero).group(:user_id)
+
 					intentos.each do |i|
 						@con_intento << i
 						@por_matricula << i
@@ -72,7 +74,9 @@ load_and_authorize_resource
   def show_codigo
    @usuario = User.find(params[:user_id])
    @problema = Problem.find(params[:problem_id])
-   nombre_archivo = @usuario.attempts.last.code
+   
+   #se arregla el bug de mostrar codigo 
+   nombre_archivo = @usuario.attempts.find_last_by_numero_problema(@problema.numero).code
 
 
    #Buscar el archivo (.java)
