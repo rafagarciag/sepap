@@ -29,8 +29,9 @@ load_and_authorize_resource
   end
 
   def show_consulta #cuando se despliegan todos los intentos de un alumno
-   @intentos = Attempt.where(:user_id => params[:user_id])
+#   @intentos = Attempt.where(:user_id => params[:user_id])
    @usuario = User.find(params[:user_id])
+   @intentos = @usuario.attempts
    respond_to do |format|
       format.html
     end
