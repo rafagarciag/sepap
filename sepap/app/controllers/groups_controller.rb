@@ -10,7 +10,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => d@groups }
+      format.xml { render :xml => @groups }
     end
   end
 
