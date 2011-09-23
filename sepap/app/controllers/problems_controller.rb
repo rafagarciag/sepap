@@ -60,6 +60,7 @@ class ProblemsController < ApplicationController
     respond_to do |format|
       if @problem.save
       	`dos2unix -c mac #{@problem.input} #{@problem.input2} #{@problem.input3} #{@problem.output} #{@problem.output2} #{@problem.output3}`
+      	`dos2unix #{@problem.input} #{@problem.input2} #{@problem.input3} #{@problem.output} #{@problem.output2} #{@problem.output3}`
         format.html { redirect_to(@problem, :notice => 'El problema fue creado exitosamente.') }
         format.xml  { render :xml => @problem, :status => :created, :location => @problem }
       else

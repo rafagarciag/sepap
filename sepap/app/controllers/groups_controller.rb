@@ -77,7 +77,7 @@ load_and_authorize_resource
    
    #se arregla el bug de mostrar codigo 
    nombre_archivo = @usuario.attempts.find_last_by_numero_problema(@problema.numero).code
-
+   nombre_aceptado = "archivos/alumno/#{@usuario.matricula}/#{@problema.numero}/aceptado"
 
    #Buscar el archivo (.java)
    #Checar si existe el .java en caso de que se haya borrado manualmente
@@ -88,6 +88,16 @@ load_and_authorize_resource
 	@codigo = ""
 	archivo.each {|line|
 		@codigo << line
+	}
+
+	archivo.close
+	end
+
+if FileTest.exist?("#{nombre_archivo}")
+   archivo = File.new("#{nombre_archivo}", "r")
+	@codigoaceptado = ""
+	archivo.each {|line|
+		@codigoaceptado << line
 	}
 
 	archivo.close
