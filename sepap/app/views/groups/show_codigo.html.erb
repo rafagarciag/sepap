@@ -10,6 +10,14 @@ Problema <%= @problema.numero %>
 
 <hr />
 <br /> 
+Ultimo intento aceptado:
+<% if defined? @codigoaceptado %>
+	<%= text_area_tag 'codigoaceptado', @codigoaceptado, :disabled => true, :size => "90x40" %>
+<% end %>
+
+<hr />
+<br /> 
+Ultimo intento enviado:
 <% if defined? @codigo %>
 	<%= text_area_tag 'codigo', @codigo, :size => "90x40" %>
 <% end %>
