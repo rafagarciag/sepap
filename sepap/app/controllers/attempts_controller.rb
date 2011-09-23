@@ -90,10 +90,7 @@ class AttemptsController < ApplicationController
     #Para pegar el codigo en la pagina o subir el archivo
     envio = params[:envio] 
     
-    if @attempt.lenguaje=="Java" && @attempt.code.file.extension()!="java"
-    	redirect_to new_attempt_path(:numero => @attempt.problem.numero)
-    else
-		
+    	
 		# =======================================================
 		# Aqui compila el codigo fuente y produce un resultado
 		#=========================================================
@@ -218,7 +215,7 @@ class AttemptsController < ApplicationController
 		  
 		  
 		end
-    end
+    
     
     
   end
