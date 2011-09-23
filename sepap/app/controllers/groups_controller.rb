@@ -10,7 +10,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => @groups }
+      format.xml { render :xml => d@groups }
     end
   end
 
@@ -187,7 +187,7 @@ if FileTest.exist?("#{nombre_archivo}")
 			
 			#Convertir saltos de linea de Windows/Mac a saltos de linea para Linux
 			`mac2unix archivos/grupos/#{@group.clave}/miembros`
-			
+			`dos2unix archivos/grupos/#{@group.clave}/miembros`
 			archivo = File.new("archivos/grupos/#{@group.clave}/miembros", "r")
 			
 			while (line = archivo.gets)
