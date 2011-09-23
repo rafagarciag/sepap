@@ -11,6 +11,16 @@ class User < ActiveRecord::Base
 		conditions[:matricula].downcase! 
 		super(conditions) 
 	end
+	
+	def codigo_aceptado?(numero)
+		arr = []
+		for attempt in self.attempts do
+			if attempt.numero_problema==numero
+				arr << attempt.resultado
+			end
+		end
+		arr.include?('Aceptado')
+	end
 
 
   # Include default devise modules. Others available are:
