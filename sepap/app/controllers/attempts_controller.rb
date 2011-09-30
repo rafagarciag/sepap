@@ -24,38 +24,45 @@ class AttemptsController < ApplicationController
     @attempt = Attempt.find(params[:id])
     
 	#Desplegar el error de compilación en caso de existir
-    if @attempt.resultado.include? 'Error de compilación'
-    	if FileTest.exist?("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error")
-			archivo = File.new("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error", "r")
+	if current_user.id == @attempt.user.id
+		if @attempt.resultado.include? 'Error de compilación'
+			if FileTest.exist?("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error")
+				archivo = File.new("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error", "r")
 
-			@error = ""
-	  		archivo.each {|line|
-	  			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
-	  			#linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
-	  			#linea = line.gsub(/\/([a-z]|sepap|((a|l)[0-9]+)|[0-9]+)+/, "")
-	  			
-	  			#linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
-	  			
-	  			linea = line.gsub(/\/([a-z]|[0-9]|\/)+\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
-	  			@error << linea
-			}
-			archivo.close
+				@error = ""
+		  		archivo.each {|line|
+		  			#quita el path de donde esta guardado el archivo, esto para no mostrar informacion del servidor
+		  			#linea = line.gsub("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/","")		
+		  			#linea = line.gsub(/\/([a-z]|sepap|((a|l)[0-9]+)|[0-9]+)+/, "")
+		  			
+		  			#linea = line.gsub(/\/home\/([a-z]|[0-9]|\/)+\/sepap\/archivos\/alumno\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
+		  			
+		  			linea = line.gsub(/\/([a-z]|[0-9]|\/)+\/#{@attempt.user.matricula}\/#{@attempt.numero_problema}\//, "")
+		  			@error << linea
+				}
+				archivo.close
+			end
 		end
-    end
-    
-    if FileTest.exist?("#{@attempt.code}")
-		source = File.new("#{@attempt.code}", "r")
-		@codigo = ""
-		source.each {|line|
-			@codigo << line
-		}
-		source.close
+		
+		if FileTest.exist?("#{@attempt.code}")
+			source = File.new("#{@attempt.code}", "r")
+			@codigo = ""
+			source.each {|line|
+				@codigo << line
+			}
+			source.close
+		end
+		
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.xml  { render :xml => @attempt }
+		end
+		
+	else	#Si no es el usuario
+		respond_to do |format|
+		  format.html { redirect_to(home_index_url) }
+		end
 	end
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @attempt }
-    end
   end
 
   # GET /attempts/new

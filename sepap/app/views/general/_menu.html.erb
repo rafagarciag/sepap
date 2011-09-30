@@ -1,4 +1,8 @@
-<h3 id="menuTitulo">Menú</h3>
+<% if user_signed_in? %>
+	<h3 id="menuTitulo"><%= current_user.nombre %></h3>
+<% else %>
+	<h3 id="menuTitulo">Menú</h3>
+<% end %>
 <ul class="botones">
 <li><%=link_to "Inicio", root_path, :class=>"botones "+(@tab=="home"? "botonon" : "botonoff")%></li>
 <li><%=link_to "Lista de Problemas", problems_path, :class=>"botones "+(@tab=="listaP"? "botonon" : "botonoff")%></li>
