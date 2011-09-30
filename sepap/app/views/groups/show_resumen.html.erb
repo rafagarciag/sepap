@@ -15,7 +15,7 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 
 	<% @con_intento.each do |i| %>
 	<tr>
-		<% if FileTest.exist?("archivos/alumno/#{i.user.matricula}/#{i.numero_problema}/aceptado/#{File.basename(i.code.url)}") %>
+		<% if i.user.codigo_aceptado?(i.numero_problema) %>
 			<td>
 				<%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %>
 			</td>
@@ -26,7 +26,7 @@ Mostrando resultados de problema <%= params[:num] %>, grupo: "<%= @group.nombre 
 				<%= link_to i.numero_problema, show_codigo_path(:group_id => @group.id, :user_id => i.user_id, :problem_id => i.problem_id)  %>
 			</td>
 			<td><%= i.user.matricula %></td>
-			<td><%= i.resultado %></td>
+			<td><%= i.user.attempts.find_all_by_numero_problema(i.numero_problema).last.try(:resultado) %></td>
 		<% end %>
 		<td><%= i.lenguaje %> </td>
 		<td><%= i.conteo %></td>

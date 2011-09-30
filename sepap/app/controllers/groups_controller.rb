@@ -29,8 +29,9 @@ load_and_authorize_resource
   end
 
   def show_consulta #cuando se despliegan todos los intentos de un alumno
-   @intentos = Attempt.where(:user_id => params[:user_id])
+#   @intentos = Attempt.where(:user_id => params[:user_id])
    @usuario = User.find(params[:user_id])
+   @intentos = @usuario.attempts
    respond_to do |format|
       format.html
     end
@@ -77,30 +78,30 @@ load_and_authorize_resource
    
    #se arregla el bug de mostrar codigo 
    nombre_archivo = @usuario.attempts.find_last_by_numero_problema(@problema.numero).code
-   nombre_aceptado = "archivos/alumno/#{@usuario.matricula}/#{@problema.numero}/aceptado"
+   nombre_aceptado = "archivos/alumno/#{@usuario.matricula}/#{@problema.numero}/aceptado/aceptado"
 
    #Buscar el archivo (.java)
    #Checar si existe el .java en caso de que se haya borrado manualmente
    # o por un error
 
    if FileTest.exist?("#{nombre_archivo}")
-   archivo = File.new("#{nombre_archivo}", "r")
-	@codigo = ""
-	archivo.each {|line|
-		@codigo << line
-	}
+	   archivo = File.new("#{nombre_archivo}", "r")
+		@codigo = ""
+		archivo.each {|line|
+			@codigo << line
+		}
 
-	archivo.close
+		archivo.close
 	end
 
-if FileTest.exist?("#{nombre_archivo}")
-   archivo = File.new("#{nombre_archivo}", "r")
-	@codigoaceptado = ""
-	archivo.each {|line|
-		@codigoaceptado << line
-	}
+	if FileTest.exist?("#{nombre_aceptado}")
+		archivo = File.new("#{nombre_aceptado}", "r")
+		@codigoaceptado = ""
+		archivo.each {|line|
+			@codigoaceptado << line
+		}
 
-	archivo.close
+		archivo.close
 	end
 
    respond_to do |format|

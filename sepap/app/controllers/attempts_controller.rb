@@ -190,7 +190,7 @@ class AttemptsController < ApplicationController
 				rutaAceptado = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/aceptado"
 				#Hace una copia del codigo fuente en caso de ser aceptado
 				`mkdir -p #{rutaAceptado}`
-				`cp #{archivo} #{rutaAceptado}/`
+				`cp #{archivo} #{rutaAceptado}/aceptado`
 
 				elsif resultado.include? "Error de compilación"
 					resultado = "Error de compilación"
