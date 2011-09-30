@@ -12,7 +12,6 @@
 		</div>
 	  <% end %>
 
-
   <div class="field">
     <%= f.label :numero_problema, 'Número de problema' %><br />
     <%= f.text_field :numero_problema, :size => 6, :value=>@numero%>
@@ -25,17 +24,12 @@
         <!-- <option>C/C++</option> -->
     </select> 
   </div>
-  
   <div class="field">
-  	Forma de envio
-  	<br />
-  	<input type="radio" name="envio" id="btnSubir" checked="true" value="subir"/>
-  	<label>Subir archivo</label>
-  	<br />
-  	<!--
-  	<input type="radio" name="envio" id="btnPegar" value="pegar"/>
-  	<label>Pegar codigo</label>
-  	-->
+  	Forma de envio<br />
+  	<%= f.radio_button :envio, 'pegar', :id=>"btnPegar"%>
+	<%= label_tag(:forma_envio, "Pegar codigo") %><br />
+	<%= f.radio_button :envio, 'subir', :id=>"btnSubir"%>
+	<%= label_tag(:forma_envio, "Subir archivo") %><br />
   </div>
   
   <div class="field" id="divSubir">
