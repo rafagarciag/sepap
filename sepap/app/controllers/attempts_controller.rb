@@ -1,31 +1,45 @@
 # -*- encoding : utf-8 -*-
 class AttemptsController < ApplicationController
 	load_and_authorize_resource
+ 
+ 
   # GET /attempts
   # GET /attempts.xml
-  def index
-	@tab = "hist"
+	def index
+		@tab = "hist"
 	
-	@problemas = current_user.attempts.select('numero_problema').group(:numero_problema).page(params[:page]).per(20)
+		@problemas = current_user.attempts.select('numero_problema').group(:numero_problema).page(params[:page]).per(20)
 	
-    @attempts = current_user.attempts
-    
-    
+		@attempts = current_user.attempts
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @attempts }
-    end
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml  { render :xml => @attempts }
+		end
   end
 
+	#======================
+	# Muestra los últimos N intentos para todos los problemas
+	#======================
+	def show_last
+		#Número de resultados que se mostrarán
+		n = 25	
+		
+		
+		@attempts = Attempt.order("id desc").limit(n)
+	end
+	
+	
+	
   # GET /attempts/1
   # GET /attempts/1.xml
   def show
     @attempt = Attempt.find(params[:id])
+    @attempt.resultado ? res = @attempt.resultado : res = " "
     
 	#Desplegar el error de compilación en caso de existir
 	if current_user.id == @attempt.user.id
-		if @attempt.resultado.include? 'Error de compilación'
+		if res.include? 'Error de compilación'
 			if FileTest.exist?("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error")
 				archivo = File.new("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error", "r")
 
@@ -95,7 +109,7 @@ class AttemptsController < ApplicationController
     num = 1 + rand(3)
     
     #Para pegar el codigo en la pagina o subir el archivo
-    envio = params[:envio] 
+    envio = params[:envio] 	#Este siempre tira nil
     
     	
 		# =======================================================
@@ -111,10 +125,10 @@ class AttemptsController < ApplicationController
 		  	if @attempt.lenguaje.include? "Java"
 		  	     
 		  	     #Verifica si el codigo fuente viene en un archivo adjunto o pegado en el campo de texto
-		  	     #if envio.include? "pegar"
-		  	     if true
+		  	     if envio.include? "pegar"
 		  	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
 		  	     	#Esto solo va a funcionar con los problemas completos (no por modulos)
+		  	     	
 		  	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
 		  	     	ar.puts params[:codigo]
 		  	     	

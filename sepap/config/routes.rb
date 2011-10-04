@@ -4,13 +4,15 @@ Sepap::Application.routes.draw do
   get "admin/index"
 
 	resources :attempts
+		match 'intentos' => 'attempts#create', :via => :post
+		match 'intentos' => 'attempts#index', :as => :attempts
+		match 'intentos/nuevo' => 'attempts#new', :as => :new_attempt
 	    match 'intentos/nuevo/:numero' => 'attempts#new', :as => :nuevo_intento
+	    match 'intentos/ultimos' => 'attempts#show_last', :as => :show_last
 
 	resources :problems
-		match 'problemas' => 'problems#index'
-		match 'problemas/:numero' => 'problems#show_busqueda', :as => :show_busqueda
-		match 'problemas/:id' => 'problems#show'
-		match 'problems/:numero' => 'problems#show_busqueda'
+		match 'problemas' => 'problems#index', :as => :problems
+		match 'problemas/:id' => 'problems#show', :as => :problem
 		
 
 	resources :groups
