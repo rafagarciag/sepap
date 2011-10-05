@@ -15,12 +15,15 @@ class Ability
 		    	can :manage, Problem
 		    	can :destroy, Problem
 		    	can :manage, Group
-		    	can :manage, Attempt
+		    	can :create, Attempt
+		    	can :read, Attempt
+		    	can :show_last, Attempt
 		    end
 		    if user.estudiante?
 		    	can :create, Attempt
 		    	can :read, Attempt
 		    	can :read, Problem
+		    	can :show_last, Attempt
 		    end
 		end
     end
