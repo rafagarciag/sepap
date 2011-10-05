@@ -1,43 +1,45 @@
 <h2>Editar Usuario</h2>
 <%@tab="editU"%>
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @user.errors.count>1? "#{@user.errors.count} Errores":"#{@user.errors.count} Error" %></h2>
+<div class="registro">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	  <% if @user.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= @user.errors.count>1? "#{@user.errors.count} Errores":"#{@user.errors.count} Error" %></h2>
 
-      <ul>
-      <% @user.errors.each do |attr_name, message| %>
-        <%if message=="can't be blank"
-        	message="Se requiere la contraseña actual para realizar los cambios"
-        end%>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		  <ul>
+		  <% @user.errors.each do |attr_name, message| %>
+		    <%if message=="can't be blank"
+		    	message="Se requiere la contraseña actual para realizar los cambios"
+		    end%>
+		    <li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
 
-  <p><%= f.label :email, 'Correo Electrónico' %><br />
-  <%= f.text_field :email %></p>
+	  <p><%= f.label :email, 'Correo Electrónico' %><br />
+	  <%= f.text_field :email %></p>
 
-  <p><%= f.label :nombre, 'Nombre(s)' %><br />
-  <%= f.text_field :nombre %></p>
+	  <p><%= f.label :nombre, 'Nombre(s)' %><br />
+	  <%= f.text_field :nombre %></p>
 
-  <p><%= f.label :apellido, 'Apellidos' %><br />
-  <%= f.text_field :apellido %></p>
+	  <p><%= f.label :apellido, 'Apellidos' %><br />
+	  <%= f.text_field :apellido %></p>
 
-  <p><%= f.label :password, 'Nueva contraseña' %> 
-  		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoPw"%>
-		<span id="spInfoPw", class="tooltip"> Deja este campo en blanco si no deseas cambiar tu contraseña.</span>
-  <br />
-  <%= f.password_field :password %></p>
+	  <p><%= f.label :password, 'Nueva contraseña' %> 
+	  		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoPw"%>
+			<span id="spInfoPw", class="tooltip"> Deja este campo en blanco si no deseas cambiar tu contraseña.</span>
+	  <br />
+	  <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation, 'Confirmar nueva contraseña' %><br />
-  <%= f.password_field :password_confirmation %></p>
+	  <p><%= f.label :password_confirmation, 'Confirmar nueva contraseña' %><br />
+	  <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password, 'Contraseña Actual'%><br />
-  <%= f.password_field :current_password %></p>
+	  <p><%= f.label :current_password, 'Contraseña Actual'%><br />
+	  <%= f.password_field :current_password %></p>
 
-  <p><%= f.submit "Actualizar información" %></p>
-<% end %>
+	  <p><%= f.submit "Actualizar información", :style => "float:right;" %></p>
+	<% end %>
+</div>
 
-<%= link_to "Regresar", :back %>
+<%= link_to "Cancelar", :back %>

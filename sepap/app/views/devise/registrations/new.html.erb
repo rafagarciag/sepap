@@ -1,40 +1,40 @@
 <h2>Registro de Usuario</h2>
 <%@tab="registroU"%>
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @user.errors.count>1? "#{@user.errors.count} Errores":"#{@user.errors.count} Error" %></h2>
+<div class="registro">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <% if @user.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= @user.errors.count>1? "#{@user.errors.count} Errores":"#{@user.errors.count} Error" %></h2>
 
-      <ul>
-      <% @user.errors.each do |attr_name, message| %>
-        <%if message!="can't be blank"%>  
-        	<li><%= message %></li>
-        <%end%>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		  <ul>
+		  <% @user.errors.each do |attr_name, message| %>
+		    <%if message!="can't be blank"%>  
+		    	<li><%= message %></li>
+		    <%end%>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
 
-  <p><%= f.label :matricula, 'Matrícula (A00123456)' %><br />
-  <%= f.text_field :matricula %></p>
-  
-  <p><%= f.label :email, 'Correo' %><br />
-  <%= f.text_field :email %></p>
+	  <p><%= f.label :matricula, 'Matrícula (A00123456)' %><br />
+	  <%= f.text_field :matricula %></p>
+	  
+	  <p><%= f.label :email, 'Correo' %><br />
+	  <%= f.text_field :email %></p>
 
-  <p><%= f.label :nombre, 'Nombre(s)' %><br />
-  <%= f.text_field :nombre %></p>
+	  <p><%= f.label :nombre, 'Nombre(s)' %><br />
+	  <%= f.text_field :nombre %></p>
 
-  <p><%= f.label :apellido, 'Apellidos' %><br />
-  <%= f.text_field :apellido %></p>
+	  <p><%= f.label :apellido, 'Apellidos' %><br />
+	  <%= f.text_field :apellido %></p>
 
-  <p><%= f.label :password, 'Contraseña' %><br />
-  <%= f.password_field :password %></p>
+	  <p><%= f.label :password, 'Contraseña' %><br />
+	  <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation, 'Confirmar contraseña' %><br />
-  <%= f.password_field :password_confirmation %></p>
+	  <p><%= f.label :password_confirmation, 'Confirmar contraseña' %><br />
+	  <%= f.password_field :password_confirmation %></p>
 
 
-  <p><%= f.submit "Registrarse" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+	  <p><%= f.submit "Registrarse", :style => "float:right;" %></p>
+	<% end %>
+</div>

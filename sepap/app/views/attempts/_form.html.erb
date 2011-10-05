@@ -25,42 +25,48 @@
     </select> 
   </div>
   <div class="field">
-  	Forma de envio<br />
-  	<%= f.radio_button :envio, 'pegar', :id=>"btnPegar"%>
-	<%= label_tag(:btnPegar, "Pegar codigo") %><br />
-	<%= f.radio_button :envio, 'subir', :id=>"btnSubir"%>
-	<%= label_tag(:btnSubir, "Subir archivo") %><br />
+  	<fieldset>
+  		<legend>Forma de envio</legend>
+	  	<%= f.radio_button :envio, 'pegar', :id=>"btnPegar"%>
+		<%= label_tag(:btnPegar, "Pegar código") %><br />
+		<%= f.radio_button :envio, 'subir', :id=>"btnSubir"%>
+		<%= label_tag(:btnSubir, "Subir archivo") %><br />
+	</fieldset>
   </div>
   
   <div class="field" id="divSubir">
-    <%= f.label :code, 'Código fuente' %>
-    <%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoCodigo"%>
-		<span id="spInfoCodigo", class="tooltip"> 
-			Archivo de código fuente, es muy importante que el nombre inicie 
+  	<fieldset>
+  		<legend>
+  			<%= f.label :code, 'Código fuente' %>
+  			<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoCodigo"%>
+  		</legend>
+				<span id="spInfoCodigo", class="tooltip"> 
+					Archivo de código fuente, es muy importante que el nombre inicie 
+					<br />
+					con la palabra 'Problema' o 'Método' según sea el caso, más el número 
+					<br />
+					de problema que está solucionando. 
+					<br />
+					Ejemplo:
+					<br />
+					<code>
+						Problema1001.java
+						<br />
+						Metodo1001.java
+					</code>
+				</span>
 			<br />
-			con la palabra 'Problema' o 'Método' según sea el caso, más el número 
-			<br />
-			de problema que está solucionando. 
-			<br />
-			Ejemplo:
-			<br />
-			<code>
-				Problema1001.java
-				<br />
-				Metodo1001.java
-			</code>
-		</span>
-    <br />
-    <%= f.file_field :code %>
+			<%= f.file_field :code %>
+	</fieldset>
   </div>
   
-  <div >
   <div class="field" id="divPegar">
-    <label>Codigo</label>
-    <textarea id="codigo" name="codigo" cols="95" rows="40">Utiliza esta area para pegar tu codigo fuente...</textarea>
+    <label>Código</label>
+    <textarea id="codigo" name="codigo" cols="95" rows="40" title="Utiliza esta área para pegar tu código fuente..." 
+    	style="background-color:#0c0c0c;color:#FFFFFF;"></textarea>
   </div>
-  </div>
-  
+
+  <br />
   <div class="actions">
     <%= f.submit( "Subir solución", :onclick =>"clickBoton()", :class=>"botones")%>
   </div>

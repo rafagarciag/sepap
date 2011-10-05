@@ -11,8 +11,12 @@ Sepap::Application.routes.draw do
 	    match 'intentos/ultimos' => 'attempts#show_last', :as => :show_last
 
 	resources :problems
+		match 'problemas' => 'problems#create', :via => :post
 		match 'problemas' => 'problems#index', :as => :problems
+		match 'problemas/:id' => 'problems#update', :via => :put
+		match 'problemas/:id' => 'problems#destroy', :via => :delete
 		match 'problemas/:id' => 'problems#show', :as => :problem
+		match 'problemas/:id/editar' => 'problems#edit', :as => :edit_problem
 		
 
 	resources :groups
