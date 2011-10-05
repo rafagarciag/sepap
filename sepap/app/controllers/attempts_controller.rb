@@ -125,7 +125,7 @@ class AttemptsController < ApplicationController
 		  	if @attempt.lenguaje.include? "Java"
 		  	     
 		  	     #Verifica si el codigo fuente viene en un archivo adjunto o pegado en el campo de texto
-		  	     if envio.include? "pegar"
+		  	     if @attempt.envio == "pegar"
 		  	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
 		  	     	#Esto solo va a funcionar con los problemas completos (no por modulos)
 		  	     	
