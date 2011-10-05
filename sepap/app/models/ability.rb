@@ -15,7 +15,8 @@ class Ability
 		    	can :manage, Problem
 		    	can :destroy, Problem
 		    	can :manage, Group
-		    	can :manage, Attempt
+		    	can :create, Attempt
+		    	can :read, Attempt
 		    end
 		    if user.estudiante?
 		    	can :create, Attempt
