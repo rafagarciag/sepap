@@ -44,6 +44,9 @@ div#logoTec{
   float:right;
  }
 
+div.registro{
+	width:350px;
+}
 
 h3#menuTitulo{
   background-color: #555555;
@@ -82,12 +85,12 @@ h3#menuTitulo{
 }
 
 #footer{
- color:#0D3B7C;
- text-align:center;
- position:relative;
- bottom:40px;
- width:1000px;
- margin:0px auto;
+	color:#0D3B7C;
+	text-align:center;
+	position:relative;
+	bottom:40px;
+	width:1000px;
+	margin:0px auto;
 }
 
 ul.botones{
@@ -199,22 +202,23 @@ h1{
 	text-align:left;
 }
 
-#rechazado{
+/* Forma en que se muestra el resultado de un attempt */
+div#rechazado{
   background-color:#FFBABA;
   color:#D80000;
 }
 
-#aceptado{
+div#aceptado{
   background-color:#DFF2BF;
   color:#4F8A10;
 }
 
-#error{
+div#error{
   background-color:#FEEFB3;
   color:#9F6000;
 }
 
-#resultado{
+div#resultado{
   margin: -30px 0px 0px 65px;
 }
 
@@ -307,4 +311,26 @@ th#porBloques,th#porMatricula{
 
 th#porBloques:hover,th#porMatricula:hover{
 	cursor:pointer;
+}
+
+/* Estilos para inputs y botones */
+input[type=text], input[type=password] {
+	font-size: 15px;
+	padding-left: 3px;
+	height: 26px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type=submit], input[type=button] {
+	font-size: 15px;
+	margin: 5px 5px 5px 0;
+	min-width: 90px;
+	min-height: 30px;
+	cursor: pointer;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background-color: #0D3B7C;
+	background-image: none;
+	color:#FFFFFF;
+	font-weight: bold;
 }

@@ -1,0 +1,21 @@
+<meta http-equiv="refresh" content="10" />
+<h1> Últimos eventos </h1>
+
+<table>
+	<tr>
+		<td > Matrícula </td>
+		<td> Usuario </td>
+		<td> Problema </td>
+		<td> Resultado </td>
+	</tr>
+	
+	<% @attempts.each do |a| %>
+	<tr>
+		<td> <%= a.user.matricula %> </td>
+		<td> <%= a.user.nombre %> <%= a.user.apellido %> </td>
+		<td> <%= a.numero_problema %> </td>
+		<td> <%= a.resultado %> </td>
+	</tr>
+	<% end %>
+	
+</table>

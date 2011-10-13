@@ -25,15 +25,7 @@ class ProblemsController < ApplicationController
       format.xml  { render :xml => @problem }
     end
   end
-  
-  def show_busqueda
-  	@problem = Problem.where(:numero => params[:numero])
-  	
-  	respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @problem }
-    end
-  end
+
 
   # GET /problems/new
   # GET /problems/new.xml
