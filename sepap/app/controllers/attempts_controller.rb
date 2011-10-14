@@ -129,18 +129,19 @@ class AttemptsController < ApplicationController
 		  	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
 		  	     	#Esto solo va a funcionar con los problemas completos (no por modulos)
 		  	     	
-		  	     	ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
+		  	     	if @attempt.problem.modulo?
+		  	     		ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Metodo#{@attempt.numero_problema}.java", "w")
+		  	     	else
+		  	     		ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
+		  	     	end	
 		  	     	ar.puts params[:codigo]
-		  	     	
 		  	     	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		  	     	ar.close
 		  	     	
-		  	     	
 		  	     	@attempt.code = ar
 		  	     	@attempt.save
-		  	     else
-		  	     	archivo = @attempt.code
 		  	     end
+		  	     
 		  	     
 			  	#Checa si el problema a resolver es de modulos
 			  	#Crea link simbolico 
@@ -152,7 +153,7 @@ class AttemptsController < ApplicationController
 			  	tiempo = @attempt.problem.tiempo
 			  	
 				#archivo con el codigo fuente del alumno
-				#archivo = @attempt.code
+				archivo = @attempt.code
 				#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		
 				#archivo que se ejecutará despues de compilar
@@ -170,8 +171,7 @@ class AttemptsController < ApplicationController
 				#archivo donde se guardarán los errores de compilación, ejecucion, etc. en caso de existir
 				error = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/error"
 		
-		
-				#se llama al compilador
+				#se llama al compilador	
 				resultado = `./compilarJava2 #{archivo} '#{ejecutable}' #{entrada} #{salida} #{salida_esperada} #{error} #{tiempo}`
 			
 			#=============================================================================
