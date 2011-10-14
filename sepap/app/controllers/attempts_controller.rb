@@ -108,8 +108,6 @@ class AttemptsController < ApplicationController
     #Aqui genera un numero aleatorio para definir que entrada y salida usara
     num = 1 + rand(3)
     
-    #Para pegar el codigo en la pagina o subir el archivo
-    envio = params[:envio] 	#Este siempre tira nil
     
     	
 		# =======================================================
@@ -135,7 +133,7 @@ class AttemptsController < ApplicationController
 		  	     		ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
 		  	     	end	
 		  	     	ar.puts params[:codigo]
-		  	     	archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
+		  	     	#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
 		  	     	@attempt.code = ar
 		  	     	ar.close
 		  	     	
