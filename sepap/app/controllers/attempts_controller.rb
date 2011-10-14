@@ -122,26 +122,6 @@ class AttemptsController < ApplicationController
 		  	#=============================================================================
 		  	if @attempt.lenguaje.include? "Java"
 		  	     
-		  	     #Verifica si el codigo fuente viene en un archivo adjunto o pegado en el campo de texto
-		  	     if @attempt.envio == "pegar"
-		  	     	`mkdir -p archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}`
-		  	     	#Esto solo va a funcionar con los problemas completos (no por modulos)
-		  	     	
-		  	     	if @attempt.problem.modulo?
-		  	     		ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Metodo#{@attempt.numero_problema}.java", "w")
-		  	     	else
-		  	     		ar = File.open("archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java", "w")
-		  	     	end	
-		  	     	ar.puts params[:codigo]
-		  	     	#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
-		  	     	
-		  	     	ar.close
-		  	     	@attempt.code = ar
-		  	     	
-		  	     	@attempt.save
-		  	     end
-		  	     
-		  	     
 			  	#Checa si el problema a resolver es de modulos
 			  	#Crea link simbolico 
 				if @attempt.problem.modulo?
