@@ -8,10 +8,8 @@ salida_esperada=$5
 error=$6
 tiempo=$7
 
-
-
-rm $salida $error
-touch $salida $error
+echo "" > $error
+echo "" > $salida
 
 javac $archivo &> $error
 if [ $? -eq 0 ]; then			#checa que la compilacion haya jalado

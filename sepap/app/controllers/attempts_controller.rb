@@ -134,8 +134,9 @@ class AttemptsController < ApplicationController
 		  	     	end	
 		  	     	ar.puts params[:codigo]
 		  	     	#archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}.java"
-		  	     	@attempt.code = ar
+		  	     	
 		  	     	ar.close
+		  	     	@attempt.code = ar
 		  	     	
 		  	     	@attempt.save
 		  	     end
