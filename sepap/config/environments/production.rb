@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 Sepap::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.default_url_options = { :host => '10.17.12.21' }
+  config.action_mailer.default_url_options = { :host => '10.17.20.72' }
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
