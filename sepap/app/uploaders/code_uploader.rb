@@ -48,8 +48,8 @@ class CodeUploader < CarrierWave::Uploader::Base
     end
    end
    
-   def default_url
-		'prueba.java'
-   end
+   #def default_url
+	#	'prueba.java'
+   #end
 
 end
