@@ -3,10 +3,11 @@
 
 <table>
 	<tr>
-		<td > Matrícula </td>
-		<td> Usuario </td>
-		<td> Problema </td>
-		<td> Resultado </td>
+		<td width="100px"> <b>Matrícula</b> </td>
+		<td width="250px"><b> Usuario </b></td>
+		<td width="90px"><b> Problema </b></td>
+		<td><b> Resultado </b></td>
+		<td width="90px"><b> Fecha y Hora </b></td>
 	</tr>
 	
 	<% @attempts.each do |a| %>
@@ -15,6 +16,7 @@
 		<td> <%= a.user.nombre %> <%= a.user.apellido %> </td>
 		<td> <%= a.numero_problema %> </td>
 		<td> <%= a.resultado %> </td>
+		<td><%= (a.created_at - 5.hour).strftime("%d/%m/%Y    %H:%Mhrs") %> </td>
 	</tr>
 	<% end %>
 	
