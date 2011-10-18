@@ -13,6 +13,7 @@
   <%if current_user.profesor? or current_user.admin? %>
     <li><%=link_to "Crear Problema", new_problem_path, :class=>"botones "+(@tab=="newP"? "botonon" : "botonoff")%></li>
     <li><%=link_to "Grupos", groups_path, :class=>"botones "+(@tab=="listaG"? "botonon" : "botonoff")%></li>
+    <li><%=link_to "Ultimas Actualizaciones", show_last_path, :class=>"botones "+(@tab=="hist"? "botonon" : "botonoff")%></li>
   <%end%>
   <%if current_user.admin?%>
     <li><%=link_to "Administrar", admin_index_path, :class=>"botones "+(@tab=="admin"? "botonon" : "botonoff")%></li>
