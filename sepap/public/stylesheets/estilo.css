@@ -129,6 +129,26 @@ a.botonoff{
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
+a.botonaz{
+  display: inline-block;
+  padding: 10px 10px 10px;
+  color: #0D3B7C;
+  margin:0px 0px 10px 0px;
+  text-align:center;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  
+  background: #0D3B7C url(/images/botonoff.png) repeat-x;
+  color: #FFF;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
 a.botones:link, a.botonoff:link {
   text-decoration:none;
 }
@@ -137,10 +157,17 @@ a.botones:visited, a.botonoff:visited  {
   text-decoration:none;
 }
 
+a.botonaz:hover {
+  color:#CCC;
+  background: #0D3B7C url(/images/botonon.png) repeat-x;
+  text-decoration:none;
+}
+
 a.botones:hover, a.botonoff:hover {
   color:#2F5D9E;
   text-decoration:none;
 }
+
 
 a.botones:active, a.botonoff:active  {
   text-decoration:underline;

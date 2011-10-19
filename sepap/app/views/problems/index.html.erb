@@ -58,7 +58,7 @@
 
 <% if user_signed_in? %>
 	<%if current_user.admin? || current_user.profesor?%>
-		<%= link_to 'Crear problema nuevo', new_problem_path %>
+		<%= link_to 'Crear problema nuevo', new_problem_path, :class=>"botonaz" %>
 	<%end%>	
 <%end%>
 
