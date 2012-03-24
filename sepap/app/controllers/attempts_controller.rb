@@ -157,11 +157,18 @@ class AttemptsController < ApplicationController
 		  	#Se realiza el proceso de compilacion y verificacion de resultados para C/C++
 		  	#=============================================================================
 			elsif @attempt.lenguaje.include? "C/C++"
+			
+				if @attempt.problem.modulo?
+					#archivo en C con el main que llamara al Header que sube el alumno
+					link = `cd archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema};ln -s #{@attempt.problem.solution}`
+					archivo = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/#{@attempt.problem.solution.file.filename.capitalize}"
+				else
+					#archivo con el codigo fuente del alumno
+					archivo = @attempt.code
+				end
+				
 				#tiempo limite
 			  	tiempo = @attempt.problem.tiempo
-			  	
-				#archivo con el codigo fuente del alumno
-				archivo = @attempt.code
 			
 				#archivo que se ejecutará despues de compilar
 				ejecutable = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/Problema#{@attempt.numero_problema}"
@@ -190,7 +197,7 @@ class AttemptsController < ApplicationController
 				rutaAceptado = "archivos/alumno/#{@attempt.user.matricula}/#{@attempt.numero_problema}/aceptado"
 				#Hace una copia del codigo fuente en caso de ser aceptado
 				`mkdir -p #{rutaAceptado}`
-				`cp #{archivo} #{rutaAceptado}/aceptado`
+				`cp #{@attempt.code} #{rutaAceptado}/aceptado`
 
 				elsif resultado.include? "Error de compilación"
 					resultado = "Error de compilación"

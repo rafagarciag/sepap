@@ -49,13 +49,15 @@
 		<%= f.label :solution, 'Ejecutable con el main' %>
 		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoSol"%>
 		<span id="spInfoSol", class="tooltip">
-			Archivo compilado con el 'main' del problema resuelto, <br />
+			Archivo que contiene el método 'main' del problema resuelto, <br />
 			el nombre debe iniciar con la palabra 'Problema' más <br />
-			el núnero del problema <br />
+			el número del problema <br />
 			Ejemplo:
 			<br />
 			<code>
 				Problema1001.class
+				<br />
+				Problema1001.c
 			</code>
 		</span>
 		<br />
@@ -63,18 +65,25 @@
 	  </div>
 
 	  <div class="field" id="divModulo">
-		<%= f.label :metodo, 'Metodo(s) utilizado(s)' %>
+		<%= f.label :metodo, 'Método(s) utilizado(s)' %>
 		<%= image_tag "infoicon.png" ,:size => "20x20", :id=> "infoMod"%>
 		<span id="spInfoMod", class="tooltip">
-			Archivo compilado con los métodos que se utilizan en el main, <br />
-			el nombre debe iniciar con la palabra 'Metodo' más el <br />
-			número del problema <br />
+			Archivo que contenga los métodos utilizados en el main. <br />
+			Para problemas en lenguaje Java, el nombre debe iniciar con la <br />
+			palabra 'Metodo' más el número del problema <br />
 			Ejemplo:
 			<br />
 			<code>
 				Metodo1001.class
 			</code>
-
+			<br />
+			<br />
+			Para problemas en lenguaje C/C++ se sugiere nombrar el header <br />
+			con la palabra 'Header' más el número de problema <br />
+			Ejemplo: <br />
+			<code>
+				Header1001.h
+			</code>
 		</span>
 		<br />
 		<%= f.file_field :metodo %>
