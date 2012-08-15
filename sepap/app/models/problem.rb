@@ -44,5 +44,10 @@ class Problem < ActiveRecord::Base
 	mount_uploader :output2, Output2Uploader
 	mount_uploader :output3, Output3Uploader
 	
+	def fix_line_breaks
+		`dos2unix -c mac #{input} #{input2} #{input3} #{output} #{output2} #{output3}`
+    `dos2unix #{input} #{input2} #{input3} #{output} #{output2} #{output3}`
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Se llamo al metodo fix_line_breaks"
+	end
 
 end

@@ -1,10 +1,10 @@
 # -*- encoding : utf-8 -*-
 class ProblemsController < ApplicationController
 	load_and_authorize_resource
+  
   # GET /problems
   # GET /problems.xml
   def index
-    #@problems = Problem.find(:all, :order => "numero")
     @problems = Problem.select('problems.*').order(:numero).page(params[:page]).per(40)
     #Se utiliza kaminari para paginacion con .page
     
@@ -51,8 +51,7 @@ class ProblemsController < ApplicationController
 	
     respond_to do |format|
       if @problem.save
-      	`dos2unix -c mac #{@problem.input} #{@problem.input2} #{@problem.input3} #{@problem.output} #{@problem.output2} #{@problem.output3}`
-      	`dos2unix #{@problem.input} #{@problem.input2} #{@problem.input3} #{@problem.output} #{@problem.output2} #{@problem.output3}`
+      	@problem.fix_line_breaks
         format.html { redirect_to(@problem, :notice => 'El problema fue creado exitosamente.') }
         format.xml  { render :xml => @problem, :status => :created, :location => @problem }
       else
