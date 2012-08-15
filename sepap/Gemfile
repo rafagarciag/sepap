@@ -22,6 +22,10 @@ gem 'kaminari'
 #Deployment
 gem 'mysql2', '< 0.3'
 
+group :development do
+  gem "rails-erd"
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
